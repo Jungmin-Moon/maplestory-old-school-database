@@ -1,6 +1,9 @@
 package com.artaleDB.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.artaleDB.entities.Mob;
@@ -8,6 +11,7 @@ import com.artaleDB.entities.Mob;
 @Repository
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
-	
+	@Query("SELECT m from Mob m where m.mobName like %:name%")
+	public List<Mob> getByName(String name);
 	
 }
