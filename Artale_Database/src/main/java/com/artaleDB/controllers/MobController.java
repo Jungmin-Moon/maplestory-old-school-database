@@ -12,15 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.artaleDB.entities.Mob;
 import com.artaleDB.repositories.MobRepository;
+import com.artaleDB.services.CalculationService;
 
 @RestController
 @RequestMapping("/api/v1")
 public class MobController {
 	
 	MobRepository mobRepo;
+	CalculationService calcService;
 	
-	MobController(MobRepository mobRepo) {
+	MobController(MobRepository mobRepo, CalculationService calcService) {
 		this.mobRepo = mobRepo;
+		this.calcService = calcService;
 	}
 	
 	
@@ -58,6 +61,23 @@ public class MobController {
 		}
 		
 		
+	}
+	
+	@GetMapping("/mobs/hour/{name:[a-zA-Z &+-]*}/{defeats}")
+	public ResponseEntity<Object> calculateEXPPerHour(@PathVariable String name, @PathVariable int defeats) {
+		
+		List<Mob> mobList = mobRepo.getByName(name);
+		
+		if (mobList.size() > 1) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body("Please input a more specific mob name.");
+		} else {
+			Mob tempMob = mobList.getFirst();
+			
+			return ResponseEntity.status(HttpStatus.OK)
+								.body("The experience per hour is " + calcService.expPerHour(tempMob.getMobEXP(), defeats) + " per hour.");
+		
+		}
 	}
 	
 }
