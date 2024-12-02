@@ -1,10 +1,10 @@
-#Artale Database
+#Artale Database <br />
 
 A project, that is unaffiliated with the developers of Artale on Maplestory Worlds, to compile the details about various aspects of the game <br />
 instead of having to refer to a google document or spreadsheet. 
 
 
-#Technology Used
+#Technology Used <br />
 . MySQL <br />
 . Spring <br />
 . REST <br />
