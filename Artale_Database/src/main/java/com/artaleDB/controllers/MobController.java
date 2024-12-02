@@ -1,8 +1,12 @@
 package com.artaleDB.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +27,20 @@ public class MobController {
 	@GetMapping("/all") 
 	public List<Mob> mobFullList() {
 		return mobRepo.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> findById(@PathVariable long id) {
+		Optional<Mob> mob = mobRepo.findById(id);
+		
+		if (mob.isPresent()) {
+			return ResponseEntity.status(HttpStatus.FOUND)
+								.header("Mob", "Mob ID")
+								.body(mobRepo.findById(id));
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("No such mob exists.");
+		}
 	}
 	
 	

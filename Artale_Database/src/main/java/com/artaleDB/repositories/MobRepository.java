@@ -8,4 +8,6 @@ import com.artaleDB.entities.Mob;
 @Repository
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
+	
+	
 }
