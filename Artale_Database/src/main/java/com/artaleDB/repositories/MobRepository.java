@@ -14,4 +14,18 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	@Query("SELECT m from Mob m where m.mobName like %:name%")
 	public List<Mob> getByName(String name);
 	
+	@Query("SELECT m from Mob m where m.mobLocation like %:location% or m.mobLocationTwo like %:location%")
+	public List<Mob> getByLocations(String location);
+	
+	@Query("SELECT m from Mob m order by m.mobNeededAccuracy DESC")
+	public List<Mob> getByAccuracyDesc();
+	
+	@Query("SELECT m from Mob m order by m.mobNeededAccuracy ASC")
+	public List<Mob> getByAccuracyAsc();
+	
+	@Query("SELECT m from Mob m where m.mobNeededAccuracy <= :limit order by m.mobNeededAccuracy ASC")
+	public List<Mob> getAccuracyAscLimit(int limit);
+	
+	@Query("SELECT m from Mob m where m.mobNeededAccuracy <= :limit order by m.mobNeededAccuracy Desc")
+	public List<Mob> getAccuracyDescLimit(int limit);
 }
