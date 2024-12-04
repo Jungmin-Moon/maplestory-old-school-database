@@ -28,4 +28,16 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	@Query("SELECT m from Mob m where m.mobNeededAccuracy <= :limit order by m.mobNeededAccuracy Desc")
 	public List<Mob> getAccuracyDescLimit(int limit);
+	
+	@Query("SELECT m from Mob m order by m.mobMaxMeso ASC")
+	public List<Mob> getMaxMesoAsc();
+	
+	@Query("SELECT m from Mob m order by m.mobMaxMeso DESC")
+	public List<Mob> getMaxMesoDesc();
+	
+	@Query("SELECT m from Mob m order by m.mobMinMeso ASC")
+	public List<Mob> getMinMesoAsc();
+	
+	@Query("SELECT m from Mob m order by m.mobMinMeso DESC")
+	public List<Mob> getMinMesodesc();
 }

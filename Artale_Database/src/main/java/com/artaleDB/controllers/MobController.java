@@ -98,24 +98,18 @@ public class MobController {
 		}
 		
 	}
-	//max meso 
-	//min meso
 	//exp
 	//combination ones exp, meso, accuracy
 	//exp meso
 	
 	@GetMapping("/mobs/accuracy/desc")
-	public ResponseEntity<Object> mobsOrderedByAccDesc() {
-		
-		//List<Mob> mobsByAccuracyDesc = mobRepo.getByAccuracyDesc();
-		
+	public ResponseEntity<Object> mobsOrderedByAccDesc() {	
 		return ResponseEntity.status(HttpStatus.FOUND)
 							.body(mobRepo.getByAccuracyDesc());
 	}
 	
 	@GetMapping("/mobs/accuracy/asc")
 	public ResponseEntity<Object> mobsOrderedByAccAsc() {
-		
 		return ResponseEntity.status(HttpStatus.FOUND)
 							.body(mobRepo.getByAccuracyAsc());
 	}
@@ -128,4 +122,33 @@ public class MobController {
 		return ResponseEntity.status(HttpStatus.FOUND)
 							.body(listPrintService.printListWithMobNameAndAccuracy(mobsAccOrderedByAscLimit));
 	}
+	
+	@GetMapping("/mobs/accuracy/desc/{limit}")
+	public ResponseEntity<Object> orderedByAccDescWithLimit(@PathVariable int limit) {
+		
+		List<Mob> mobsAccOrderedByDescLimit = mobRepo.getAccuracyDescLimit(limit);
+		
+		return ResponseEntity.status(HttpStatus.FOUND)
+							.body(listPrintService.printListWithMobNameAndAccuracy(mobsAccOrderedByDescLimit));
+	}
+	
+	@GetMapping("/mobs/maxmeso/asc")
+	public ResponseEntity<Object> orderedByMaxMesoAsc() {
+		
+		List<Mob> mobsMaxMesoOrderedAsc = mobRepo.getMaxMesoAsc();
+		
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+							.body(listPrintService.printListWithMobNameAndMaxMeso(mobsMaxMesoOrderedAsc));
+	}
+	
+	@GetMapping("/mobs/maxmeso/desc")
+	public ResponseEntity<Object> orderedByMaxMesodesc() {
+		
+		List<Mob> mobsMaxMesoOrderedDesc = mobRepo.getMaxMesoDesc();
+		
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+							.body(listPrintService.printListWithMobNameAndMaxMeso(mobsMaxMesoOrderedDesc));
+	}
+	
+	
 }
