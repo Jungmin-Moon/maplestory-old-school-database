@@ -1,5 +1,6 @@
 package com.artaleDB.controllers;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,8 +78,19 @@ public class MobController {
 		} else {
 			Mob tempMob = mobList.getFirst();
 			
-			return ResponseEntity.status(HttpStatus.OK)
-								.body("The experience per hour is " + calcService.expPerHour(tempMob.getMobEXP(), defeats) + " per hour.");
+			BigDecimal mesoCalculatedTrueFalseMax = calcService.maxMesoPerHour(tempMob.getMobMaxMeso(), defeats);
+			BigDecimal mesoCalculatedTrueFalseMin = calcService.minMesoPerHour(tempMob.getMobMinMeso(), defeats);
+			
+			if (mesoCalculatedTrueFalseMax.compareTo(new BigDecimal(-1)) == 0 || mesoCalculatedTrueFalseMin.compareTo(new BigDecimal(-1)) == 0) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT)
+									.body("The meso value of this mob is unknown so there are no possible calculations.");
+			} else {
+				return ResponseEntity.status(HttpStatus.OK)
+						.body("The experience per hour is " + calcService.expPerHour(tempMob.getMobEXP(), defeats) + " per hour.\n"
+								+ "The max potential meso per hour is " + mesoCalculatedTrueFalseMax + " per hour.\n"
+								+ "The min potential meso per hour is " + mesoCalculatedTrueFalseMin + " per hour.");
+			}
+			
 		
 		}
 	}
