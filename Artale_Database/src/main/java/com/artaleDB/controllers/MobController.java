@@ -112,7 +112,6 @@ public class MobController {
 	}
 	//exp
 	//combination ones exp, meso, accuracy
-	//exp meso
 	
 	@GetMapping("/mobs/accuracy/desc")
 	public ResponseEntity<Object> mobsOrderedByAccDesc() {	
