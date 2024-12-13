@@ -17,7 +17,7 @@ import com.artaleDB.services.CalculationService;
 import com.artaleDB.services.ListPrintService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/mobs")
 public class MobController {
 	
 	MobRepository mobRepo;
@@ -31,12 +31,12 @@ public class MobController {
 	}
 	
 	
-	@GetMapping("/mobs/all") 
+	@GetMapping("/all") 
 	public List<Mob> mobFullList() {
 		return mobRepo.findAll();
 	}
 	
-	@GetMapping("/mobs/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Object> findById(@PathVariable long id) {
 		Optional<Mob> mob = mobRepo.findById(id);
 		
@@ -50,7 +50,7 @@ public class MobController {
 		}
 	}
 	
-	@GetMapping("/mobs/name/{name:[a-zA-Z &+-.]*}")
+	@GetMapping("/name/{name:[a-zA-Z &+-.]*}")
 	public ResponseEntity<Object> findByName(@PathVariable String name) {
 		
 		List<Mob> mobList = mobRepo.getByName(name);
@@ -67,7 +67,7 @@ public class MobController {
 		
 	}
 	
-	@GetMapping("/mobs/hour/{name:[a-zA-Z &+-.]*}/{defeats}")
+	@GetMapping("/hour/{name:[a-zA-Z &+-.]*}/{defeats}")
 	public ResponseEntity<Object> calculateEXPPerHour(@PathVariable String name, @PathVariable int defeats) {
 		
 		List<Mob> mobList = mobRepo.getByName(name);
@@ -96,7 +96,7 @@ public class MobController {
 	}
 	
 	
-	@GetMapping("/mobs/location/{location:[a-zA-Z &+-.]*}")
+	@GetMapping("/location/{location:[a-zA-Z &+-.]*}")
 	public ResponseEntity<Object> getMobsFromSpecificLocation(@PathVariable String location) {
 		
 		List<Mob> mobByLocationList = mobRepo.getByLocations(location);
@@ -113,19 +113,19 @@ public class MobController {
 	//exp
 	//combination ones exp, meso, accuracy
 	
-	@GetMapping("/mobs/accuracy/desc")
+	@GetMapping("/accuracy/desc")
 	public ResponseEntity<Object> mobsOrderedByAccDesc() {	
 		return ResponseEntity.status(HttpStatus.FOUND)
 							.body(mobRepo.getByAccuracyDesc());
 	}
 	
-	@GetMapping("/mobs/accuracy/asc")
+	@GetMapping("/accuracy/asc")
 	public ResponseEntity<Object> mobsOrderedByAccAsc() {
 		return ResponseEntity.status(HttpStatus.FOUND)
 							.body(mobRepo.getByAccuracyAsc());
 	}
 	
-	@GetMapping("/mobs/accuracy/asc/{limit}")
+	@GetMapping("/accuracy/asc/{limit}")
 	public ResponseEntity<Object> orderedByAccAscWithLimit(@PathVariable int limit) {
 		
 		List<Mob> mobsAccOrderedByAscLimit = mobRepo.getAccuracyAscLimit(limit);
@@ -134,7 +134,7 @@ public class MobController {
 							.body(listPrintService.printListWithMobNameAndAccuracy(mobsAccOrderedByAscLimit));
 	}
 	
-	@GetMapping("/mobs/accuracy/desc/{limit}")
+	@GetMapping("/accuracy/desc/{limit}")
 	public ResponseEntity<Object> orderedByAccDescWithLimit(@PathVariable int limit) {
 		
 		List<Mob> mobsAccOrderedByDescLimit = mobRepo.getAccuracyDescLimit(limit);
@@ -143,7 +143,7 @@ public class MobController {
 							.body(listPrintService.printListWithMobNameAndAccuracy(mobsAccOrderedByDescLimit));
 	}
 	
-	@GetMapping("/mobs/maxmeso/asc")
+	@GetMapping("/maxmeso/asc")
 	public ResponseEntity<Object> orderedByMaxMesoAsc() {
 		
 		List<Mob> mobsMaxMesoOrderedAsc = mobRepo.getMaxMesoAsc();
@@ -152,7 +152,7 @@ public class MobController {
 							.body(listPrintService.printListWithMobNameAndMaxMeso(mobsMaxMesoOrderedAsc));
 	}
 	
-	@GetMapping("/mobs/maxmeso/desc")
+	@GetMapping("/maxmeso/desc")
 	public ResponseEntity<Object> orderedByMaxMesodesc() {
 		
 		List<Mob> mobsMaxMesoOrderedDesc = mobRepo.getMaxMesoDesc();
