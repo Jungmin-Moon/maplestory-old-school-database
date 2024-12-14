@@ -55,13 +55,15 @@ public class MobController {
 		
 		List<Mob> mobList = mobRepo.getByName(name);
 		
-		if (mobList.size() > 0) {
+		if (mobList.size() > 1) {
+			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
+								.body("Results of your search query: \n" + mobRepo.getByName(name));
+		} else if (mobList.size() == 1) {
 			return ResponseEntity.status(HttpStatus.FOUND)
-								.header("Mob", "Mob Name")
-								.body(mobRepo.getByName(name));
+								.body("Result of your search query: \n" + mobRepo.getByName(name));
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-								.body("There are no mobs with that or similar name in the database.");
+								.body("There are no results for your query. Please try again.");
 		}
 		
 		
