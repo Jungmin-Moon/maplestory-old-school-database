@@ -70,4 +70,19 @@ public class BossController {
 	}
 	
 	
+	@GetMapping("/location/{location:[a-zA-z &+-.]*}")
+	public ResponseEntity<Object> findByLocation(@PathVariable String location) {
+		
+		List<Boss> bossLocations = bossRepo.getByLocations(location);
+		
+		if (bossLocations.size() > 0) {
+			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
+								.body("Results of your query: \n" + bossRepo.getByLocations(location));
+		} else {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT)
+								.body("There are no results for your query. Please try again.");
+		}
+	}
+	
+	
 }

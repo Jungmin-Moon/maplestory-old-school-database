@@ -105,10 +105,10 @@ public class MobController {
 		
 		if (mobByLocationList.size() > 0) {
 			return ResponseEntity.status(HttpStatus.FOUND)
-								.body(mobRepo.getByLocations(location));
+								.body("Results of your search query: \n" + mobRepo.getByLocations(location));
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
-								.body("There are no mobs located in that location. Please check to make sure you correctly typed the location.");
+								.body("No data found for desired location.");
 		}
 		
 	}
