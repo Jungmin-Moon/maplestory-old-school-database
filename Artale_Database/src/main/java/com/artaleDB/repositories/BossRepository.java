@@ -12,7 +12,7 @@ import com.artaleDB.entities.Boss;
 public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	
-	@Query("SELECT b from Boss b where b.mobName like %:name%")
+	@Query("SELECT b from Boss b where b.bossName like %:name%")
 	public List<Boss> getByName(String name);
 	
 	

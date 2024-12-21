@@ -32,10 +32,10 @@ public class Mob {
 	private int mobEXP;
 	
 	@Column(name = "mob_Min_Meso")
-	private String mobMinMeso;
+	private long mobMinMeso;
 	
 	@Column(name = "mob_Max_Meso")
-	private String mobMaxMeso;
+	private long mobMaxMeso;
 	
 	@Column(name = "mob_Needed_Accuracy")
 	private int mobNeededAccuracy;
@@ -94,19 +94,19 @@ public class Mob {
 		this.mobEXP = mobEXP;
 	}
 
-	public String getMobMinMeso() {
+	public long getMobMinMeso() {
 		return mobMinMeso;
 	}
 
-	public void setMobMinMeso(String mobMinMeso) {
+	public void setMobMinMeso(long mobMinMeso) {
 		this.mobMinMeso = mobMinMeso;
 	}
 	
-	public String getMobMaxMeso() {
+	public long getMobMaxMeso() {
 		return mobMaxMeso;
 	}
 
-	public void setMobMaxMeso(String mobMaxMeso) {
+	public void setMobMaxMeso(long mobMaxMeso) {
 		this.mobMaxMeso = mobMaxMeso;
 	}
 

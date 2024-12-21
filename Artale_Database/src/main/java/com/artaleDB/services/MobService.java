@@ -1,6 +1,7 @@
 package com.artaleDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -17,47 +18,51 @@ public class MobService {
 	}
 	
 	
-	List<Mob> getAll() {
+	public List<Mob> getAll() {
 		return mobRepo.findAll();
 	}
 	
-	List<Mob> returnListByName(String name) {
+	public Optional<Mob> returnById(long id) {
+		return mobRepo.findById(id);
+	}
+	
+	public List<Mob> returnListByName(String name) {
 		return mobRepo.getByName(name);
 	}
 	
-	List<Mob> returnListByLocation(String location) {
+	public List<Mob> returnListByLocation(String location) {
 		return mobRepo.getByLocations(location);
 	}
 	
-	List<Mob> returnListByAccuracyAsc() {
+	public List<Mob> returnListByAccuracyAsc() {
 		return mobRepo.getByAccuracyAsc();
 	}
 	
-	List<Mob> returnListByAccuracyDesc() {
+	public List<Mob> returnListByAccuracyDesc() {
 		return mobRepo.getByAccuracyDesc();
 	}
 	
-	List<Mob> returnListByAccuracyAscLimit(int limit) {
+	public List<Mob> returnListByAccuracyAscLimit(int limit) {
 		return mobRepo.getAccuracyAscLimit(limit);
 	}
 	
-	List<Mob> returnListByAccuracyDescLimit(int limit) {
+	public List<Mob> returnListByAccuracyDescLimit(int limit) {
 		return mobRepo.getAccuracyDescLimit(limit);
 	}
 	
-	List<Mob> returnListByMaxMesoAsc() {
+	public List<Mob> returnListByMaxMesoAsc() {
 		return mobRepo.getMaxMesoAsc();
 	}
 	
-	List<Mob> returnListByMaxMesoDesc() {
+	public List<Mob> returnListByMaxMesoDesc() {
 		return mobRepo.getMaxMesoDesc();
 	}
 	
-	List<Mob> returnListByMinMesoAsc() {
+	public List<Mob> returnListByMinMesoAsc() {
 		return mobRepo.getMinMesoAsc();
 	}
 	
-	List<Mob> returnListByMinMesoDesc() {
+	public List<Mob> returnListByMinMesoDesc() {
 		return mobRepo.getMinMesodesc();
 	}
 }
