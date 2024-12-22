@@ -15,10 +15,10 @@ public class CalculationService {
 	}
 	
 	
-	public BigDecimal maxMesoPerHour(String mobMaxMeso, int numKillPerHour) {
+	public BigDecimal maxMesoPerHour(long mobMaxMeso, int numKillPerHour) {
 		
-		if (mobMaxMeso.equalsIgnoreCase("Unknown")) {
-			return new BigDecimal(-1);
+		if (mobMaxMeso == 0) {
+			return new BigDecimal(0);
 		} else {
 			BigDecimal bigDecimalMaxMeso = new BigDecimal(mobMaxMeso);
 			BigDecimal bigDecimalKills = new BigDecimal(numKillPerHour);
@@ -28,10 +28,10 @@ public class CalculationService {
 		
 	}
 	
-	public BigDecimal minMesoPerHour(String mobMinMeso, int numKillPerHour) {
+	public BigDecimal minMesoPerHour(long mobMinMeso, int numKillPerHour) {
 		
-		if (mobMinMeso.equalsIgnoreCase("Unknown")) {
-			return new BigDecimal(-1);
+		if (mobMinMeso == 0) {
+			return new BigDecimal(0);
 		} else {
 			BigDecimal bigDecimalMinMeso = new BigDecimal(mobMinMeso);
 			BigDecimal bigDecimalKills = new BigDecimal(numKillPerHour);
