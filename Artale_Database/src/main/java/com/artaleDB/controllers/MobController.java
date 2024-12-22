@@ -27,7 +27,6 @@ public class MobController {
 		this.calcService = calcService;
 	}
 	/*
-	 * asc|desc but with a limit
 	 * same with meso like accuracy
 	 */
 	
@@ -121,7 +120,6 @@ public class MobController {
 		}
 	}
 	
-	
 	@GetMapping("/acc/desc")
 	public ResponseEntity<Object> mobsByAccDesc() {
 		List<Mob> mobsByAccDesc = mobService.returnListByAccuracyDesc();
@@ -134,4 +132,83 @@ public class MobController {
 								.body("There are no mobs available.");
 		}
 	}
+	
+	@GetMapping("/acc/asc/{limit}")
+	public ResponseEntity<Object> mobsByAccAscWithLimit(@PathVariable int limit) {
+		List<Mob> mobsByAccAscLimit = mobService.returnListByAccuracyAscLimit(limit);
+		
+		if (mobsByAccAscLimit.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByAccAscLimit);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There are no mobs available.");
+		}
+	}
+	
+	@GetMapping("/acc/desc/{limit}")
+	public ResponseEntity<Object> mobsByAccDescWithLimit(@PathVariable int limit) {
+		List<Mob> mobsByAccDescLimit = mobService.returnListByAccuracyDescLimit(limit);
+		
+		if (mobsByAccDescLimit.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByAccDescLimit);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no information.");
+		}
+	}
+	
+	@GetMapping("/meso/max/asc")
+	public ResponseEntity<Object> mobsByMaxMesoAsc() {
+		List<Mob> mobsByMaxMesoAsc = mobService.returnListByMaxMesoAsc();
+		
+		if (mobsByMaxMesoAsc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByMaxMesoAsc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no information.");
+		}
+	}
+	
+	@GetMapping("/meso/max/desc")
+	public ResponseEntity<Object> mobsByMaxMesoDesc() {
+		List<Mob> mobsByMaxMesoDsc = mobService.returnListByMaxMesoDesc();
+		
+		if (mobsByMaxMesoDsc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByMaxMesoDsc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no information.");
+		}
+	}
+	
+	@GetMapping("/meso/min/asc")
+	public ResponseEntity<Object> mobsByMinMesoAsc() {
+		List<Mob> mobsByMinMesoAsc = mobService.returnListByMinMesoAsc();
+		
+		if (mobsByMinMesoAsc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByMinMesoAsc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no information.");
+		}
+	}
+	
+	@GetMapping("/meso/min/desc")
+	public ResponseEntity<Object> mobsByMinMesoDesc() {
+		List<Mob> mobsByMinMesoDesc = mobService.returnListByMinMesoDesc();
+		
+		if (mobsByMinMesoDesc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByMinMesoDesc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no information.");
+		}
+	}
+
 }
