@@ -11,33 +11,33 @@ import com.artaleDB.entities.Mob;
 @Repository
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
-	@Query("SELECT m from Mob m where m.mobName like %:name%")
+	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
 	public List<Mob> getByName(String name);
 	
-	@Query("SELECT m from Mob m where m.mobLocation like %:location% or m.mobLocationTwo like %:location%")
+	@Query("SELECT m FROM Mob m WHERE m.mobLocation LIKE %:location% or m.mobLocationTwo LIKE %:location%")
 	public List<Mob> getByLocations(String location);
 	
-	@Query("SELECT m from Mob m order by m.mobNeededAccuracy DESC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobNeededAccuracy DESC")
 	public List<Mob> getByAccuracyDesc();
 	
-	@Query("SELECT m from Mob m order by m.mobNeededAccuracy ASC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobNeededAccuracy ASC")
 	public List<Mob> getByAccuracyAsc();
 	
-	@Query("SELECT m from Mob m where m.mobNeededAccuracy <= :limit order by m.mobNeededAccuracy ASC")
+	@Query("SELECT m FROM Mob m WHERE m.mobNeededAccuracy <= :limit ORDER BY m.mobNeededAccuracy ASC")
 	public List<Mob> getAccuracyAscLimit(int limit);
 	
-	@Query("SELECT m from Mob m where m.mobNeededAccuracy <= :limit order by m.mobNeededAccuracy Desc")
+	@Query("SELECT m FROM Mob m WHERE m.mobNeededAccuracy <= :limit ORDER BY m.mobNeededAccuracy Desc")
 	public List<Mob> getAccuracyDescLimit(int limit);
 	
-	@Query("SELECT m from Mob m order by m.mobMaxMeso ASC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobMaxMeso ASC")
 	public List<Mob> getMaxMesoAsc();
 	
-	@Query("SELECT m from Mob m order by m.mobMaxMeso DESC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobMaxMeso DESC")
 	public List<Mob> getMaxMesoDesc();
 	
-	@Query("SELECT m from Mob m order by m.mobMinMeso ASC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobMinMeso ASC")
 	public List<Mob> getMinMesoAsc();
 	
-	@Query("SELECT m from Mob m order by m.mobMinMeso DESC")
+	@Query("SELECT m FROM Mob m ORDER BY m.mobMinMeso DESC")
 	public List<Mob> getMinMesodesc();
 }

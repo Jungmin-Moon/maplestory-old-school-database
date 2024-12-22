@@ -17,6 +17,7 @@ public class Boss {
 	
 	private int bossLevel;
 	
+	@Column(name = "boss_HP")
 	private int bossHP;
 	
 	private String bossMinRespawn;

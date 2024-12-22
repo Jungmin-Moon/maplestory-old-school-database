@@ -26,9 +26,6 @@ public class MobController {
 		this.mobService = mobService;
 		this.calcService = calcService;
 	}
-	/*
-	 * same with meso like accuracy
-	 */
 	
 	@GetMapping("/all") 
 	public List<Mob> mobFullList() {
@@ -41,7 +38,7 @@ public class MobController {
 		Optional<Mob> mobId = mobService.returnById(id);
 		
 		if (mobId.isPresent()) {
-			return ResponseEntity.status(HttpStatus.FOUND)
+			return ResponseEntity.status(HttpStatus.OK)
 								.body(mobService.returnById(id));
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -59,7 +56,7 @@ public class MobController {
 			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
 								.body(mobsByName);
 		} else if (mobsByName.size() == 1) {
-			return ResponseEntity.status(HttpStatus.FOUND)
+			return ResponseEntity.status(HttpStatus.OK)
 								.body(mobsByName);
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -76,7 +73,7 @@ public class MobController {
 			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
 								.body(mobsByLocation);
 		} else if (mobsByLocation.size() == 1) {
-			return ResponseEntity.status(HttpStatus.FOUND)
+			return ResponseEntity.status(HttpStatus.OK)
 								.body(mobsByLocation);
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
