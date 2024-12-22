@@ -17,7 +17,6 @@ public class BossService {
 		this.bossRepo = bossRepo;	
 	}
 	
-	//level asc|desc, hp asc|desc
 	public List<Boss> getAll() {
 		return bossRepo.findAll();
 	}
@@ -34,5 +33,19 @@ public class BossService {
 		return bossRepo.getByLocations(location);
 	}
 	
+	public List<Boss> returnBossByHPAsc() {
+		return bossRepo.getByBossHPAsc();
+	}
 	
+	public List<Boss> returnBossByHPDesc() {
+		return bossRepo.getByBossHPDesc();
+	}
+	
+	public List<Boss> returnBossByLevelAsc() {
+		return bossRepo.getByLevelAsc();
+	}
+	
+	public List<Boss> returnBossByLevelDesc() {
+		return bossRepo.getByLevelDesc();
+	}
 }	

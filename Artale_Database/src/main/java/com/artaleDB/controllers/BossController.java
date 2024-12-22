@@ -1,8 +1,12 @@
 package com.artaleDB.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +27,107 @@ public class BossController {
 	
 	@GetMapping("/all")
 	public List<Boss> findAll() {
-		return bossRepo.findAll();
+		return bossService.getAll();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> findById(@PathVariable long id) {
+		
+		Optional<Boss> bossById = bossService.returnById(id);
+		
+		if (bossById.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(bossById);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		}
+	}
+	
+	@GetMapping("/name/{name:[a-zA-Z &+-.]*}")
+	public ResponseEntity<Object> findByName(@PathVariable String name) {
+		
+		List<Boss> bossByName = bossService.returnBossByName(name);
+		
+		if (bossByName.size() > 1) {
+			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
+								.body(bossByName);
+		} else if (bossByName.size() == 1) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(bossByName);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		}
+		
+	}
+	
+	@GetMapping("/location/{location:[a-zA-Z &+-.]*}")
+	public ResponseEntity<Object> findByLocation(@PathVariable String location) {
+		
+		List<Boss> bossByLocation = bossService.returnBossByLocation(location);
+		
+		if (bossByLocation.size() > 1) {
+			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
+								.body(bossByLocation);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		}
+		
+	}
+	
+	@GetMapping("/level/asc") 
+	public ResponseEntity<Object> orderByLevelAsc() {
+		List<Boss> levelOrderAsc = bossService.returnBossByLevelAsc();
+		
+		if (levelOrderAsc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(levelOrderAsc);
+		}
+	}
+	
+	@GetMapping("/level/desc")
+	public ResponseEntity<Object> orderBylevelDesc() {
+		List<Boss> levelOrderDesc = bossService.returnBossByLevelDesc();
+		
+		if (levelOrderDesc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(levelOrderDesc);
+		}
+	}
+	
+	
+	@GetMapping("/hp/asc")
+	public ResponseEntity<Object> orderByHPAsc() {
+		List<Boss> hpOrderAsc = bossService.returnBossByHPAsc();
+		
+		if (hpOrderAsc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss,");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(hpOrderAsc);
+		}
+	}
+	
+	@GetMapping("/hp/desc")
+	public ResponseEntity<Object> orderByHPDesc() {
+		List<Boss> hpOrderDesc = bossService.returnBossByHPDesc();
+		
+		if (hpOrderDesc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no boss.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(hpOrderDesc);
+		}
 	}
 	
 	
