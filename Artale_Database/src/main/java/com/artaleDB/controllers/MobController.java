@@ -27,7 +27,7 @@ public class MobController {
 		this.calcService = calcService;
 	}
 	/*
-	 * accuracy des|asc and asc|desc but with a limit
+	 * asc|desc but with a limit
 	 * same with meso like accuracy
 	 */
 	
@@ -108,4 +108,30 @@ public class MobController {
 		}
 	}
 	
+	@GetMapping("/acc/asc")
+	public ResponseEntity<Object> mobsByAccAsc() {
+		List<Mob> mobsByAccAsc = mobService.returnListByAccuracyAsc();
+		
+		if (mobsByAccAsc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByAccAsc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There are no mobs available.");
+		}
+	}
+	
+	
+	@GetMapping("/acc/desc")
+	public ResponseEntity<Object> mobsByAccDesc() {
+		List<Mob> mobsByAccDesc = mobService.returnListByAccuracyDesc();
+		
+		if (mobsByAccDesc.size() > 0) {
+			return ResponseEntity.status(HttpStatus.OK)
+								.body(mobsByAccDesc);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There are no mobs available.");
+		}
+	}
 }
