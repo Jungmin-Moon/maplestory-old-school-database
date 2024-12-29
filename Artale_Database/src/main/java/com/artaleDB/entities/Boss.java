@@ -20,9 +20,9 @@ public class Boss {
 	@Column(name = "boss_HP")
 	private int bossHP;
 	
-	private String bossMinRespawn;
+	private int bossMinRespawn;
 	
-	private String bossMaxRespawn;
+	private int bossMaxRespawn;
 	
 	private String bossLocation;
 
@@ -58,19 +58,19 @@ public class Boss {
 		this.bossHP = bossHP;
 	}
 
-	public String getBossMinRespawn() {
+	public int getBossMinRespawn() {
 		return bossMinRespawn;
 	}
 
-	public void setBossMinRespawn(String bossMinRespawn) {
+	public void setBossMinRespawn(int bossMinRespawn) {
 		this.bossMinRespawn = bossMinRespawn;
 	}
 
-	public String getBossMaxRespawn() {
+	public int getBossMaxRespawn() {
 		return bossMaxRespawn;
 	}
 
-	public void setBossMaxRespawn(String bossMaxRespawn) {
+	public void setBossMaxRespawn(int bossMaxRespawn) {
 		this.bossMaxRespawn = bossMaxRespawn;
 	}
 

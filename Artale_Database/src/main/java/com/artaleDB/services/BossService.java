@@ -48,4 +48,28 @@ public class BossService {
 	public List<Boss> returnBossByLevelDesc() {
 		return bossRepo.getByLevelDesc();
 	}
+	
+	public List<Boss> returnBossByMaxRespawnAsc() {
+		return bossRepo.getByBossMaxRespawnAsc();
+	}
+	
+	public List<Boss> returnBossByMaxRespawnDesc() {
+		return bossRepo.getByBossMaxRespawnDesc();
+	}
+	
+	public List<Boss> returnBossByMinRespawnAsc() {
+		return bossRepo.getByBossMinRespawnAsc();
+	}
+	
+	public List<Boss> returnBossByMinRespawnDesc() {
+		return bossRepo.getByBossMinRespawnDesc();
+	}
+	
+	public List<Boss> returnBossByMaxRespawnLimit(int time) {
+		return bossRepo.getBossMaxRespawnLimit(time);
+	}
+	
+	public List<Boss> returnBossByMinRespawnLimit(int time) {
+		return bossRepo.getBossMinRespawnLimit(time);
+	}
 }	
