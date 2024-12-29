@@ -130,6 +130,82 @@ public class BossController {
 		}
 	}
 	
+	@GetMapping("/max-respawn/asc")
+	public ResponseEntity<Object> orderByMaxRespawnAsc() {
+		
+		List<Boss> maxRespawnAsc = bossService.returnBossByMaxRespawnAsc();
+		
+		if (maxRespawnAsc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(maxRespawnAsc);
+		}
+	}
 	
+	@GetMapping("/max-respawn/desc")
+	public ResponseEntity<Object> orderByMaxRespawnDesc() {
+		List<Boss> maxRespawnDesc = bossService.returnBossByMaxRespawnDesc();
+		
+		if (maxRespawnDesc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(maxRespawnDesc);
+		}
+	}
 	
+	@GetMapping("/min-respawn/asc")
+	public ResponseEntity<Object> orderByMinRespawnAsc() {
+		List<Boss> minRespawnAsc = bossService.returnBossByMinRespawnAsc();
+		
+		if (minRespawnAsc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(minRespawnAsc);
+		}
+	}
+	
+	@GetMapping("/min-respawn/desc")
+	public ResponseEntity<Object> orderByMinRespawnDesc() {
+		List<Boss> minRespawnDesc = bossService.returnBossByMinRespawnDesc();
+		
+		if (minRespawnDesc.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(minRespawnDesc);
+		}
+	}
+	
+	@GetMapping("/max-respawn/{time}")
+	public ResponseEntity<Object> orderByMaxRespawnLimit(@PathVariable int time) {
+		List<Boss> maxRespawnLimit = bossService.returnBossByMaxRespawnLimit(time);
+		
+		if (maxRespawnLimit.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(maxRespawnLimit);
+		}
+	}
+	
+	@GetMapping("/min-respawn/{time}")
+	public ResponseEntity<Object> orderByMinRespawnLimit(@PathVariable int time) {
+		List<Boss> minRespawnLimit = bossService.returnBossByMinRespawnLimit(time);
+		
+		if (minRespawnLimit.size() == 0) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).header("Time", "Minutes")
+								.body(minRespawnLimit);
+		}
+	}
 }

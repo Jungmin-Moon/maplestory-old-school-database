@@ -46,6 +46,18 @@ public class MobController {
 		}
 	}
 	
+	@GetMapping("/exact/name/{name:[a-zA-Z &+-.]*}")
+	public ResponseEntity<Object> mobByExactName(@PathVariable String name) {
+		Mob mobExact = mobService.returnByExactName(name);
+		
+		if (mobExact == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			return ResponseEntity.status(HttpStatus.FOUND)
+								.body(mobExact);
+		}
+	}
 	
 	@GetMapping("/name/{name:[a-zA-Z &+-.]*}") 
 	public ResponseEntity<Object> mobByname(@PathVariable String name) {
@@ -83,24 +95,20 @@ public class MobController {
 	
 	@GetMapping("/exp/hour/{name:[a-zA-Z &+-.]*}/{kills}")
 	public ResponseEntity<Object> expMesoPerHour(@PathVariable String name, @PathVariable int kills) {
-		List<Mob> mobByName = mobService.returnListByName(name);
+		Mob mobByName = mobService.returnByExactName(name);
 		
-		if (mobByName.size() > 1) {
-			return ResponseEntity.status(HttpStatus.MULTIPLE_CHOICES)
-								.body("There are too many options.");
-		} else if (mobByName.size() == 1) {
-			BigDecimal expPerHour = calcService.expPerHour(mobByName.get(0).getMobEXP(), kills);
-			BigDecimal maxMesoPerHour = calcService.maxMesoPerHour(mobByName.get(0).getMobMaxMeso(), kills);
-			BigDecimal minMesoPerHour = calcService.minMesoPerHour(mobByName.get(0).getMobMinMeso(), kills);
+		if (mobByName == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+								.body("There is no data.");
+		} else {
+			BigDecimal expHour = calcService.expPerHour(mobByName.getMobEXP(), kills);
+			BigDecimal maxMesoHour = calcService.maxMesoPerHour(mobByName.getMobMaxMeso(), kills);
+			BigDecimal minMesoHour = calcService.minMesoPerHour(mobByName.getMobMinMeso(), kills);
 			
 			return ResponseEntity.status(HttpStatus.OK)
-								.body("Your exp per hour is: " + expPerHour + 
-										"\nYour max potential meso per hour is: " + maxMesoPerHour +
-										"\nYour min potential meso per hour is: " + minMesoPerHour);
-			
-		} else {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT)
-								.body("Unable to do any calculations.");
+								.body("EXP Per Hour: " + expHour + 
+										"\nMin Meso Per Hour: " + minMesoHour + 
+										"\nMax Meso Per Hour: " + maxMesoHour);
 		}
 	}
 	

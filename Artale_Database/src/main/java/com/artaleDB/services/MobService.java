@@ -30,6 +30,10 @@ public class MobService {
 		return mobRepo.getByName(name);
 	}
 	
+	public Mob returnByExactName(String name) {
+		return mobRepo.getByExactName(name);
+	}
+	
 	public List<Mob> returnListByLocation(String location) {
 		return mobRepo.getByLocations(location);
 	}

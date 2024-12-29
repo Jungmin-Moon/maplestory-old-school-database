@@ -14,6 +14,9 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
 	public List<Mob> getByName(String name);
 	
+	@Query("SELECT m FROM Mob m WHERE m.mobName = :name")
+	public Mob getByExactName(String name);
+	
 	@Query("SELECT m FROM Mob m WHERE m.mobLocation LIKE %:location% or m.mobLocationTwo LIKE %:location%")
 	public List<Mob> getByLocations(String location);
 	
