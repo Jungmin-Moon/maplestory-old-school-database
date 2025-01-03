@@ -62,6 +62,8 @@ public class BossController {
 		
 	}
 	
+	//testing token regeneration
+	
 	@GetMapping("/location/{location:[a-zA-Z &+-.]*}")
 	public ResponseEntity<Object> findByLocation(@PathVariable String location) {
 		
