@@ -9,6 +9,9 @@ instead of having to refer to a google document or spreadsheet.
 . Spring <br />
 . REST <br />
 
+#Sheet currently being worked on:
+https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
+This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. <br />
 
 #Features
 Let users see the list of mobs implemented in the game, even if they are not fully implemented yet. <br />
