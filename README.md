@@ -1,19 +1,19 @@
-#Artale Database <br />
+# Artale Database 
 
 A project, that is unaffiliated with the developers of Artale on Maplestory Worlds, to compile the details about various aspects of the game <br />
 instead of having to refer to a google document or spreadsheet. 
 
 
-#Technology Used <br />
+# Technology Used 
 . MySQL <br />
 . Spring <br />
 . REST <br />
 
-#Sheet currently being worked on:
+# Sheet currently being worked on:
 https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
-This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. <br />
+This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. Edited: 4am Eastern 1/17/2025<br />
 
-#Features
+# Features
 Let users see the list of mobs implemented in the game, even if they are not fully implemented yet. <br />
 Let users see the list of equipment in the game and their various stats. <br />
 Let users find various information about the mobs in the game so they can better plan where to train at or farm. <br />
