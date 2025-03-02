@@ -11,8 +11,10 @@ instead of having to refer to a google document or spreadsheet.
 
 # Sheet currently being worked on:
 https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
-This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. Edited: 3:30am Eastern 1/21/2025<br />
+This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. Edited: 3:07 AM Eastern 3/2/2025<br />
 Will be using to create an equipment table for all equips and then a drop table. <br />
+Victoria Island normal monsters: complete <br />
+El Nath/Orbis: In Progress <br />
 
 # Features
 Let users see the list of mobs implemented in the game, even if they are not fully implemented yet. <br />
