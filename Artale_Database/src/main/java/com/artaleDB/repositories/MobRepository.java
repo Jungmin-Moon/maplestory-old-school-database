@@ -1,6 +1,6 @@
 package com.artaleDB.repositories;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,5 +11,9 @@ import com.artaleDB.entities.Mob;
 @Repository
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
+	@Query("SELECT m FROM Mob m WHERE m.mobName = :name")
+	Optional<Mob> findByName(String name);
 	
+	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
+	Iterable<Mob> findByPartialMatch(String name);
 }

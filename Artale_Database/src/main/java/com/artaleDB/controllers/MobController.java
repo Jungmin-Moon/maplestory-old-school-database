@@ -16,7 +16,7 @@ import com.artaleDB.services.CalculationService;
 import com.artaleDB.services.MobService;
 
 @RestController
-@RequestMapping("/api/v1/mobs")
+@RequestMapping("mobs")
 public class MobController {
 	
 	MobService mobService;
@@ -27,6 +27,18 @@ public class MobController {
 		this.calcService = calcService;
 	}
 	
+	@GetMapping
+	public Iterable<Mob> get() {
+		return mobService.viewMobList();
+	}
 	
-
+	@GetMapping("{name:[a-zA-Z &.]*}")
+	public Mob findByName(@PathVariable String name) {
+		return mobService.findByName(name);
+	}
+	
+	@GetMapping("/list/{name:[a-zA-Z &.]*}") 
+	public Iterable<Mob> findByPartialMatch(@PathVariable String name) {
+		return mobService.findByPartialMatch(name);
+	}
 }
