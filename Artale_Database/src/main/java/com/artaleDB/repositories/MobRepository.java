@@ -12,8 +12,17 @@ import com.artaleDB.entities.Mob;
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	@Query("SELECT m FROM Mob m WHERE m.mobName = :name")
-	Optional<Mob> findByName(String name);
+	Iterable<Mob> findByName(String name);
 	
 	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
 	Iterable<Mob> findByPartialMatch(String name);
+	
+	
+	Iterable<Mob> findByMobLocation(String location);
+	
+	Iterable<Mob> findByMobLevelEquals(int level);
+	
+	Iterable<Mob> findAllByOrderByMobLevelAsc();
+	
+	Iterable<Mob> findAllByOrderByMobLevelDesc();
 }

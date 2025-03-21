@@ -32,13 +32,33 @@ public class MobController {
 		return mobService.viewMobList();
 	}
 	
-	@GetMapping("{name:[a-zA-Z &.]*}")
-	public Mob findByName(@PathVariable String name) {
+	@GetMapping("/{name:[a-zA-Z &.]*}")
+	public Iterable<Mob> findByName(@PathVariable String name) {
 		return mobService.findByName(name);
 	}
 	
 	@GetMapping("/list/{name:[a-zA-Z &.]*}") 
 	public Iterable<Mob> findByPartialMatch(@PathVariable String name) {
 		return mobService.findByPartialMatch(name);
+	}
+	
+	@GetMapping("/location/{location:[a-zA-Z ]*}")
+	public Iterable<Mob> findByLocation(@PathVariable String location) {
+		return mobService.findByLocation(location);
+	}
+	
+	@GetMapping("/{level}")
+	public Iterable<Mob> findBylevel(@PathVariable int level) {
+		return mobService.findByLevel(level);
+	}
+	
+	@GetMapping("/asc/level")
+	public Iterable<Mob> orderByLevelAsc() {
+		return mobService.findByLevelAsc();
+	}
+	
+	@GetMapping("/desc/level")
+	public Iterable<Mob> orderByLevelDesc() {
+		return mobService.findByLevelDesc();
 	}
 }
