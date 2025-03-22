@@ -90,4 +90,26 @@ public class MobService {
 			return levelDescList;
 		}
 	}
+	
+	public Iterable<Mob> findByExpAsc() {
+		Iterable<Mob> expAsc = mobRepo.findAllByOrderByMobExpAsc();
+		long count = StreamSupport.stream(expAsc.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return expAsc;
+		}
+	}
+	
+	public Iterable<Mob> findByExpDesc() {
+		Iterable<Mob> expDesc = mobRepo.findAllByOrderByMobExpDesc();
+		long count = StreamSupport.stream(expDesc.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return expDesc;
+		}
+	}
 }

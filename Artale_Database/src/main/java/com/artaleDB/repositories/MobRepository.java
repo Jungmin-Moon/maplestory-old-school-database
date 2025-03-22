@@ -25,4 +25,8 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	Iterable<Mob> findAllByOrderByMobLevelAsc();
 	
 	Iterable<Mob> findAllByOrderByMobLevelDesc();
+	
+	Iterable<Mob> findAllByOrderByMobExpAsc();
+	
+	Iterable<Mob> findAllByOrderByMobExpDesc();
 }

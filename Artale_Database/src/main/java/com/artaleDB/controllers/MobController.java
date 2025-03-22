@@ -61,4 +61,14 @@ public class MobController {
 	public Iterable<Mob> orderByLevelDesc() {
 		return mobService.findByLevelDesc();
 	}
+	
+	@GetMapping("/asc/exp")
+	public Iterable<Mob> orderByExpAsc() {
+		return mobService.findByExpAsc();
+	}
+	
+	@GetMapping("/desc/exp")
+	public Iterable<Mob> orderByExpDesc() {
+		return mobService.findByExpDesc();
+	}
 }
