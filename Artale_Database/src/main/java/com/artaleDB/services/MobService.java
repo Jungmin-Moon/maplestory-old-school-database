@@ -70,10 +70,24 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByLevelAsc() {
-		return mobRepo.findAllByOrderByMobLevelAsc();
+		Iterable<Mob> levelAscList = mobRepo.findAllByOrderByMobLevelAsc();
+		long count = StreamSupport.stream(levelAscList.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return levelAscList;
+		}
 	} 
 	
 	public Iterable<Mob> findByLevelDesc() {
-		return mobRepo.findAllByOrderByMobLevelDesc();
+		Iterable<Mob> levelDescList =  mobRepo.findAllByOrderByMobLevelDesc();
+		long count = StreamSupport.stream(levelDescList.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return levelDescList;
+		}
 	}
 }

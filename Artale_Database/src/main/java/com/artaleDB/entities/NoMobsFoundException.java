@@ -10,4 +10,8 @@ public class NoMobsFoundException extends RuntimeException{
 		super("No mobs were found with the level: " + level + ". Please enter a different number.");
 		
 	}
+	
+	public NoMobsFoundException() {
+		super("No mobs found in the database.");
+	}
 }
