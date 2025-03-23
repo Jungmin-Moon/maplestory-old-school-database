@@ -143,4 +143,37 @@ public class BossService {
 			return minRespawnAsc;
 		}
 	}
+	
+	public Iterable<Boss> findAllBossMinRespawnDesc() {
+		Iterable<Boss> minRespawnDesc = bossRepo.findAllByOrderByBossMinRespawnDesc();
+		long count = StreamSupport.stream(minRespawnDesc.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoneFoundException("No bosses found in the database.");
+		} else {
+			return minRespawnDesc;
+		}
+	}
+	
+	public Iterable<Boss> findAllBossMaxRespawnAsc() {
+		Iterable<Boss> maxRespawnAsc = bossRepo.findAllByOrderByBossMaxRespawnAsc();
+		long count = StreamSupport.stream(maxRespawnAsc.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoneFoundException("No bosses found in the database.");
+		} else {
+			return maxRespawnAsc;
+		}
+	}
+	
+	public Iterable<Boss> findAllBossMaxRespawnDesc() {
+		Iterable<Boss> maxRespawnDesc = bossRepo.findAllByOrderByBossMaxRespawnDesc();
+		long count = StreamSupport.stream(maxRespawnDesc.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoneFoundException("No bosses found in the database.");
+		} else {
+			return maxRespawnDesc;
+		}
+	}
 }	
