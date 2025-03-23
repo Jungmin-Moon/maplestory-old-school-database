@@ -14,7 +14,7 @@ import com.artaleDB.entities.Boss;
 import com.artaleDB.services.BossService;
 
 @RestController
-@RequestMapping("/api/v1/boss")
+@RequestMapping("boss")
 public class BossController {
 	
 	BossService bossService;
