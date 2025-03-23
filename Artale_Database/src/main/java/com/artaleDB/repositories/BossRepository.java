@@ -12,9 +12,29 @@ import com.artaleDB.entities.Boss;
 public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	
-	@Query("SELECT b FROM Boss WHERE b.bossName = :name")
+	@Query("SELECT b FROM Boss b WHERE b.bossName = :name")
 	Iterable<Boss> findByName(String name);
 	
-	@Query("SELECT b FROM Boss WHERE b.bossName LIKE %:name%")
+	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:name%")
 	Iterable<Boss> findByPartialMatch(String name);
+	
+	Iterable<Boss> findByBossLocation(String location);
+	
+	Iterable<Boss> findByBossLevelEquals(int level);
+	
+	Iterable<Boss> findAllByOrderByBossLevelAsc();
+	
+	Iterable<Boss> findAllByOrderByBossLevelDesc();
+	
+	Iterable<Boss> findAllByOrderByBossHPAsc();
+	
+	Iterable<Boss> findAllByOrderByBossHPDesc();
+	
+	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
+	
+	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
+	
+	Iterable<Boss> findAllByOrderByBossMinRespawnAsc();
+	
+	Iterable<Boss> findAllByOrderByBossMaxRespawnDesc();
 }

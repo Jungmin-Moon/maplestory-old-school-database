@@ -92,7 +92,7 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByExpAsc() {
-		Iterable<Mob> expAsc = mobRepo.findAllByOrderByMobExpAsc();
+		Iterable<Mob> expAsc = mobRepo.findAllByOrderByMobEXPAsc();
 		long count = StreamSupport.stream(expAsc.spliterator(), false).count();
 		
 		if (count <= 0) {
@@ -103,7 +103,7 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByExpDesc() {
-		Iterable<Mob> expDesc = mobRepo.findAllByOrderByMobExpDesc();
+		Iterable<Mob> expDesc = mobRepo.findAllByOrderByMobEXPDesc();
 		long count = StreamSupport.stream(expDesc.spliterator(), false).count();
 		
 		if (count <= 0) {
@@ -114,7 +114,7 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByMobExpGreater(int exp) {
-		Iterable<Mob> expGreater = mobRepo.findAllByMobExpGreaterThanEqual(exp);
+		Iterable<Mob> expGreater = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
 		long count = StreamSupport.stream(expGreater.spliterator(), false).count();
 		
 		if (count <= 0) {
@@ -125,7 +125,7 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByMobExp(int exp) {
-		Iterable<Mob> expEqual = mobRepo.findAllByMobExp(exp);
+		Iterable<Mob> expEqual = mobRepo.findAllByMobEXP(exp);
 		long count = StreamSupport.stream(expEqual.spliterator(), false).count();
 		
 		if (count <= 0) {

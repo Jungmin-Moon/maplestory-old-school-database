@@ -28,13 +28,13 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	Iterable<Mob> findAllByOrderByMobLevelDesc();
 	
-	Iterable<Mob> findAllByOrderByMobExpAsc();
+	Iterable<Mob> findAllByOrderByMobEXPAsc();
 	
-	Iterable<Mob> findAllByOrderByMobExpDesc();
+	Iterable<Mob> findAllByOrderByMobEXPDesc();
 	
-	Iterable<Mob> findAllByMobExpGreaterThanEqual(int expMin);
+	Iterable<Mob> findAllByMobEXPGreaterThanEqual(int expMin);
 	
-	Iterable<Mob> findAllByMobExp(int exp);
+	Iterable<Mob> findAllByMobEXP(int exp);
 	
 	Iterable<Mob> findAllByMobMinMesoGreaterThanEqual(int meso);
 	
