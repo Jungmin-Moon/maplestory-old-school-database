@@ -20,6 +20,8 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	Iterable<Mob> findByMobLocation(String location);
 	
+	Iterable<Mob> findByMobLocationTwo(String location);
+	
 	Iterable<Mob> findByMobLevelEquals(int level);
 	
 	Iterable<Mob> findAllByOrderByMobLevelAsc();
@@ -29,4 +31,14 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	Iterable<Mob> findAllByOrderByMobExpAsc();
 	
 	Iterable<Mob> findAllByOrderByMobExpDesc();
+	
+	Iterable<Mob> findAllByMobExpGreaterThanEqual(int expMin);
+	
+	Iterable<Mob> findAllByMobExp(int exp);
+	
+	Iterable<Mob> findAllByMobMinMesoGreaterThanEqual(int meso);
+	
+	Iterable<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
+	
+	
 }

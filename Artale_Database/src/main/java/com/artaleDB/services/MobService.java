@@ -63,7 +63,7 @@ public class MobService {
 		long count = StreamSupport.stream(checkLevels.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException(level);
+			throw new NoMobsFoundException();
 		} else {
 			return checkLevels;
 		}
@@ -110,6 +110,50 @@ public class MobService {
 			throw new NoMobsFoundException();
 		} else {
 			return expDesc;
+		}
+	}
+	
+	public Iterable<Mob> findByMobExpGreater(int exp) {
+		Iterable<Mob> expGreater = mobRepo.findAllByMobExpGreaterThanEqual(exp);
+		long count = StreamSupport.stream(expGreater.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return expGreater;
+		}
+	}
+	
+	public Iterable<Mob> findByMobExp(int exp) {
+		Iterable<Mob> expEqual = mobRepo.findAllByMobExp(exp);
+		long count = StreamSupport.stream(expEqual.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return expEqual;
+		}
+	}
+	
+	public Iterable<Mob> findMinMesoGreater(int minMeso) {
+		Iterable<Mob> minMesoGreater = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
+		long count = StreamSupport.stream(minMesoGreater.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return minMesoGreater;
+		}
+	}
+	
+	public Iterable<Mob> findMaxMesoGreater(int maxMeso) {
+		Iterable<Mob> maxMesoGreater = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
+		long count = StreamSupport.stream(maxMesoGreater.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoMobsFoundException();
+		} else {
+			return maxMesoGreater;
 		}
 	}
 }
