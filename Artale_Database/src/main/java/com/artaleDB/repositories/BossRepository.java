@@ -36,5 +36,9 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	Iterable<Boss> findAllByOrderByBossMinRespawnAsc();
 	
+	Iterable<Boss> findAllByOrderByBossMinRespawnDesc();
+	
+	Iterable<Boss> findAllByOrderByBossMaxRespawnAsc();
+	
 	Iterable<Boss> findAllByOrderByBossMaxRespawnDesc();
 }
