@@ -47,7 +47,7 @@ public class MobController {
 		return mobService.findByLocation(location);
 	}
 	
-	@GetMapping("/{level}")
+	@GetMapping("/level/{level}")
 	public Iterable<Mob> findBylevel(@PathVariable int level) {
 		return mobService.findByLevel(level);
 	}
@@ -70,5 +70,25 @@ public class MobController {
 	@GetMapping("/desc/exp")
 	public Iterable<Mob> orderByExpDesc() {
 		return mobService.findByExpDesc();
+	}
+	
+	@GetMapping("/exp/{exp}") 
+	public Iterable<Mob> findByEXP(@PathVariable int exp) {
+		return mobService.findByMobExp(exp);
+	}
+	
+	@GetMapping("/min/exp/{exp}")
+	public Iterable<Mob> findByGreaterExp(@PathVariable int exp) {
+		return mobService.findByMobExpGreater(exp);
+	}
+	
+	@GetMapping("/min/meso/{meso}") 
+	public Iterable<Mob> findMinMesoHigher(@PathVariable int meso) {
+		return mobService.findMinMesoGreater(meso);
+	}
+	
+	@GetMapping("/max/meso/{meso}")
+	public Iterable<Mob> findMaxMesoHigher(@PathVariable int meso) {
+		return mobService.findMaxMesoGreater(meso);
 	}
 }

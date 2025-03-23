@@ -29,7 +29,7 @@ public class MobService {
 		long count = StreamSupport.stream(checkCollection.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException(name);
+			throw new NoMobsFoundException("No mobs found with name: " + name + " in the database.");
 		} else {
 			return checkCollection;
 		}
@@ -41,7 +41,7 @@ public class MobService {
 		if (StreamSupport.stream(check.spliterator(), false).count() > 0) {
 			return check;
 		} else {
-			throw new NoMobsFoundException(name);
+			throw new NoMobsFoundException("No mobs found that match: " + name + " in the database.");
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class MobService {
 		long count = StreamSupport.stream(checkLocations.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMatchingLocationException(location);
+			throw new NoMatchingLocationException("No mobs found in the location: " + location + " in the database.");
 		} else {
 			return checkLocations;
 		}
@@ -63,7 +63,7 @@ public class MobService {
 		long count = StreamSupport.stream(checkLevels.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found with the level: " + level + " in the database,");
 		} else {
 			return checkLevels;
 		}
@@ -74,7 +74,7 @@ public class MobService {
 		long count = StreamSupport.stream(levelAscList.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found in the database.");
 		} else {
 			return levelAscList;
 		}
@@ -85,7 +85,7 @@ public class MobService {
 		long count = StreamSupport.stream(levelDescList.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found in the database.");
 		} else {
 			return levelDescList;
 		}
@@ -96,7 +96,7 @@ public class MobService {
 		long count = StreamSupport.stream(expAsc.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found in the database.");
 		} else {
 			return expAsc;
 		}
@@ -107,7 +107,7 @@ public class MobService {
 		long count = StreamSupport.stream(expDesc.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found in the database.");
 		} else {
 			return expDesc;
 		}
@@ -118,7 +118,7 @@ public class MobService {
 		long count = StreamSupport.stream(expGreater.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs that give exp greater than " + exp + " found in the database.");
 		} else {
 			return expGreater;
 		}
@@ -129,7 +129,7 @@ public class MobService {
 		long count = StreamSupport.stream(expEqual.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs that give exp: " + exp + " found in the database.");
 		} else {
 			return expEqual;
 		}
@@ -140,7 +140,7 @@ public class MobService {
 		long count = StreamSupport.stream(minMesoGreater.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found that drop higher minimum meso than " + minMeso + " found in the database.");
 		} else {
 			return minMesoGreater;
 		}
@@ -151,7 +151,7 @@ public class MobService {
 		long count = StreamSupport.stream(maxMesoGreater.spliterator(), false).count();
 		
 		if (count <= 0) {
-			throw new NoMobsFoundException();
+			throw new NoMobsFoundException("No mobs found that drop higher maximum meso than " + maxMeso + " found in the database.");
 		} else {
 			return maxMesoGreater;
 		}
