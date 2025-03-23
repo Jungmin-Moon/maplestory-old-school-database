@@ -17,5 +17,9 @@ public class BossService {
 		this.bossRepo = bossRepo;	
 	}
 	
+	public Iterable<Boss> viewBossList() {
+		return bossRepo.findAll();
+	}
+	
 	
 }	

@@ -25,5 +25,10 @@ public class BossController {
 	}
 	
 	
+	@GetMapping
+	public Iterable<Boss> getAll() {
+		return bossService.viewBossList();
+	}
+	
 	
 }
