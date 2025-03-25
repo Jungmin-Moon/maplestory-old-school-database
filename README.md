@@ -10,11 +10,22 @@ instead of having to refer to a google document or spreadsheet.
 . REST <br />
 
 # Sheet currently being worked on:
-https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
-This sheet is being used to compile what each mobs can drop before creating new sheets to separate the equips by what they are, hat, top, gloves etc, and then creating the drop table. Edited: 3:07 AM Eastern 3/2/2025<br />
-Will be using to create an equipment table for all equips and then a drop table. <br />
-Victoria Island normal monsters: complete <br />
-El Nath/Orbis: In Progress <br />
+. https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
+. This sheet is being used to compile what each mob can drop Edited: 3:07 AM Eastern 3/2/2025<br />
+. Will be using the above to create an equipment table for all equips and then a drop table. <br />
+
+# Table of progress for database:
+| Location | Status |
+| :------: | :-----:|
+| Victoria Island | Complete |
+| Orbis | In Progress |
+| El Nath/Dead Mine | Not Started |
+| Ludibrium | Not Started |
+| Clocktower Bottom | Not Started |
+| Aqua Road | Not Started |
+| Nihal Desert | Not Started |
+| Mu Lung Garden | Not Started |
+| World Tour | Not Started |
 
 # Features
 Let users see the list of mobs implemented in the game, even if they are not fully implemented yet. <br />
