@@ -30,5 +30,25 @@ public class BossController {
 		return bossService.viewBossList();
 	}
 	
+	@GetMapping("/{name:[a-zA-Z &.]*}")
+	public Iterable<Boss> findByName(@PathVariable String name) {
+		return bossService.findByName(name);
+	}
+	
+	@GetMapping("/list/{name:[a-zA-Z &.]*}")
+	public Iterable<Boss> findByPartialMatch(@PathVariable String name) {
+		return bossService.findByPartialMatch(name);
+	}
+	
+	@GetMapping("/location/{location:[a-zA-Z ]*}")
+	public Iterable<Boss> findByLocation(@PathVariable String location) {
+		return bossService.findByLocation(location);
+	}
+	
+	@GetMapping("/level/{level}") 
+	public Iterable<Boss> findByLevel(@PathVariable int level) {
+		return bossService.findByBossLevel(level);
+	}
+	
 	
 }
