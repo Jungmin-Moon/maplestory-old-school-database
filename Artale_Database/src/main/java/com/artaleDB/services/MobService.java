@@ -146,6 +146,7 @@ public class MobService {
 		}
 	}
 	
+	//test to make sure things worked
 	public Iterable<Mob> findMaxMesoGreater(int maxMeso) {
 		Iterable<Mob> maxMesoGreater = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
 		long count = StreamSupport.stream(maxMesoGreater.spliterator(), false).count();
