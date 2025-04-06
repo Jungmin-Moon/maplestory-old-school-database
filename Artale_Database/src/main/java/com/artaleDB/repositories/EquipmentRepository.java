@@ -23,5 +23,37 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	Iterable<Equipment> findAllByMinimumLevelGreaterThanEqual(int minLevel);
 	
+	Iterable<Equipment> findAllByWeaponAttGreaterThanEqual(int weaponAtt);
 	
+	Iterable<Equipment> findAllByMagicAttGreaterThanEqual(int magicAtt);
+	
+	Iterable<Equipment> findAllByAttSpeedGreaterThanEqual(int attSpeed);
+	
+	Iterable<Equipment> findAllByWeaponDefGreaterThanEqual(int weaponDef);
+	
+	Iterable<Equipment> findAllByMagicDefGreaterThanEqual(int magicDef);
+	
+	Iterable<Equipment> findAllByWarrior(int warrior);
+	
+	Iterable<Equipment> findAllByMagician(int magician);
+	
+	Iterable<Equipment> findAllByThief(int thief);
+	
+	Iterable<Equipment> findAllByPirate(int pirate);
+	
+	Iterable<Equipment> findAllByArcher(int archer);
+	
+	Iterable<Equipment> findAllByCommon(int common);
+	
+	Iterable<Equipment> findAllByRequiredStr(int str);
+	
+	Iterable<Equipment> findAllByRequiredDex(int dex);
+	
+	Iterable<Equipment> findAllByRequiredInt(int magic);
+	
+	Iterable<Equipment> findAllByRequiredLuk(int luk);
+	
+	Iterable<Equipment> findAllByUpgrades(int upgrades);
+	
+	Iterable<Equipment> findAllByNpcVendorPrice(int npcVendorPrice);
 }
