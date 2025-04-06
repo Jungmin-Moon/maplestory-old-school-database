@@ -1,5 +1,6 @@
 package com.artaleDB.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,12 +13,14 @@ public class Equipment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "equipment_id")
 	private long id;
 
 	//representing armor, weapon or accessory as a string
 	private String equipmentType;
 	
-	//each will hold a string dictating what type of weapon, armor or accessory it is, these values can be null
+	//each will hold a string dictating what type of weapon, armor or accessory it is
+	//if the equipment is a weapon then armorType and accessoryType will have N/A for example
 	private String weaponType;
 	private String armorType;
 	private String accessoryType;
@@ -48,6 +51,15 @@ public class Equipment {
 	private int requiredDex;
 	private int requiredInt;
 	private int requiredLuk;
+	
+	//List of simple effects that mostly affect stats
+	private String effects;
+	
+	//can be 0 to some value N
+	private int upgrades;
+	
+	//can be -1 if it can't be sold to some value N
+	private int npcVendorPrice;
 	
 	
 	public long getId() {
@@ -194,7 +206,4 @@ public class Equipment {
 	public void setNpcVendorPrice(int npcVendorPrice) {
 		this.npcVendorPrice = npcVendorPrice;
 	}
-	String effects;
-	int upgrades;
-	int npcVendorPrice;
 }
