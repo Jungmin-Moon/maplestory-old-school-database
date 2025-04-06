@@ -1,9 +1,27 @@
 package com.artaleDB.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.artaleDB.entities.Equipment;
 
 public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
-
+	
+	//fetches rows in the table where the equipment type is the same as the passed in value
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentType = :equipmentType")
+	Iterable<Equipment> findByEquipmentType(String equipmentType);
+	
+	@Query("SELECT e FROM Equipment e WHERE e.weaponType = :weaponType")
+	Iterable<Equipment> findByWeaponType(String weaponType);
+	
+	@Query("SELECT e FROM Equipment e WHERE e.armorType = :armorType")
+	Iterable<Equipment> findByArmorType(String armorType);
+	
+	@Query("SELECT e FROM Equipment e WHERE e.accessoryType = :accessoryType")
+	Iterable<Equipment> findByAccessoryType(String accessoryType);
+	
+	
+	Iterable<Equipment> findAllByMinimumLevelGreaterThanEqual(int minLevel);
+	
+	
 }
