@@ -42,6 +42,7 @@ public class MobController {
 		return mobService.findByPartialMatch(name);
 	}
 	
+	//combine the service method for location to handle all possible locations
 	@GetMapping("/location/{location:[a-zA-Z ]*}")
 	public Iterable<Mob> findByLocation(@PathVariable String location) {
 		return mobService.findByLocation(location);

@@ -11,7 +11,7 @@ import com.artaleDB.entities.Boss;
 @Repository
 public interface BossRepository extends JpaRepository<Boss, Long>{
 	
-	
+	//Queries for REST endpoints that will be exposed
 	@Query("SELECT b FROM Boss b WHERE b.bossName = :name")
 	Iterable<Boss> findByName(String name);
 	
@@ -22,6 +22,11 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	Iterable<Boss> findByBossLevelEquals(int level);
 	
+	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
+	
+	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
+		
+	//Non REST endpoints queries
 	Iterable<Boss> findAllByOrderByBossLevelAsc();
 	
 	Iterable<Boss> findAllByOrderByBossLevelDesc();
@@ -29,10 +34,6 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	Iterable<Boss> findAllByOrderByBossHPAsc();
 	
 	Iterable<Boss> findAllByOrderByBossHPDesc();
-	
-	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
-	
-	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
 	
 	Iterable<Boss> findAllByOrderByBossMinRespawnAsc();
 	

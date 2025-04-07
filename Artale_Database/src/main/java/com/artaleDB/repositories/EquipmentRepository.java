@@ -1,5 +1,7 @@
 package com.artaleDB.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,18 +22,9 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	@Query("SELECT e FROM Equipment e WHERE e.accessoryType = :accessoryType")
 	Iterable<Equipment> findByAccessoryType(String accessoryType);
 	
+	Optional<Equipment> findAllByEquipmentName(String equipmentName);
 	
 	Iterable<Equipment> findAllByMinimumLevelGreaterThanEqual(int minLevel);
-	
-	Iterable<Equipment> findAllByWeaponAttGreaterThanEqual(int weaponAtt);
-	
-	Iterable<Equipment> findAllByMagicAttGreaterThanEqual(int magicAtt);
-	
-	Iterable<Equipment> findAllByAttSpeedGreaterThanEqual(int attSpeed);
-	
-	Iterable<Equipment> findAllByWeaponDefGreaterThanEqual(int weaponDef);
-	
-	Iterable<Equipment> findAllByMagicDefGreaterThanEqual(int magicDef);
 	
 	Iterable<Equipment> findAllByWarrior(int warrior);
 	
@@ -44,6 +37,20 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	Iterable<Equipment> findAllByArcher(int archer);
 	
 	Iterable<Equipment> findAllByCommon(int common);
+	
+	
+	
+	
+	//Non exposed end points
+	Iterable<Equipment> findAllByWeaponAttGreaterThanEqual(int weaponAtt);
+	
+	Iterable<Equipment> findAllByMagicAttGreaterThanEqual(int magicAtt);
+	
+	Iterable<Equipment> findAllByAttSpeedGreaterThanEqual(int attSpeed);
+	
+	Iterable<Equipment> findAllByWeaponDefGreaterThanEqual(int weaponDef);
+	
+	Iterable<Equipment> findAllByMagicDefGreaterThanEqual(int magicDef);
 	
 	Iterable<Equipment> findAllByRequiredStr(int str);
 	
