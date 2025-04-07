@@ -49,27 +49,7 @@ public class BossController {
 	public Iterable<Boss> findByLevel(@PathVariable int level) {
 		return bossService.findByBossLevel(level);
 	}
-	
-	@GetMapping("/level/asc") 
-	public Iterable<Boss> getAllLevelAsc() {
-		return bossService.findAllBossLevelAsc();
-	}
-	
-	@GetMapping("/level/desc")
-	public Iterable<Boss> getAllLevelDesc() {
-		return bossService.findAllBossLevelDesc();
-	}
-	
-	@GetMapping("/hp/asc")
-	public Iterable<Boss> getAllHPAsc() {
-		return bossService.findAllBossHPAsc();
-	}
-	
-	@GetMapping("/hp/desc")
-	public Iterable<Boss> getAllHPDesc() {
-		return bossService.findAllBossHPDesc();
-	}
-	
+		
 	@GetMapping("/respawn/min/{timer}")
 	public Iterable<Boss> getAllMinRespawnGreater(@PathVariable int timer) {
 		return bossService.findAllBossMinRespawnGreater(timer);
@@ -78,25 +58,5 @@ public class BossController {
 	@GetMapping("/respawn/max/{timer}")
 	public Iterable<Boss> getAllMaxRespawnGreater(@PathVariable int timer) {
 		return bossService.findAllBossMaxRespawnGreater(timer);
-	}
-	
-	@GetMapping("/respawn/max/asc")
-	public Iterable<Boss> getAllMaxRespawnAsc() {
-		return bossService.findAllBossMaxRespawnAsc();
-	}
-	
-	@GetMapping("/respawn/max/desc")
-	public Iterable<Boss> getAllMaxRespawnDesc() {
-		return bossService.findAllBossMaxRespawnDesc();
-	}
-	
-	@GetMapping("/respawn/min/asc")
-	public Iterable<Boss> getAllMinRespawnAsc() {
-		return bossService.findAllBossMinRespawnAsc();
-	}
-	
-	@GetMapping("/respawn/min/desc")
-	public Iterable<Boss> getAllMinRespawnDesc() {
-		return bossService.findAllBossMinRespawnDesc();
 	}
 }
