@@ -15,7 +15,9 @@ public class Equipment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "equipment_id")
 	private long id;
-
+	
+	private String equipmentName;
+	
 	//representing armor, weapon or accessory as a string
 	private String equipmentType;
 	
@@ -67,6 +69,12 @@ public class Equipment {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public String getEquipmentName() {
+		return equipmentName;
+	}
+	public void setEquipmentName(String equipmentName) {
+		this.equipmentName = equipmentName;
 	}
 	public String getEquipmentType() {
 		return equipmentType;
