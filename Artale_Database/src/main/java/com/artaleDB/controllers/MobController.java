@@ -52,26 +52,6 @@ public class MobController {
 		return mobService.findByLevel(level);
 	}
 	
-	@GetMapping("/asc/level")
-	public Iterable<Mob> orderByLevelAsc() {
-		return mobService.findByLevelAsc();
-	}
-	
-	@GetMapping("/desc/level")
-	public Iterable<Mob> orderByLevelDesc() {
-		return mobService.findByLevelDesc();
-	}
-	
-	@GetMapping("/asc/exp")
-	public Iterable<Mob> orderByExpAsc() {
-		return mobService.findByExpAsc();
-	}
-	
-	@GetMapping("/desc/exp")
-	public Iterable<Mob> orderByExpDesc() {
-		return mobService.findByExpDesc();
-	}
-	
 	@GetMapping("/exp/{exp}") 
 	public Iterable<Mob> findByEXP(@PathVariable int exp) {
 		return mobService.findByMobExp(exp);
