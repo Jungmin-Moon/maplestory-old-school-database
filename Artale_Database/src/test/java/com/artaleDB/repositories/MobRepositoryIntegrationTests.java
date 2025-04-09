@@ -1,6 +1,8 @@
 package com.artaleDB.repositories;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
@@ -29,6 +31,12 @@ public class MobRepositoryIntegrationTests {
 		
 		assertNotNull(testMob);
 		
-		//assertEquals(testMob.getId(), );
+		assertTrue(testMob.isPresent());
+		
+		assertEquals("Red Snail", testMob.get().getMobName());
+		
+		Long testId = testMob.get().getId();
+		
+		assertEquals(4L, testId);
 	}
 }
