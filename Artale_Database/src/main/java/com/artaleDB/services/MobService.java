@@ -1,5 +1,6 @@
 package com.artaleDB.services;
 
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
@@ -23,15 +24,13 @@ public class MobService {
 		return mobRepo.findAll();
 	}
 	
-	public Iterable<Mob> findByName(String name) {
-		Iterable<Mob> checkCollection = mobRepo.findByName(name);
+	public Optional<Mob> findByName(String name) {
+		Optional<Mob> potentialMobExist = mobRepo.findByName(name);
 		
-		long count = StreamSupport.stream(checkCollection.spliterator(), false).count();
-		
-		if (count <= 0) {
+		if (potentialMobExist == null) {
 			throw new NoneFoundException("No mobs found with name: " + name + " in the database.");
 		} else {
-			return checkCollection;
+			return potentialMobExist;
 		}
 	}
 	

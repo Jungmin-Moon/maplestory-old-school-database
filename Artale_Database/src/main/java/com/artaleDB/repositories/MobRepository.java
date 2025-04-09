@@ -13,7 +13,7 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	//Exposed REST endpoint queries
 	@Query("SELECT m FROM Mob m WHERE m.mobName = :name")
-	Iterable<Mob> findByName(String name);
+	Optional<Mob> findByName(String name);
 	
 	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
 	Iterable<Mob> findByPartialMatch(String name);

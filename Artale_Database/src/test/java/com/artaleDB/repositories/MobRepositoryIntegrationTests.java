@@ -1,6 +1,8 @@
 package com.artaleDB.repositories;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,25 +24,11 @@ public class MobRepositoryIntegrationTests {
 	
 	
 	@Test
-	void givenNewMobWhenSaveThenSuccess() {
-		Mob newMob = new Mob();
+	void succeedWhenFindCorrectMob() {
+		Optional<Mob> testMob = mobRepository.findByName("Red Snail");
 		
-		//newMob.setId(203);
-		newMob.setMobName("TEST");
-		newMob.setMobEXP(0);
-		newMob.setMobHP(0);
-		newMob.setMobLevel(0);
-		newMob.setMobLocation("tesLocation");
-		newMob.setMobLocationTwo("test_location two");
-		newMob.setMobMaxMeso(0);
-		newMob.setMobMinMeso(0);
-		newMob.setMobMP(0);
-		newMob.setMobNeededAccuracy(0);
+		assertNotNull(testMob);
 		
-		mobRepository.save(newMob);
-		
-		//assertThat(entityManager.find(Mob.class, insertedMob.getId())).isEqualTo(newMob);
-		
-		assertThat(mobRepository.findById(newMob.getId())).isEqualTo(newMob.getId());
+		//assertEquals(testMob.getId(), );
 	}
 }

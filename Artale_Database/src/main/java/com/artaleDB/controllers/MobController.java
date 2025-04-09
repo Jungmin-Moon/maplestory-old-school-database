@@ -1,17 +1,14 @@
 package com.artaleDB.controllers;
 
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.artaleDB.entities.Mob;
+import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.services.CalculationService;
 import com.artaleDB.services.MobService;
 
@@ -33,8 +30,15 @@ public class MobController {
 	}
 	
 	@GetMapping("/{name:[a-zA-Z &.]*}")
-	public Iterable<Mob> findByName(@PathVariable String name) {
-		return mobService.findByName(name);
+	public Optional<Mob> findByName(@PathVariable String name) {
+		
+		Optional<Mob> potentialMob = mobService.findByName(name);
+		
+		if (potentialMob == null) {
+			throw new NoneFoundException("");
+		} else {
+			return potentialMob;
+		}
 	}
 	
 	@GetMapping("/list/{name:[a-zA-Z &.]*}") 
