@@ -21,8 +21,8 @@ public class MobRepositoryIntegrationTests {
 	@Autowired
 	MobRepository mobRepository;
 	
-	@Autowired
-	TestEntityManager entityManager;
+	//@Autowired
+	//TestEntityManager entityManager;
 	
 	
 	@Test
