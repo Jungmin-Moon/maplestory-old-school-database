@@ -92,5 +92,23 @@ public class MobRepositoryIntegrationTests {
 		assertTrue(count == 138);
 	}
 	
+	@Test
+	void succeedWhenFindCorrectNumberMobsByMinMesoGreaterThanEqual() {
+		Iterable<Mob> listByMobMinMesoGreaterEqual = mobRepository.findAllByMobMinMesoGreaterThanEqual(178);
+		
+		long count = StreamSupport.stream(listByMobMinMesoGreaterEqual.spliterator(), false).count();
+		
+		//currently 84 mobs give a minimum meso value greater than or equal to 178
+		assertTrue(count == 84);
+	}
 	
+	@Test
+	void succeedWhenFindCorrectNumberMobsByMaxmesoGreaterThanEqual() {
+		Iterable<Mob> listByMobMaxMesoGreaterEqual = mobRepository.findAllByMobMaxMesoGreaterThanEqual(245);
+		
+		long count = StreamSupport.stream(listByMobMaxMesoGreaterEqual.spliterator(), false).count();
+		
+		//currently 94 mobs give a maximum meso value greater than or equal to 245
+		assertTrue(count == 94);
+	}
 }
