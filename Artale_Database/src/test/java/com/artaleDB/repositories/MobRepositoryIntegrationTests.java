@@ -42,6 +42,16 @@ public class MobRepositoryIntegrationTests {
 	}
 	
 	@Test
+	void succeedWhenFindCorrectNumberMobsByPartialMatch() {
+		Iterable<Mob> mobsPartialNameMatch = mobRepository.findByPartialMatch("mush");
+		
+		long count = StreamSupport.stream(mobsPartialNameMatch.spliterator(), false).count();
+		
+		//currently 6 mobs in the database contain the substring mush
+		assertTrue(count == 6);
+	}
+	
+	@Test
 	void succeedWhenFindCorrectNumberMobsByLevel() {
 		Iterable<Mob> listByLevel = mobRepository.findByMobLevelEquals(48);
 		

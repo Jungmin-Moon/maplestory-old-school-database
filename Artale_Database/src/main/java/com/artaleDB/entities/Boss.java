@@ -20,6 +20,7 @@ public class Boss {
 	@Column(name = "boss_HP")
 	private int bossHP;
 	
+	//Boss repsawn timers are represented in terms of minutes
 	private int bossMinRespawn;
 	
 	private int bossMaxRespawn;

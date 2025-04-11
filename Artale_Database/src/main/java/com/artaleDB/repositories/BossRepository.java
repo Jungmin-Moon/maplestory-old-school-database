@@ -22,6 +22,7 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	Iterable<Boss> findByBossLevelEquals(int level);
 	
+	//Boss Repsawns are represented in terms of minutes
 	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
 	
 	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);

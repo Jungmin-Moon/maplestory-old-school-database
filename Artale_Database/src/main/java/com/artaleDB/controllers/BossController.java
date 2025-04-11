@@ -49,7 +49,9 @@ public class BossController {
 	public Iterable<Boss> findByLevel(@PathVariable int level) {
 		return bossService.findByBossLevel(level);
 	}
-		
+	
+	
+	//Boss repsawn timers are represented in minutes 
 	@GetMapping("/respawn/min/{timer}")
 	public Iterable<Boss> getAllMinRespawnGreater(@PathVariable int timer) {
 		return bossService.findAllBossMinRespawnGreater(timer);
