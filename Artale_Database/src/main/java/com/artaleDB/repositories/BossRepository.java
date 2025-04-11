@@ -1,6 +1,6 @@
 package com.artaleDB.repositories;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +13,7 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	//Queries for REST endpoints that will be exposed
 	@Query("SELECT b FROM Boss b WHERE b.bossName = :name")
-	Iterable<Boss> findByName(String name);
+	Optional<Boss> findByName(String name);
 	
 	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:name%")
 	Iterable<Boss> findByPartialMatch(String name);

@@ -31,7 +31,7 @@ public class BossController {
 	}
 	
 	@GetMapping("/{name:[a-zA-Z &.]*}")
-	public Iterable<Boss> findByName(@PathVariable String name) {
+	public Optional<Boss> findByName(@PathVariable String name) {
 		return bossService.findByName(name);
 	}
 	

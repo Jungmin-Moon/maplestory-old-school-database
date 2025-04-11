@@ -1,5 +1,6 @@
 package com.artaleDB.services;
 
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
@@ -22,14 +23,13 @@ public class BossService {
 		return bossRepo.findAll();
 	}
 	
-	public Iterable<Boss> findByName(String name) {
-		Iterable<Boss> checkName = bossRepo.findByName(name);
-		long count = StreamSupport.stream(checkName.spliterator(), false).count();
+	public Optional<Boss> findByName(String name) {
+		Optional<Boss> bossByName = bossRepo.findByName(name);
 		
-		if (count <= 0) {
+		if (bossByName == null) {
 			throw new NoneFoundException("No bosses were found with the name: " + name + " in the database.");
 		} else {
-			return checkName;
+			return bossByName;
 		}
 	}
 	
