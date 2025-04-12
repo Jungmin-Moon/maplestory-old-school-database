@@ -37,7 +37,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getEquipmentByNamePartialMatch(String subString) {
 		var equipmentList = equipmentRepository.findAllByNamePartialmatch(subString);
 		
-		long count = StreamSupport.stream(equipmentList.spliterator(), false).count();
+		long count = getCount(equipmentList);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There is no equipment containing this word.");
@@ -49,7 +49,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getEquipmentByType(String equipmentType) {
 		var equipmentListByType = equipmentRepository.findByEquipmentType(equipmentType);
 		
-		long count = StreamSupport.stream(equipmentListByType.spliterator(), false).count();
+		long count = getCount(equipmentListByType);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There is no equipment that are " + equipmentType + " in the database.");
@@ -61,7 +61,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllByWeaponType(String weaponType) {
 		var equipmentListByWeaponType = equipmentRepository.findByWeaponType(weaponType);
 		
-		long count = StreamSupport.stream(equipmentListByWeaponType.spliterator(), false).count();
+		long count = getCount(equipmentListByWeaponType);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There are no weapons of type: " + weaponType + " in the dabatase.");
@@ -73,7 +73,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllByArmorType(String armorType) {
 		var equipmentListByArmorType = equipmentRepository.findByArmorType(armorType);
 		
-		long count = StreamSupport.stream(equipmentListByArmorType.spliterator(), false).count();
+		long count = getCount(equipmentListByArmorType);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There are no armor of type: " + armorType + " in the database.");
@@ -85,7 +85,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllByAccessoryType(String accessoryType) {
 		var equipmentListByAccessoryType = equipmentRepository.findByAccessoryType(accessoryType);
 		
-		long count = StreamSupport.stream(equipmentListByAccessoryType.spliterator(), false).count();
+		long count = getCount(equipmentListByAccessoryType);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There are no accessories of type: " + accessoryType + " in the database.");
@@ -97,7 +97,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllByMinLevelGreaterThanEqual(int level) {
 		var equipmentListByMinLevel = equipmentRepository.findAllByMinimumLevelGreaterThanEqual(level);
 		
-		long count = StreamSupport.stream(equipmentListByMinLevel.spliterator(), false).count();
+		long count = getCount(equipmentListByMinLevel);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There are no equipment with a minimum level " + level + " or higher.");
@@ -109,7 +109,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipableWarrior() {
 		var equipmentListEquippableWarrior = equipmentRepository.findAllByWarrior(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippableWarrior.spliterator(), false).count();
+		long count = getCount(equipmentListEquippableWarrior);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equiment that warriors can equip found.");
@@ -121,7 +121,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipableMagician() {
 		var equipmentListEquippableMagician = equipmentRepository.findAllByMagician(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippableMagician.spliterator(), false).count();
+		long count = getCount(equipmentListEquippableMagician);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equipment that magicians can equip found.");
@@ -133,7 +133,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipableArcher() {
 		var equipmentListEquippableArcher = equipmentRepository.findAllByArcher(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippableArcher.spliterator(), false).count();
+		long count = getCount(equipmentListEquippableArcher);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equipment that archers can equip found.");
@@ -145,7 +145,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipableThief() {
 		var equipmentListEquippableThief = equipmentRepository.findAllByThief(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippableThief.spliterator(), false).count();
+		long count = getCount(equipmentListEquippableThief);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equipment that thief can equip found.");
@@ -157,7 +157,7 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipablePirate() {
 		var equipmentListEquippablePirate = equipmentRepository.findAllByPirate(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippablePirate.spliterator(), false).count();
+		long count = getCount(equipmentListEquippablePirate);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equipment that pirate can equip found.");
@@ -169,12 +169,17 @@ public class EquipmentService {
 	public Iterable<Equipment> getAllEquipableCommon() {
 		var equipmentListEquippableAll = equipmentRepository.findAllByCommon(1);
 		
-		long count = StreamSupport.stream(equipmentListEquippableAll.spliterator(), false).count();
+		long count = getCount(equipmentListEquippableAll);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("There were no equipment that all jobs can equip found.");
 		} else {
 			return equipmentListEquippableAll;
 		}
+	}
+	
+	
+	private long getCount(Iterable<Equipment> equipmentIterable) {
+		return StreamSupport.stream(equipmentIterable.spliterator(), false).count();
 	}
 }
