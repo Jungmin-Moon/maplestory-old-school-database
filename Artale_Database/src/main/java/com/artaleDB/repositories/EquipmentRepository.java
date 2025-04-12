@@ -24,6 +24,9 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	Optional<Equipment> findAllByEquipmentName(String equipmentName);
 	
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentName LIKE %:subString%")
+	Iterable<Equipment> findAllByNamePartialmatch(String subString);
+	
 	Iterable<Equipment> findAllByMinimumLevelGreaterThanEqual(int minLevel);
 	
 	Iterable<Equipment> findAllByWarrior(int warrior);

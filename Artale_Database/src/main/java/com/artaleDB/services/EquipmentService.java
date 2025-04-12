@@ -1,6 +1,7 @@
 package com.artaleDB.services;
 
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,18 @@ public class EquipmentService {
 			throw new NoneFoundException("There is no equipment in the database with that name.");
 		} else {
 			return equipment;
+		}
+	}
+	
+	public Iterable<Equipment> getEquipmentByNamePartialMatch(String subString) {
+		var equipmentList = equipmentRepository.findAllByNamePartialmatch(subString);
+		
+		long count = StreamSupport.stream(equipmentList.spliterator(), false).count();
+		
+		if (count <= 0) {
+			throw new NoneFoundException("There is no equipment containing this word.");
+		} else {
+			return equipmentList;
 		}
 	}
 	
