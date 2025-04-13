@@ -1,6 +1,7 @@
 package com.artaleDB.services;
 
 import java.math.BigDecimal;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Component;
 
@@ -39,5 +40,9 @@ public class CalculationService {
 			return bigDecimalMinMeso.multiply(bigDecimalKills);
 		}
 		
+	}
+	
+	public <T> long getCount(Iterable<T> list) {
+		return StreamSupport.stream(list.spliterator(), false).count();
 	}
 }

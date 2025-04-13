@@ -14,9 +14,11 @@ import com.artaleDB.repositories.MobRepository;
 public class MobService {
 	
 	MobRepository mobRepo;
+	CalculationService calculationService;
 	
-	MobService(MobRepository mobRepo) {
+	MobService(MobRepository mobRepo, CalculationService calculationService) {
 		this.mobRepo = mobRepo;
+		this.calculationService = calculationService;
 	}
 	
 	
@@ -35,125 +37,87 @@ public class MobService {
 	}
 	
 	public Iterable<Mob> findByPartialMatch(String name) {
-		Iterable<Mob> check = mobRepo.findByPartialMatch(name);
+		Iterable<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(name);
 		
-		if (StreamSupport.stream(check.spliterator(), false).count() > 0) {
-			return check;
+		long count = calculationService.getCount(mobListPartialNameMatch);
+		
+		if (count > 0) {
+			return mobListPartialNameMatch;
 		} else {
 			throw new NoneFoundException("No mobs found that match: " + name + " in the database.");
 		}
 	}
 	
 	public Iterable<Mob> findByLocation(String location) {
-		Iterable<Mob> checkLocations = mobRepo.findByMobLocation(location);
+		Iterable<Mob> mobListByLocations = mobRepo.findByMobLocation(location);
 		
-		long count = StreamSupport.stream(checkLocations.spliterator(), false).count();
+		long count = calculationService.getCount(mobListByLocations);
 		
 		if (count <= 0) {
 			throw new NoMatchingLocationException("No mobs found in the location: " + location + " in the database.");
 		} else {
-			return checkLocations;
+			return mobListByLocations;
 		}
 	}
 	
 	public Iterable<Mob> findByLevel(int level) {
-		Iterable<Mob> checkLevels = mobRepo.findByMobLevelEquals(level);
+		Iterable<Mob> mobListByLevel = mobRepo.findByMobLevelEquals(level);
 		
-		long count = StreamSupport.stream(checkLevels.spliterator(), false).count();
+		long count = calculationService.getCount(mobListByLevel);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No mobs found with the level: " + level + " in the database,");
 		} else {
-			return checkLevels;
-		}
-	}
-	
-	public Iterable<Mob> findByLevelAsc() {
-		Iterable<Mob> levelAscList = mobRepo.findAllByOrderByMobLevelAsc();
-		long count = StreamSupport.stream(levelAscList.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No mobs found in the database.");
-		} else {
-			return levelAscList;
-		}
-	} 
-	
-	public Iterable<Mob> findByLevelDesc() {
-		Iterable<Mob> levelDescList =  mobRepo.findAllByOrderByMobLevelDesc();
-		long count = StreamSupport.stream(levelDescList.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No mobs found in the database.");
-		} else {
-			return levelDescList;
-		}
-	}
-	
-	public Iterable<Mob> findByExpAsc() {
-		Iterable<Mob> expAsc = mobRepo.findAllByOrderByMobEXPAsc();
-		long count = StreamSupport.stream(expAsc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No mobs found in the database.");
-		} else {
-			return expAsc;
-		}
-	}
-	
-	public Iterable<Mob> findByExpDesc() {
-		Iterable<Mob> expDesc = mobRepo.findAllByOrderByMobEXPDesc();
-		long count = StreamSupport.stream(expDesc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No mobs found in the database.");
-		} else {
-			return expDesc;
+			return mobListByLevel;
 		}
 	}
 	
 	public Iterable<Mob> findByMobExpGreater(int exp) {
-		Iterable<Mob> expGreater = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
-		long count = StreamSupport.stream(expGreater.spliterator(), false).count();
+		Iterable<Mob> mobListExpGreaterThanEqual = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
+		
+		long count = calculationService.getCount(mobListExpGreaterThanEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No mobs that give exp greater than " + exp + " found in the database.");
 		} else {
-			return expGreater;
+			return mobListExpGreaterThanEqual;
 		}
 	}
 	
 	public Iterable<Mob> findByMobExp(int exp) {
-		Iterable<Mob> expEqual = mobRepo.findAllByMobEXP(exp);
-		long count = StreamSupport.stream(expEqual.spliterator(), false).count();
+		Iterable<Mob> mobListExpEqual = mobRepo.findAllByMobEXP(exp);
+		
+		long count = calculationService.getCount(mobListExpEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No mobs that give exp: " + exp + " found in the database.");
 		} else {
-			return expEqual;
+			return mobListExpEqual;
 		}
 	}
 	
 	public Iterable<Mob> findMinMesoGreater(int minMeso) {
-		Iterable<Mob> minMesoGreater = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
-		long count = StreamSupport.stream(minMesoGreater.spliterator(), false).count();
+		Iterable<Mob> mobListMinMesoGreaterEqual = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
+		
+		long count = calculationService.getCount(mobListMinMesoGreaterEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No mobs found that drop higher minimum meso than " + minMeso + " found in the database.");
 		} else {
-			return minMesoGreater;
+			return mobListMinMesoGreaterEqual;
 		}
 	}
 	
 	//test to make sure things worked
 	public Iterable<Mob> findMaxMesoGreater(int maxMeso) {
-		Iterable<Mob> maxMesoGreater = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
-		long count = StreamSupport.stream(maxMesoGreater.spliterator(), false).count();
+		Iterable<Mob> mobListMaxMesoGreaterEqual = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
+		
+		long count = calculationService.getCount(mobListMaxMesoGreaterEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No mobs found that drop higher maximum meso than " + maxMeso + " found in the database.");
 		} else {
-			return maxMesoGreater;
+			return mobListMaxMesoGreaterEqual;
 		}
 	}
 }

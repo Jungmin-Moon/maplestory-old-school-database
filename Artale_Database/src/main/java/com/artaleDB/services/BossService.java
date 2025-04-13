@@ -14,9 +14,11 @@ import com.artaleDB.repositories.BossRepository;
 public class BossService {
 
 	BossRepository bossRepo;
+	CalculationService calculationService;
 	
-	BossService(BossRepository bossRepo) {
-		this.bossRepo = bossRepo;	
+	BossService(BossRepository bossRepo, CalculationService calculationService) {
+		this.bossRepo = bossRepo;
+		this.calculationService = calculationService;
 	}
 	
 	public Iterable<Boss> viewBossList() {
@@ -34,146 +36,63 @@ public class BossService {
 	}
 	
 	public Iterable<Boss> findByPartialMatch(String name) {
-		Iterable<Boss> checkNames = bossRepo.findByPartialMatch(name);
-		long count = StreamSupport.stream(checkNames.spliterator(), false).count();
+		Iterable<Boss> bossListByPartialMatch = bossRepo.findByPartialMatch(name);
+		
+		long count = calculationService.getCount(bossListByPartialMatch);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No bosses were found similar to the name: " + name + " in the database.");
 		} else {
-			return checkNames;
+			return bossListByPartialMatch;
 		}
 	}
 	
 	public Iterable<Boss> findByLocation(String location) {
-		Iterable<Boss> checkLocation = bossRepo.findByBossLocation(location);
-		long count = StreamSupport.stream(checkLocation.spliterator(), false).count();
+		Iterable<Boss> bossListByLocation = bossRepo.findByBossLocation(location);
+		
+		long count = calculationService.getCount(bossListByLocation);
 		
 		if (count <= 0) {
 			throw new NoMatchingLocationException("No bosses found in the location: " + location + " in the database.");
 			
 		} else {
-			return checkLocation;
+			return bossListByLocation;
 		}
 	}
 	
 	public Iterable<Boss> findByBossLevel(int level) {
-		Iterable<Boss> checkLevel = bossRepo.findByBossLevelEquals(level);
-		long count = StreamSupport.stream(checkLevel.spliterator(), false).count();
+		Iterable<Boss> bossListByLevelEqual = bossRepo.findByBossLevelEquals(level);
+		
+		long count = calculationService.getCount(bossListByLevelEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No bosses found with the level: " + level + " in the database.");
 		} else {
-			return checkLevel;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossLevelAsc() {
-		Iterable<Boss> levelsAsc = bossRepo.findAllByOrderByBossLevelAsc();
-		long count = StreamSupport.stream(levelsAsc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return levelsAsc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossLevelDesc() {
-		Iterable<Boss> levelsDesc = bossRepo.findAllByOrderByBossLevelDesc();
-		long count = StreamSupport.stream(levelsDesc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return levelsDesc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossHPAsc() {
-		Iterable<Boss> hpAsc = bossRepo.findAllByOrderByBossHPAsc();
-		long count = StreamSupport.stream(hpAsc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return hpAsc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossHPDesc() {
-		Iterable<Boss> hpDesc = bossRepo.findAllByOrderByBossHPDesc();
-		long count = StreamSupport.stream(hpDesc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return hpDesc;
+			return bossListByLevelEqual;
 		}
 	}
 	
 	public Iterable<Boss> findAllBossMinRespawnGreater(int respawnTime) {
-		Iterable<Boss> minRespawnGreater = bossRepo.findAllByBossMinRespawnGreaterThanEqual(respawnTime);
-		long count = StreamSupport.stream(minRespawnGreater.spliterator(), false).count();
+		Iterable<Boss> bossListMinRepsawnGreaterEqual = bossRepo.findAllByBossMinRespawnGreaterThanEqual(respawnTime);
+		
+		long count = calculationService.getCount(bossListMinRepsawnGreaterEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No bosses found with minimum respawn greater than: " + respawnTime + " in the database.");
 		} else {
-			return minRespawnGreater;
+			return bossListMinRepsawnGreaterEqual;
 		}
 	}
 	
 	public Iterable<Boss> findAllBossMaxRespawnGreater(int respawnTime) {
-		Iterable<Boss> maxRespawnGreater = bossRepo.findAllByBossMaxRespawnGreaterThanEqual(respawnTime);
-		long count = StreamSupport.stream(maxRespawnGreater.spliterator(), false).count();
+		Iterable<Boss> bossListMaxRespawnGreaterEqual = bossRepo.findAllByBossMaxRespawnGreaterThanEqual(respawnTime);
+		
+		long count = calculationService.getCount(bossListMaxRespawnGreaterEqual);
 		
 		if (count <= 0) {
 			throw new NoneFoundException("No bosses found with maximum respawn greater than: " + respawnTime + " in the dabatase.");
 		} else {
-			return maxRespawnGreater;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossMinRespawnAsc() {
-		Iterable<Boss> minRespawnAsc = bossRepo.findAllByOrderByBossMinRespawnAsc();
-		long count = StreamSupport.stream(minRespawnAsc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return minRespawnAsc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossMinRespawnDesc() {
-		Iterable<Boss> minRespawnDesc = bossRepo.findAllByOrderByBossMinRespawnDesc();
-		long count = StreamSupport.stream(minRespawnDesc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return minRespawnDesc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossMaxRespawnAsc() {
-		Iterable<Boss> maxRespawnAsc = bossRepo.findAllByOrderByBossMaxRespawnAsc();
-		long count = StreamSupport.stream(maxRespawnAsc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return maxRespawnAsc;
-		}
-	}
-	
-	public Iterable<Boss> findAllBossMaxRespawnDesc() {
-		Iterable<Boss> maxRespawnDesc = bossRepo.findAllByOrderByBossMaxRespawnDesc();
-		long count = StreamSupport.stream(maxRespawnDesc.spliterator(), false).count();
-		
-		if (count <= 0) {
-			throw new NoneFoundException("No bosses found in the database.");
-		} else {
-			return maxRespawnDesc;
+			return bossListMaxRespawnGreaterEqual;
 		}
 	}
 }	
