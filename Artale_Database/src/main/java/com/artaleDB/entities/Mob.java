@@ -7,45 +7,62 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/*
+ * Represents the most important aspects about a Mob that a player will want to know. 
+ * Used to create Mob objects to save to the database. 
+ */
+
 @Entity
 @Table(name = "artale_mobs")
 public class Mob {
 	
+	/*Identifies the mob in the database */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mob_ID")
 	private long id;
 	
+	/*Name of the mob */
 	@Column(name = "mob_Name")
 	private String mobName;
 	
+	/*Represents the level of the mob */
 	@Column(name = "mob_Level")
 	private int mobLevel;
 	
+	/*Represents the mob's  max HP */
 	@Column(name = "mob_HP")
 	private int mobHP;
 	
+	/*Represents the mob's max MP */
 	@Column(name = "mob_MP")
 	private int mobMP;
 	
+	/*Represents the exp a mob gives upon defeat */
 	@Column(name = "mob_EXP")
 	private int mobEXP;
 	
+	/*Represents the minimum amount of meso the mob can drop upon defeat */
 	@Column(name = "mob_Min_Meso")
 	private long mobMinMeso;
 	
+	/*Represents the maximum amount of meso the mob can drop upon defeat */
 	@Column(name = "mob_Max_Meso")
 	private long mobMaxMeso;
 	
+	/*Represents the accuracy needed to hit the mob */
 	@Column(name = "mob_Needed_Accuracy")
 	private int mobNeededAccuracy;
 	
+	/*Represents one location where the mob can be found */
 	@Column(name = "mob_Location")
 	private String mobLocation;
 	
+	/*Represents a second location where the mob can be found */
 	@Column(name = "mob_Location_Two")
 	private String mobLocationTwo;
 
+	/*List of getters and setters for the Mob Object */
 	public long getId() {
 		return id;
 	}
