@@ -8,28 +8,57 @@ import org.springframework.stereotype.Repository;
 
 import com.artaleDB.entities.Mob;
 
+/*
+ * Repository interface for various queries that are of most use to a user for the REST controller MobController
+ */
 @Repository
 public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	//Exposed REST endpoint queries
+	
+	/*
+	 * Query that searches for a mob with the exact name given
+	 */
 	@Query("SELECT m FROM Mob m WHERE m.mobName = :name")
 	Optional<Mob> findByName(String name);
 	
+	/*
+	 * Query that searchs for mobs that contain the substring provided
+	 */
 	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
 	Iterable<Mob> findByPartialMatch(String name);
+	
 	//combine the location queries
-	Iterable<Mob> findByMobLocation(String location);
+	/*
+	 * Query that searches in both location columns for mobs to return mobs that are in the location provided either as Location one or Location two
+	 */
+	Iterable<Mob> findByMobLocationAndMobLocationTwo(String location);
 	
-	Iterable<Mob> findByMobLocationTwo(String location);
+	//Iterable<Mob> findByMobLocationTwo(String location);
 	
+	/*
+	 * Query that returns mobs with level exactly equal to the one provided
+	 */
 	Iterable<Mob> findByMobLevelEquals(int level);
 	
+	/*
+	 * Query that returns mobs that give exp greater than or equal to the one provided
+	 */
 	Iterable<Mob> findAllByMobEXPGreaterThanEqual(int expMin);
 	
+	/*
+	 * Query that returns mobs that give exactly the same exp amount provided
+	 */
 	Iterable<Mob> findAllByMobEXP(int exp);
 	
+	/*
+	 * Query that returns mobs with a minimum meso drop greater than or equal to the one provided
+	 */
 	Iterable<Mob> findAllByMobMinMesoGreaterThanEqual(int meso);
 	
+	/*
+	 * Query that returns mobs with a maximum meso drop greater than or equal to the one provided
+	 */
 	Iterable<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
 	
 	
