@@ -64,7 +64,7 @@ public class MobRepositoryIntegrationTests {
 	
 	@Test
 	void succeedWhenFindCorrectNumberMobsByLocationOne() {
-		Iterable<Mob> listByLocationOne = mobRepository.findByMobLocation("Victoria Island");
+		Iterable<Mob> listByLocationOne = mobRepository.findByMobLocationAndMobLocationTwo("Victoria Island");
 		
 		long count = StreamSupport.stream(listByLocationOne.spliterator(), false).count();
 		
@@ -72,6 +72,7 @@ public class MobRepositoryIntegrationTests {
 		assertTrue(count == 59);
 	}
 	
+	/* Due to changing of repository this test is no longer needed.
 	@Test
 	void succeedWhenFindCorrectNumberMobsByLocationTwo() {
 		Iterable<Mob> listByLocationTwo = mobRepository.findByMobLocationTwo("");
@@ -79,8 +80,8 @@ public class MobRepositoryIntegrationTests {
 		long count = StreamSupport.stream(listByLocationTwo.spliterator(), false).count();
 		
 		//list of mobs in the database with an empty string for mob location two should be 196 at the moment
-		assertTrue(count == 196);
-	}
+		ssertTrue(count == 196);
+	} */
 	
 	@Test
 	void succeedWhenFindCorrectNumberMobsByEXP() {
