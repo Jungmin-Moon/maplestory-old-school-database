@@ -19,10 +19,10 @@ import com.artaleDB.entities.TooManyFoundException;
 public class MobControllerAdvice {
 	
 	/*
-	 * Method to handle the custom NoneFoundException Exception
+	 * Method to handle the custom NoneFoundException Exception and what HTTP Status to return
 	 * 
 	 * @param ex a NoneFoundException object
-	 * @return the message from the exception
+	 * @return the message passed to the NoneFoundException constructor from the MobService method
 	 */
 	@ExceptionHandler(NoneFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
@@ -31,10 +31,10 @@ public class MobControllerAdvice {
 	}
 	
 	/*
-	 * Method to handle the TooManyFoundException Exception
+	 * Method to handle the TooManyFoundException Exception and what HTTP Status to return
 	 * 
 	 * @param ex a TooManyFoundException object
-	 * @return the message passed to the TooManyFoundException constructor
+	 * @return the message passed to the TooManyFoundException constructor from the MobService method
 	 */
 	@ExceptionHandler(TooManyFoundException.class)
 	@ResponseStatus(HttpStatus.MULTIPLE_CHOICES)
@@ -43,10 +43,10 @@ public class MobControllerAdvice {
 	}
 	
 	/*
-	 * Method to handle the NoMatchingLocationException Exception
+	 * Method to handle the NoMatchingLocationException Exception and what HTTP Status to return
 	 * 
 	 * @param ex a NoMatchingLocationException object
-	 * @return the message passed to the NoMatchingLocationException constructor
+	 * @return the message passed to the NoMatchingLocationException constructor from the MobService method
 	 */
 	@ExceptionHandler(NoMatchingLocationException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)

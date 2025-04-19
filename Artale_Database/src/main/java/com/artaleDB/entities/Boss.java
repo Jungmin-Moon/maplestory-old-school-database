@@ -4,27 +4,34 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+/*
+ * Class representing a Boss object when gotten from a database with the pertinent information such as name, hp, 
+ * level, respawn time and location
+ */
 @Entity
 @Table(name = "artale_boss")
 public class Boss {
 	
+	/*Represents the id of the Boss */
 	@Id
 	@Column(name = "boss_ID")
 	private long id;
 	
+	/*Represents the name of the Boss */
 	private String bossName;
 	
+	/*Represents the level of the Boss */
 	private int bossLevel;
 	
+	/*Represents the max hp of the Boss */
 	@Column(name = "boss_HP")
 	private int bossHP;
 	
-	//Boss repsawn timers are represented in terms of minutes
+	/*Represents the minimum time and maximum time it takes before the Boss Respawns. Timer is represented in minutes */
 	private int bossMinRespawn;
-	
 	private int bossMaxRespawn;
 	
+	/*Represents the location where the Boss can be found */
 	private String bossLocation;
 
 	public long getId() {
