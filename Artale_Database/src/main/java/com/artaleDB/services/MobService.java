@@ -11,7 +11,8 @@ import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.repositories.MobRepository;
 
 /*
- * Service class that performs all the necessary operations needed and returns the result back to the MobController
+ * Service class that handles communication between the database and MobController and returns the result back to MobController
+ * All data is formatted in JSON
  */
 @Service
 public class MobService {
@@ -38,7 +39,7 @@ public class MobService {
 	 * 
 	 * @param name String value of the exact name to search for provided by the controller
 	 * @return Optional<Mob> if a mob exists with the exact name it returns the mob
-	 * @return NoneFoundException returns an NoneFoundException message if no mob can be found with the exact name
+	 * @throws NoneFoundException if no mob can be found with the exact name in the database
 	 */
 	public Optional<Mob> findByName(String name) {
 		Optional<Mob> potentialMobExist = mobRepo.findByName(name);
@@ -54,8 +55,8 @@ public class MobService {
 	 * Service method that searches the repository for mobs that contains the provided substring
 	 * 
 	 * @param name a substring to search for provided by the controller
-	 * @return Iterable<Mob> a list of mobs that contain that substring.
-	 * @return NoneFoundException an exception message if no mobs are found that contain the provided substring.
+	 * @return Iterable<Mob> a collection of mobs that contain that substring.
+	 * @throws NoneFoundException if no mobs are found that contain the provided substring.
 	 */
 	public Iterable<Mob> findByPartialMatch(String name) {
 		Iterable<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(name);
@@ -73,8 +74,8 @@ public class MobService {
 	 * Service method that searches the repository for mobs that are in the location provided
 	 * 
 	 * @param location a string to search for provided by the controller
-	 * @return Iterable<Mob> a list of mobs whose location one or location two matches the provided location String
-	 * @return NoMatchingLocationException an exception message if no mobs are found in the location provided.
+	 * @return Iterable<Mob> a collection of mobs whose location one or location two matches the provided location String
+	 * @throws NoMatchingLocationException if no mobs are found in the location provided.
 	 */
 	public Iterable<Mob> findByLocation(String location) {
 		Iterable<Mob> mobListByLocations = mobRepo.findByMobLocationAndMobLocationTwo(location);
@@ -92,8 +93,8 @@ public class MobService {
 	 * Service method that searches the repository for mobs that are equal to the level provided
 	 * 
 	 * @param level a int to search for provided by the controller
-	 * @return Iterable<Mob> a list of mobs whose level is exactly equal to the one provided by the controller
-	 * @return NoneFoundException an exception message if no mobs are found whose level is exactly equal to the one provided.
+	 * @return Iterable<Mob> a collection of mobs whose level is exactly equal to the one provided by the controller
+	 * @throws NoneFoundException if no mobs are found whose level is exactly equal to the one provided.
 	 */
 	public Iterable<Mob> findByLevel(int level) {
 		Iterable<Mob> mobListByLevel = mobRepo.findByMobLevelEquals(level);
@@ -111,8 +112,8 @@ public class MobService {
 	 * Service method that searches the repository for mobs that give exp greater than or equal to the one provided
 	 * 
 	 * @param exp an int to search for provided by the controller
-	 * @return Iterable<Mob> a list of mobs whose exp is greater than or equal to the one provided by the controller
-	 * @return NoneFoundException an exception message if no mobs are found whose exp is not equal or greater than the one provided
+	 * @return Iterable<Mob> a collection of mobs whose exp is greater than or equal to the one provided by the controller
+	 * @throws NoneFoundException if no mobs are found whose exp is equal or greater than the one provided
 	 */
 	public Iterable<Mob> findByMobExpGreater(int exp) {
 		Iterable<Mob> mobListExpGreaterThanEqual = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
@@ -130,8 +131,8 @@ public class MobService {
 	 * Service method that searches the repository for mobs who give exactly the same amount of exp provided
 	 * 
 	 * @param exp an int representing the exact exp provided by the controller
-	 * @return Iterable<Mob> a list of mobs whose exp given is exactly equal to the one provided by the controller
-	 * @return NoneFoundException an exception message if no mobs are found that give exactly the exp provided
+	 * @return Iterable<Mob> a collection of mobs whose exp given is exactly equal to the one provided by the controller
+	 * @throws NoneFoundException if no mobs are found that give exactly the exp provided
 	 */
 	public Iterable<Mob> findByMobExp(int exp) {
 		Iterable<Mob> mobListExpEqual = mobRepo.findAllByMobEXP(exp);
@@ -148,8 +149,8 @@ public class MobService {
 	/*
 	 * Service method that searches the repository to find mobs whose minimum meso drop is greater than or equal to the one provided
 	 * 
-	 * @return Iterable<Mob> a list of mobs whose minimum meso dropped is greater than or equal to the one provided by the controller
-	 * @return NoneFoundException an exception message if no mobs are found that drop greater than or equal to the minimum meso provided
+	 * @return Iterable<Mob> a collection of mobs whose minimum meso dropped is greater than or equal to the one provided by the controller
+	 * @throws NoneFoundException if no mobs are found that drop greater than or equal to the minimum meso provided
 	 */
 	public Iterable<Mob> findMinMesoGreater(int minMeso) {
 		Iterable<Mob> mobListMinMesoGreaterEqual = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
@@ -166,8 +167,8 @@ public class MobService {
 	/*
 	 * Service method that searches the repository to find mobs whose maximum meso drop is greater than or equal to the one provided
 	 * 
-	 * @return Iterable<Mob> a list of mobs whose maximum meso dropped is greater than or equal to the one provided by the controller
-	 * @return NoneFoundException an exception message if no mobs are found that drop greater than or equal to the maximum meso provided
+	 * @return Iterable<Mob> a collection of mobs whose maximum meso dropped is greater than or equal to the one provided by the controller
+	 * @throws NoneFoundException if no mobs are found that drop greater than or equal to the maximum meso provided
 	 */
 	public Iterable<Mob> findMaxMesoGreater(int maxMeso) {
 		Iterable<Mob> mobListMaxMesoGreaterEqual = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
