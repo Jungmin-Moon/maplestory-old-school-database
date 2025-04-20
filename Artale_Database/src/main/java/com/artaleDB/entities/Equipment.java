@@ -6,31 +6,45 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+/*
+ * Equipment Entity class with states that are most relevant to users
+ */
 @Entity
 @Table(name = "artale_equipment")
 public class Equipment {
 	
+	/* Represents the ID of the equipment in the database*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "equipment_id")
 	private long id;
 	
+	/* Represents the name of the equipment */
 	private String equipmentName;
 	
-	//representing armor, weapon or accessory as a string
+	/* Represents if the equipment is a weapon, armor or accessory */
 	private String equipmentType;
 	
-	//each will hold a string dictating what type of weapon, armor or accessory it is
-	//if the equipment is a weapon then armorType and accessoryType will have N/A for example
+	/* Each of the three represents a type for each category of equipment
+	 * If equipment is a weapon, armorType and accessoryType will be represented with a dash ( - )
+	 * If equipment is an armor, weapon and accessory will be represented with a dash ( - )
+	 * If equipment is an accessory, weapon and armor will be represented with a dash ( - )
+	 * Weapons can only be weapon types that exist in Maplestory in this era of the game []
+	 * Armors can only be []
+	 * Accessories can only be []
+	 */
 	private String weaponType;
 	private String armorType;
 	private String accessoryType;
 	
-	//minimum level can be 0 to 200
+	/* Represents the minimum level needed to equip something. The value of this can be from 0 to 200*/
 	private int minimumLevel;
 	
-	//can be 0 to some value N
+	/*
+	 * Represents a stat that weapons can have.
+	 * Generally a weapon with weapon attack, will not have magic att and vice versa
+	 * All weapons have attack speed that can be of value between 
+	 */
 	private int weaponAtt;
 	private int magicAtt;
 	private int attSpeed;
