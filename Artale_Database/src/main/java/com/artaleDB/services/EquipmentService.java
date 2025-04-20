@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.artaleDB.entities.Equipment;
 import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.repositories.EquipmentRepository;
-
+/*
+ * Service class that handles getting all information from the database and passes it to the controller
+ */
 @Service
 public class EquipmentService {
 	
@@ -20,6 +22,11 @@ public class EquipmentService {
 		this.calculationService = calculationService;
 	}
 	
+	/*
+	 * Service method that returns all the equipment in the database
+	 * 
+	 * @return Iterable<Equipment> a collection of all equipment in the database.
+	 */
 	public Iterable<Equipment> getAllEquipment() {
 		return equipmentRepository.findAll();
 	}

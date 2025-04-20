@@ -29,9 +29,11 @@ public class Equipment {
 	 * If equipment is a weapon, armorType and accessoryType will be represented with a dash ( - )
 	 * If equipment is an armor, weapon and accessory will be represented with a dash ( - )
 	 * If equipment is an accessory, weapon and armor will be represented with a dash ( - )
-	 * Weapons can only be weapon types that exist in Maplestory in this era of the game []
-	 * Armors can only be []
-	 * Accessories can only be []
+	 * Weapons can only be weapon types that exist in Maplestory in this era of the game: 
+	 * [One Handed Sword, Two Handed Sword, One Handed Axe, Two Handed Axe, One Handed Blunt Weapon, Two Handed Blunt Weapon, Bow, 
+	 * Crossbow, Claw, Dagger, Spear, Polearm, Wand, Staff, Knuckle, Gun]
+	 * Armors can only be [Hat, Top, Overall, Bottom, Shoes, Gloves, Cape, Shield]
+	 * Accessories can only be [Earring, Eye Accessory, Face Accessory, Pendant, Belt, Medal, Ring, Shoulderpad]
 	 */
 	private String weaponType;
 	private String armorType;
@@ -49,12 +51,18 @@ public class Equipment {
 	private int magicAtt;
 	private int attSpeed;
 	
-	//can be 0 to some value N
+	/*
+	 * Represents the weapon defense and magic defense of armor and some accessories
+	 * Can be some value 0 to N
+	 */
 	private int weaponDef;
 	private int magicDef;
 	
-	//booleans for job; if common is true, then all are true, if common is false then one or more of these have to be true for the equipment
-	//0 for false, 1 for true when storing in a TINYINT in SQL
+	/*
+	 * Represents what jobs can wear the equipment
+	 * Represented with 0 for false and 1 for true.
+	 * Many equipment can be worn by multiple roles.
+	 */
 	private int warrior;
 	private int magician;
 	private int thief;
@@ -62,19 +70,31 @@ public class Equipment {
 	private int archer;
 	private int common;
 	
-	//if equipment does not require a stat it will be given a value of -1
+	/*
+	 * Represents the required amount of a stat needed to wear the equpiment
+	 * Can be 0 to some value N
+	 */
 	private int requiredStr;
 	private int requiredDex;
 	private int requiredInt;
 	private int requiredLuk;
 	
-	//List of simple effects that mostly affect stats
+	/*
+	 * Represents effects that a piece of equipment can give, such as STR + 2 and LUK + 1
+	 * Will be written in text due to what can be an option
+	 */
 	private String effects;
 	
-	//can be 0 to some value N
+	/*
+	 * Represents the times a user can scroll an item and succeed or fail
+	 * Can be some value between 0 and N
+	 */
 	private int upgrades;
 	
-	//can be -1 if it can't be sold to some value N
+	/*
+	 * Represents the meso a user can get if they sell it to NPC
+	 * Can be a value from 0 to N
+	 */
 	private int npcVendorPrice;
 	
 	
