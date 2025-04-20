@@ -13,7 +13,7 @@ import com.artaleDB.services.CalculationService;
 import com.artaleDB.services.MobService;
 
 /*
- * REST API that handles endpoints related to only queries made for Mobs results are returned in JSON
+ * RestController that hosts the endpoints related to mobs in Artale. Data is returned formatted in JSON
  */
 @RestController
 @RequestMapping("mobs")
@@ -127,6 +127,7 @@ public class MobController {
 	 * 
 	 * @param meso an int representing the maximum amount of meso a mob can drop.
 	 * @return a list of mobs that give equal or greater than the meso provided
+	 * @throws NoneFoundException if no mobs whose maximum meso drop is greater than or equal to the provided value
 	 */
 	@GetMapping("/max/meso/{meso}")
 	public Iterable<Mob> findMaxMesoHigher(@PathVariable int meso) {
