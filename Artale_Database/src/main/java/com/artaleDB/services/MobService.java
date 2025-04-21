@@ -11,8 +11,7 @@ import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.repositories.MobRepository;
 
 /*
- * Service class that handles communication between the database and MobController and returns the result back to MobController
- * All data is formatted in JSON
+ * Service class that handles getting all information about Mobs from the database and passes it to the MobController in JSON
  */
 @Service
 public class MobService {
@@ -37,7 +36,7 @@ public class MobService {
 	/*
 	 * Service method that searches the repository for a mob with the exact same name as provided.
 	 * 
-	 * @param name String value of the exact name to search for provided by the controller
+	 * @param name String value of the exact name to search for in the database
 	 * @return Optional<Mob> if a mob exists with the exact name it returns the mob
 	 * @throws NoneFoundException if no mob can be found with the exact name in the database
 	 */
@@ -58,15 +57,15 @@ public class MobService {
 	 * @return Iterable<Mob> a collection of mobs that contain that substring.
 	 * @throws NoneFoundException if no mobs are found that contain the provided substring.
 	 */
-	public Iterable<Mob> findByPartialMatch(String name) {
-		Iterable<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(name);
+	public Iterable<Mob> findByPartialMatch(String substring) {
+		Iterable<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(substring);
 		
 		long count = calculationService.getCount(mobListPartialNameMatch);
 		
 		if (count > 0) {
 			return mobListPartialNameMatch;
 		} else {
-			throw new NoneFoundException("No mobs found that match: " + name + " in the database.");
+			throw new NoneFoundException("No mobs found that match: " + substring + " in the database.");
 		}
 	}
 	

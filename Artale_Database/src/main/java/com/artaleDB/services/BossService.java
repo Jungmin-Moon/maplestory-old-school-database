@@ -10,8 +10,7 @@ import com.artaleDB.entities.NoMatchingLocationException;
 import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.repositories.BossRepository;
 /*
- * Service class to handle communication between BossController and the database and then returns the result back to BossController
- * All results are formatted in JSON
+ * Service class that handles getting all information about Bosses from the database and passes it to the BossController in JSON
  */
 @Service
 public class BossService {
@@ -57,13 +56,13 @@ public class BossService {
 	 * @return Iterable<Boss> if Bosses can be found with the substring in their name
 	 * @throws NoneFoundException if no Bosses are found containing the substring
 	 */
-	public Iterable<Boss> findByPartialMatch(String name) {
-		Iterable<Boss> bossListByPartialMatch = bossRepo.findByPartialMatch(name);
+	public Iterable<Boss> findByPartialMatch(String substring) {
+		Iterable<Boss> bossListByPartialMatch = bossRepo.findByPartialMatch(substring);
 		
 		long count = calculationService.getCount(bossListByPartialMatch);
 		
 		if (count <= 0) {
-			throw new NoneFoundException("No bosses were found similar to the name: " + name + " in the database.");
+			throw new NoneFoundException("No bosses were found similar to the name: " + substring + " in the database.");
 		} else {
 			return bossListByPartialMatch;
 		}

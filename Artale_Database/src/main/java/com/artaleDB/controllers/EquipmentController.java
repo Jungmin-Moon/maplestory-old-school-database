@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.artaleDB.entities.Equipment;
 import com.artaleDB.services.EquipmentService;
-
+/*
+ * RestController that hosts the endpoints related to Equipment in Artale. Data is returned formatted in JSON.
+ */
 @RestController
 @RequestMapping("equipment")
 public class EquipmentController {
