@@ -1,4 +1,4 @@
-package com.artaleDB.controllers;
+package com.artaleDB.restcontrollers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

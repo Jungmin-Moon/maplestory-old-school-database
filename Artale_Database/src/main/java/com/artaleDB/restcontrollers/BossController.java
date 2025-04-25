@@ -1,4 +1,4 @@
-package com.artaleDB.controllers;
+package com.artaleDB.restcontrollers;
 
 import java.util.List;
 import java.util.Optional;
