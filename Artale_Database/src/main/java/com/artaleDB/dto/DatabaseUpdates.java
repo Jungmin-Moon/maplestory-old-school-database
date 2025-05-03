@@ -1,6 +1,7 @@
 package com.artaleDB.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +15,7 @@ public class DatabaseUpdates {
 	
 	private String updateText;
 	
-	private LocalDate postedDate;
+	private LocalDateTime postedDate;
 
 	public long getUpdateID() {
 		return updateID;
@@ -32,11 +33,11 @@ public class DatabaseUpdates {
 		this.updateText = updateText;
 	}
 
-	public LocalDate getPostedDate() {
+	public LocalDateTime getPostedDate() {
 		return postedDate;
 	}
 
-	public void setPostedDate(LocalDate postedDate) {
+	public void setPostedDate(LocalDateTime postedDate) {
 		this.postedDate = postedDate;
 	}
 	
