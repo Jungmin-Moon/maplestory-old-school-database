@@ -1,6 +1,5 @@
 package com.artaleDB.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
