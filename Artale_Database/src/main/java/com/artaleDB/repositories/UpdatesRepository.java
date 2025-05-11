@@ -10,6 +10,6 @@ import com.artaleDB.dto.DatabaseUpdates;
 
 public interface UpdatesRepository extends JpaRepository<DatabaseUpdates, Long>{
 	
-	@Query("SELECT db FROM DatabaseUpdates WHERE db.postedDate <= dateTime")
+	@Query("SELECT db FROM DatabaseUpdates WHERE db.postedDate <= dateTime LIMIT 7")
 	List<DatabaseUpdates> getLastSevenUpdates(LocalDateTime dateTime);
 }
