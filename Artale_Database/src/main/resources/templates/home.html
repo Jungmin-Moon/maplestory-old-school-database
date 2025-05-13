@@ -23,14 +23,17 @@
 		<div>
 			<table id = "updates">
 				<thead>
-					<td>Date</td>
-					<td>Update</td>
+					<tr>
+						<td>Date</td>
+						<td>Update</td>
+					</tr>
 				</thead>
 				
 				<tbody>
 					<tr th:each = "databaseUpdates: ${databaseUpdates}">
-						<td th: text = "${databaseUpdates.postedDate}"></td>
-						<td th: text = "${databaseUpdates.updateText}"></td>
+						<td th:text = "${databaseUpdates.postedDate}"></td>
+						<td th:text = "${databaseUpdates.updateText}"></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

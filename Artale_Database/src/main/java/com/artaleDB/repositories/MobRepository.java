@@ -32,7 +32,7 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	/*
 	 * Query that searches in both location columns for mobs to return mobs that are in the location provided either as Location one or Location two
 	 */
-	Iterable<Mob> findByMobLocationAndMobLocationTwo(String location);
+	Iterable<Mob> findByMobLocationAndMobLocationTwo(String location, String locationTwo);
 	
 	//Iterable<Mob> findByMobLocationTwo(String location);
 	

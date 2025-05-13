@@ -23,6 +23,6 @@ public class DatabaseUpdatesService {
 	}
 	
 	public List<DatabaseUpdates> getlastSevenUpdates(LocalDateTime dateTime) {
-		return updatesRepository.getLastSevenUpdates(dateTime);
+		return updatesRepository.queryFirst7ByPostedDateLessThanEqualOrderByUpdateIdDesc(dateTime);
 	}
 }

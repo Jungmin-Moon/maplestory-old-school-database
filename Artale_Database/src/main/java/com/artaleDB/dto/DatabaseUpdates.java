@@ -10,18 +10,18 @@ import jakarta.persistence.Table;
 @Table(name = "database_updates")
 public class DatabaseUpdates {
 	@Id
-	private long updateID;
+	private long updateId;
 	
 	private String updateText;
 	
 	private LocalDateTime postedDate;
 
-	public long getUpdateID() {
-		return updateID;
+	public long getUpdateId() {
+		return updateId;
 	}
 
-	public void setUpdateID(long updateID) {
-		this.updateID = updateID;
+	public void setUpdateID(long updateId) {
+		this.updateId = updateId;
 	}
 
 	public String getUpdateText() {

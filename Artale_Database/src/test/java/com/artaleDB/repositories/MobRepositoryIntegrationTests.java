@@ -64,7 +64,7 @@ public class MobRepositoryIntegrationTests {
 	
 	@Test
 	void succeedWhenFindCorrectNumberMobsByLocationOne() {
-		Iterable<Mob> listByLocationOne = mobRepository.findByMobLocationAndMobLocationTwo("Victoria Island");
+		Iterable<Mob> listByLocationOne = mobRepository.findByMobLocationAndMobLocationTwo("Victoria Island", "Victoria Island");
 		
 		long count = StreamSupport.stream(listByLocationOne.spliterator(), false).count();
 		

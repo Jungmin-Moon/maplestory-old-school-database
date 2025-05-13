@@ -31,7 +31,7 @@ public class HomeController {
 		return "home.html";
 	}
 	
-	
+	/*
 	@PostMapping
 	public String mobs() {
 		return "mobs.html";
@@ -43,13 +43,13 @@ public class HomeController {
 		return "bosses.html";
 	}
 	
-	@PostMapping
+	@PostMapping 
 	public String equipment() {
 		return "equipment.html";
-	}
+	} 
 	
 	@PostMapping
 	public String drops() {
 		return "drops.html";
-	}
+	} */
 }

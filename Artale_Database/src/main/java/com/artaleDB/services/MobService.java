@@ -77,7 +77,7 @@ public class MobService {
 	 * @throws NoMatchingLocationException if no mobs are found in the location provided.
 	 */
 	public Iterable<Mob> findByLocation(String location) {
-		Iterable<Mob> mobListByLocations = mobRepo.findByMobLocationAndMobLocationTwo(location);
+		Iterable<Mob> mobListByLocations = mobRepo.findByMobLocationAndMobLocationTwo(location, location);
 		
 		long count = calculationService.getCount(mobListByLocations);
 		

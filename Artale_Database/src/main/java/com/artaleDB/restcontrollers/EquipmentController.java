@@ -88,7 +88,7 @@ public class EquipmentController {
 	 * @return Iterable<Equipment> a collection of equipment whose armor type is equal to the parameter
 	 * @throws NoneFoundException if no equipment can be found with the same armor type
 	 */
-	@GetMapping("/list/armors/{armorType:[a-ZA-Z]*}")
+	@GetMapping("/list/armors/{armorType:[a-zA-Z]*}")
 	public Iterable<Equipment> getAllByArmorType(@PathVariable String armorType) {
 		return equipmentService.getAllByArmorType(armorType);
 	}
