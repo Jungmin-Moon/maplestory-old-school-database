@@ -10,5 +10,5 @@ import com.artaleDB.dto.DatabaseUpdates;
 
 public interface UpdatesRepository extends JpaRepository<DatabaseUpdates, Long>{
 	
-	List<DatabaseUpdates> queryFirst7ByPostedDateLessThanEqualOrderByUpdateIdDesc(LocalDateTime dateTime);
+	List<DatabaseUpdates> queryFirst15ByPostedDateLessThanEqualOrderByUpdateIdDesc(LocalDateTime dateTime);
 }

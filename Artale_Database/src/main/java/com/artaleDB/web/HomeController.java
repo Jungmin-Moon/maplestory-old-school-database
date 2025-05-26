@@ -25,7 +25,7 @@ public class HomeController {
 	@GetMapping
 	public String home(Model model) {
 		
-		var databaseUpdates = databaseUpdatesService.getlastSevenUpdates(LocalDateTime.now());
+		var databaseUpdates = databaseUpdatesService.getlast15Updates(LocalDateTime.now());
 		
 		model.addAttribute("databaseUpdates", databaseUpdates);
 		

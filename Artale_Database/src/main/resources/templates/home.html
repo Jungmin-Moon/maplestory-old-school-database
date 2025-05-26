@@ -8,7 +8,7 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Home</title>
-		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/profile.css}" />
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/home.css}" />
 	</head>
 	
 	
@@ -20,18 +20,21 @@
 			<a href = "/home?drop">Drops Search</a>
 		</div>
 		
-		<div>
+		<br />
+		<br />
+		
+		<div class = "updatesTable">
 			<table id = "updates">
 				<thead>
 					<tr>
-						<td>Date</td>
-						<td>Update</td>
+						<th>Date</th>
+						<th>Update</th>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<tr th:each = "databaseUpdates: ${databaseUpdates}">
-						<td th:text = "${databaseUpdates.postedDate}"></td>
+						<th th:text = "${databaseUpdates.postedDate}"></th>
 						<td th:text = "${databaseUpdates.updateText}"></td>
 					</tr>
 				</tbody>

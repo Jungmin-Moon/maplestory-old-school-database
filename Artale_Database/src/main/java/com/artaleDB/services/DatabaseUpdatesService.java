@@ -22,7 +22,7 @@ public class DatabaseUpdatesService {
 		return updatesRepository.findAll();
 	}
 	
-	public List<DatabaseUpdates> getlastSevenUpdates(LocalDateTime dateTime) {
-		return updatesRepository.queryFirst7ByPostedDateLessThanEqualOrderByUpdateIdDesc(dateTime);
+	public List<DatabaseUpdates> getlast15Updates(LocalDateTime dateTime) {
+		return updatesRepository.queryFirst15ByPostedDateLessThanEqualOrderByUpdateIdDesc(dateTime);
 	}
 }
