@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.artaleDB.dto.DatabaseUpdates;
+import com.artaleDB.entities.DatabaseUpdates;
 import com.artaleDB.repositories.UpdatesRepository;
 
 @Service

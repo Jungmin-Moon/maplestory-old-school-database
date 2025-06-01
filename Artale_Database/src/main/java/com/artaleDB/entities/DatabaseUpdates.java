@@ -1,4 +1,4 @@
-package com.artaleDB.dto;
+package com.artaleDB.entities;
 
 import java.time.LocalDateTime;
 
