@@ -30,7 +30,15 @@ public class MobService {
 	 * @return list of mobs in the database
 	 */
 	public Iterable<Mob> viewMobList() {
-		return mobRepo.findAll();
+		var mobAll = mobRepo.findAll();
+		
+		long count = calculationService.getCount(mobAll);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database is currently empty.");
+		} else {
+			return mobRepo.findAll();
+		}
 	}
 	
 	/*

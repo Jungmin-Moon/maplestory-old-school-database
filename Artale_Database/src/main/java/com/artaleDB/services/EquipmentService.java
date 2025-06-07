@@ -28,7 +28,15 @@ public class EquipmentService {
 	 * @return Iterable<Equipment> a collection of all equipment in the database.
 	 */
 	public Iterable<Equipment> getAllEquipment() {
-		return equipmentRepository.findAll();
+		var equipmentAll = equipmentRepository.findAll();
+		
+		long count = calculationService.getCount(equipmentAll);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database is currently empty.");
+		} else {
+			return equipmentRepository.findAll();
+		}
 	}
 	
 	/*
