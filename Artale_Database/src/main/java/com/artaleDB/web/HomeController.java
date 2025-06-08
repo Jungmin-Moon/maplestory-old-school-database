@@ -34,7 +34,7 @@ public class HomeController {
 	
 	
 	@PostMapping
-	public String mobs(@RequestParam (required = false) String mob, @RequestParam (required = false) String boss, 
+	public String home(@RequestParam (required = false) String mob, @RequestParam (required = false) String boss, 
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
 		
 		if (mob != null) {
@@ -46,7 +46,7 @@ public class HomeController {
 		}
 		
 		if (equipment != null) {
-			return "redirect:/equipment";
+			return "/web/equipment";
 		}
 		
 		if (drop != null) {

@@ -12,6 +12,26 @@
 	
 	<body>
 		
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<td>Equipment Name</td>
+						<td>Equipment Type</td>
+						<td>Weapon Type</td>
+						<td>Armor Type</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each = "allEquipment: ${allEquipment}">
+						<td th:text = "${allEquipment.equipmentName}"></td>
+						<td th:text = "${allEquipment.equipmentType}"></td>
+						<td th:text = "${allEquipment.weaponType}"></td>
+						<td th:text = "${allEquipment.armorType}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		
 	</body>
 	
