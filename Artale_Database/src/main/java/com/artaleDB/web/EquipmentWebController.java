@@ -25,6 +25,6 @@ public class EquipmentWebController {
 		
 		model.addAttribute("allEquipment", allEquipment);
 		
-		return "equipment.html";
+		return "equipment";
 	}
 }
