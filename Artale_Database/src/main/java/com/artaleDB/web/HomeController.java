@@ -49,7 +49,7 @@ public class HomeController {
 		return "home.html";
 	}
 	
-	
+	/*
 	@PostMapping
 	public String home(@RequestParam (required = false) String mob, @RequestParam (required = false) String boss, 
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
@@ -72,6 +72,6 @@ public class HomeController {
 		
 		return "home.html";
 	}
-	
+	*/
 	
 }
