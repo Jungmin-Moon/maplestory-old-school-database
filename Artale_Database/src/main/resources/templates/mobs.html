@@ -26,12 +26,20 @@
 			<table>
 				<thead>
 					<tr>
-						<td></td>
+						<td>Mob Name</td>
+						<td>Mob Level</td>
+						<td>Mob EXP</td>
+						<td>Mob Location One</td>
+						<td>Mob Location Two</td>
 				</thead>
 				
 				<tbody>
-					<tr>
-						<td></td>
+					<tr th:each = "allMobs: ${allMobs}">
+						<td th:text = "${allMobs.mob_Name}"></td>
+						<td th:text = "${allMobs.mob_Level}"></td>
+						<td th:text = "${allMobs.mob_EXP}"></td>
+						<td th:text = "${allMobs.mob_Location}"></td>
+						<td th:text = "${allMobs.mob_Location_Two}"></td>
 					</tr>
 				</tbody>
 			</table>

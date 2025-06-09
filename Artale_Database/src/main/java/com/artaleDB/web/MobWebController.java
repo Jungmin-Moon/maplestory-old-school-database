@@ -25,7 +25,7 @@ public class MobWebController {
 		
 		model.addAttribute("allMobs", mobsAll);
 		
-		return "mobs.html";
+		return "mobs";
 	}
 	
 }
