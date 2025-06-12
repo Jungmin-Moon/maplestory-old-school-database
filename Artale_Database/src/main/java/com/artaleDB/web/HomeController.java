@@ -31,15 +31,15 @@ public class HomeController {
 		} 
 		
 		if (boss != null) {
-			return "redirect:/boss";
+			return "redirect:/web/boss";
 		}
 		
 		if (equipment != null) {
-			return "redirect:/equipment";
+			return "redirect:/web/equipment";
 		}
 		
 		if (drop != null) {
-			return "redirect:/drop";
+			return "redirect:/web/drop";
 		}
 		
 		var databaseUpdates = databaseUpdatesService.getlast15Updates(LocalDateTime.now());
@@ -48,30 +48,5 @@ public class HomeController {
 		
 		return "home.html";
 	}
-	
-	/*
-	@PostMapping
-	public String home(@RequestParam (required = false) String mob, @RequestParam (required = false) String boss, 
-						@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
-		
-		if (mob != null) {
-			return "redirect:/mob";
-		} 
-		
-		if (boss != null) {
-			return "redirect:/boss";
-		}
-		
-		if (equipment != null) {
-			return "redirect:web/equipment";
-		}
-		
-		if (drop != null) {
-			return "redirect:/drop";
-		}
-		
-		return "home.html";
-	}
-	*/
 	
 }

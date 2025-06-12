@@ -1,7 +1,7 @@
 package com.artaleDB.services;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -277,5 +277,9 @@ public class EquipmentService {
 		} else {
 			return equipmentListEquippableAll;
 		}
+	}
+	
+	public List<Equipment> findAllWeb() {
+		return equipmentRepository.findAll();
 	}
 }
