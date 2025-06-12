@@ -21,11 +21,11 @@ public class MobWebController {
 	@GetMapping
 	public String mobHome(Model model) {
 		
-		var mobsAll = mobService.viewMobList();
+		var mobsAll = mobService.findAllWeb();
 		
 		model.addAttribute("allMobs", mobsAll);
 		
-		return "mobs";
+		return "mobs.html";
 	}
 	
 }

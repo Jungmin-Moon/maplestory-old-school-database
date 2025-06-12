@@ -1,7 +1,7 @@
 package com.artaleDB.services;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -187,5 +187,10 @@ public class MobService {
 		} else {
 			return mobListMaxMesoGreaterEqual;
 		}
+	}
+	
+	
+	public List<Mob> findAllWeb() {
+		return mobRepo.findAll();	
 	}
 }

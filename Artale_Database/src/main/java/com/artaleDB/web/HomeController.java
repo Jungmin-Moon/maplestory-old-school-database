@@ -27,7 +27,7 @@ public class HomeController {
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
 		
 		if (mob != null) {
-			return "redirect:/mobs";
+			return "redirect:/web/mob";
 		} 
 		
 		if (boss != null) {

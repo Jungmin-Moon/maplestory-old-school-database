@@ -1,5 +1,6 @@
 package com.artaleDB.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -54,7 +55,6 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	/* Query to find a collection of equipment that can be equipped by all jobs*/
 	Iterable<Equipment> findAllByCommon(int common);
-	
 	
 	
 	

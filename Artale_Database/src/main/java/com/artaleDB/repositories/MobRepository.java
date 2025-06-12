@@ -1,5 +1,6 @@
 package com.artaleDB.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -60,6 +61,7 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	 * Query that returns mobs with a maximum meso drop greater than or equal to the one provided
 	 */
 	Iterable<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
+	
 	
 	
 	//Non exposed queries 

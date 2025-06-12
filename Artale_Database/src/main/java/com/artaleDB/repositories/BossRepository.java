@@ -1,5 +1,6 @@
 package com.artaleDB.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,7 +34,9 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
 	
 	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
-		
+	
+	
+	
 	//Non REST endpoints queries
 	Iterable<Boss> findAllByOrderByBossLevelAsc();
 	
