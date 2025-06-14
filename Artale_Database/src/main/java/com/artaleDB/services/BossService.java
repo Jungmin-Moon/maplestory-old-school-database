@@ -1,7 +1,7 @@
 package com.artaleDB.services;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -150,5 +150,9 @@ public class BossService {
 		} else {
 			return bossListMaxRespawnGreaterEqual;
 		}
+	}
+	
+	public List<Boss> findAllBossWeb() {
+		return bossRepo.findAll();
 	}
 }	
