@@ -1,8 +1,47 @@
 <!DOCTYPE html>
 
-<html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org"
+				  xmlns = "http://www.w3.org/1999/xhtml"
+				  xmlns:sec = "https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 	
 
+
+	<head>
+		<meta charset = "UTF-8">
+		<title>Boss</title>
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/boss.css}" />
+	</head>
+	
+	
+	<body>
+		<div>
+			<a href = "/web/boss?home"></a>
+			<a href = "/web/boss?mob"></a>
+			<a href = "/web/boss?equipment"></a>
+			<a href = "/web/boss?drop"></a>
+		</div>
+		
+		<br />
+		<br />
+		
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<td></td>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each = "bosses: ${allBoss}">
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+	</body>	
 
 
 

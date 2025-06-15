@@ -34,12 +34,12 @@
 				</thead>
 				
 				<tbody>
-					<tr th:each = "allMobs: ${allMobs}">
-						<td th:text = "${allMobs.mobName}"></td>
-						<td th:text = "${allMobs.mobLevel}"></td>
-						<td th:text = "${allMobs.mobEXP}"></td>
-						<td th:text = "${allMobs.mobLocation}"></td>
-						<td th:text = "${allMobs.mobLocationTwo}"></td>
+					<tr th:each = "mobs: ${allMobs}">
+						<td th:text = "${mobs.mobName}"></td>
+						<td th:text = "${mobs.mobLevel}"></td>
+						<td th:text = "${mobs.mobEXP}"></td>
+						<td th:text = "${mobs.mobLocation}"></td>
+						<td th:text = "${mobs.mobLocationTwo}"></td>
 					</tr>
 				</tbody>
 			</table>
