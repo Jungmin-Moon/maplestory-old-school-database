@@ -23,19 +23,19 @@ public class BossWebController {
 	public String bossHome(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String mob,
 							@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
 		if (home != null) {
-			return "";
+			return "redirect:/home";
 		}
 		
 		if (mob != null) {
-			return "";
+			return "redirect:/web/mob";
 		}
 		
 		if (equipment != null) {
-			return "";
+			return "redirect:/web/equipment";
 		}
 		
 		if (drop != null) {
-			return "";
+			return "redirect:/web/drop";
 		}
 		
 		var allBoss = bossService.findAllBossWeb();

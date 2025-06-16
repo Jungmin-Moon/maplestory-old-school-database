@@ -28,13 +28,23 @@
 			<table>
 				<thead>
 					<tr>
-						<td></td>
+						<td>Boss Name</td>
+						<td>Boss Level</td>
+						<td>Boss HP</td>
+						<td>Boss Min Respawn (Minutes)</td>
+						<td>Boss Max Respawn (Minutes)</td>
+						<td>Boss Location</td>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<tr th:each = "bosses: ${allBoss}">
-						<td></td>
+						<td th:text = "${bosses.bossName}"></td>
+						<td th:text = "${bosses.bossLevel}"></td>
+						<td th:text = "${bosses.bossHP}"></td>
+						<td th:text = "${bosses.bossMinRespawn}"></td>
+						<td th:text = "${bosses.bossMaxRespawn}"></td>
+						<td th:text = "${bosses.bossLocation}"></td>
 					</tr>
 				</tbody>
 			</table>
