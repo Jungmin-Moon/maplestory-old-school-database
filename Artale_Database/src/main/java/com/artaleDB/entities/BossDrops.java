@@ -1,12 +1,14 @@
 package com.artaleDB.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "artale_boss_droplist")
 public class BossDrops {
 
+	@Id
 	private long boss_drop_id;
 	
 	private long boss_id;
