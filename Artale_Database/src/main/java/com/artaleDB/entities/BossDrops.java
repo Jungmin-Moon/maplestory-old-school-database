@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 @Table(name = "artale_boss_droplist")
 public class BossDrops {
 
+	private long boss_drop_id;
 	
 	private long boss_id;
 	
@@ -15,6 +16,14 @@ public class BossDrops {
 	private String boss_name;
 	
 	private String equipment_name;
+
+	public long getBoss_drop_id() {
+		return boss_drop_id;
+	}
+
+	public void setBoss_drop_id(long boss_drop_id) {
+		this.boss_drop_id = boss_drop_id;
+	}
 
 	public long getBoss_id() {
 		return boss_id;
