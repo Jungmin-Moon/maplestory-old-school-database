@@ -99,6 +99,15 @@ public class DropService {
 	
 	
 	//Web endpoints
+	public List<MobDrops> findAllMobDropsWeb() {
+		return mobDropRepository.findAll();
+	}
+	
+	
+	public List<BossDrops> findAllBossDropsWeb() {
+		return bossDropRepository.findAll();
+	}
+	
 	
 	
 }
