@@ -37,7 +37,7 @@ public class MobService {
 		if (count <= 0) {
 			throw new NoneFoundException("The database is currently empty.");
 		} else {
-			return mobRepo.findAll();
+			return mobAll;
 		}
 	}
 	

@@ -36,7 +36,7 @@ public class BossService {
 		if (count <= 0) {
 			throw new NoneFoundException("The database is currently empty.");
 		} else {
-			return bossRepo.findAll();
+			return bossAll;
 		}
 	}
 	

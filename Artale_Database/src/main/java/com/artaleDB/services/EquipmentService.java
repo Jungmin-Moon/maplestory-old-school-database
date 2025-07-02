@@ -35,7 +35,7 @@ public class EquipmentService {
 		if (count <= 0) {
 			throw new NoneFoundException("The database is currently empty.");
 		} else {
-			return equipmentRepository.findAll();
+			return equipmentAll;
 		}
 	}
 	

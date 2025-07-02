@@ -23,7 +23,7 @@ public class DropService {
 		this.calculationService = calculationService;
 	}
 	
-	
+	//Mob REST endpoints
 	public List<MobDrops> findAllMobDrops() {
 		var allMobDrops = mobDropRepository.findAll();
 		
@@ -32,11 +32,35 @@ public class DropService {
 		if (count <= 0) {
 			throw new NoneFoundException("The database for drops is currently empty.");
 		} else {
-			return mobDropRepository.findAll();
+			return allMobDrops;
 		}
 	}
 	
+	public List<MobDrops> findAllFromMob(String mobName) {
+		var mobDropsFromGivenMob = mobDropRepository.findAllByMobName(mobName);
+		
+		long count = calculationService.getCount(mobDropsFromGivenMob);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database for drops is currently empty.");
+		} else {
+			return mobDropsFromGivenMob;
+		}
+	}
 	
+	public List<MobDrops> findAllMobDropEquipment(String equipment) {
+		var equipmentDropsFromMob = mobDropRepository.findAllByEquipmentName(equipment);
+		
+		long count = calculationService.getCount(equipmentDropsFromMob);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database for drops is currently empty.");
+		} else {
+			return equipmentDropsFromMob;
+		}
+	}
+	
+	//Boss REST endpoints
 	public List<BossDrops> findAllBossDrops() {
 		var allBossDrops = bossDropRepository.findAll();
 		
@@ -45,7 +69,36 @@ public class DropService {
 		if (count <= 0) {
 			throw new NoneFoundException("The database for drops is currently empty.");
 		} else {
-			return bossDropRepository.findAll();
+			return allBossDrops;
 		}
 	}
+	
+	public List<BossDrops> findAllFromBoss(String bossName) {
+		var bossDropsFromGivenMob = bossDropRepository.findAllByBossName(bossName);
+		
+		long count = calculationService.getCount(bossDropsFromGivenMob);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database for drops is currently empty.");
+		} else {
+			return bossDropsFromGivenMob;
+		}
+	}
+	
+	public List<BossDrops> findAllBossDropEquipment(String equipment) {
+		var equipmentDropsFromBoss = bossDropRepository.findAllByEquipmentName(equipment);
+		
+		long count = calculationService.getCount(equipmentDropsFromBoss);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("The database for drops is currently empty.");
+		} else {
+			return equipmentDropsFromBoss;
+		}
+	}
+	
+	
+	//Web endpoints
+	
+	
 }
