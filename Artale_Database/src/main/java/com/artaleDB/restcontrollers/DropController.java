@@ -3,6 +3,7 @@ package com.artaleDB.restcontrollers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,15 @@ public class DropController {
 		return dropService.findAllMobDrops();
 	}
 	
+	@GetMapping("/mobs/{mobName:[a-zA-Z &.]*}")
+	public List<MobDrops> getAllFromMobName(@PathVariable String mobName) {
+		return dropService.findAllFromMob(mobName);
+	}
+	
+	@GetMapping("/mobs/{equipmentName:[a-zA-Z &.]*}")
+	public List<MobDrops> getAllMobWhoDropEquipment(@PathVariable String equipmentName) {
+		return dropService.findAllMobDropEquipment(equipmentName);
+	}
 	
 	//Boss Drops
 	
@@ -35,5 +45,13 @@ public class DropController {
 		return dropService.findAllBossDrops();
 	}
 	
+	@GetMapping("/boss/{bossName:[a-zA-Z &.]*}")
+	public List<BossDrops> getAllFromBossName(@PathVariable String bossName) {
+		return dropService.findAllFromBoss(bossName);
+	}
 	
+	@GetMapping("/boss/{equipmentName:[a-zA-Z &.]*}")
+	public List<BossDrops> getAllBossWhoDropEquipment(@PathVariable String equipmentName) {
+		return dropService.findAllBossDropEquipment(equipmentName);
+	}
 }
