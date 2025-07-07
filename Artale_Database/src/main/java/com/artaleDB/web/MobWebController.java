@@ -22,7 +22,7 @@ public class MobWebController {
 	
 	@GetMapping
 	public String mobHome(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
-							@RequestParam (required = false) String equipment, @RequestParam (required = false) String drop) {
+							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -35,10 +35,13 @@ public class MobWebController {
 			return "redirect:/web/equipment";
 		}
 		
-		if (drop != null) {
-			return "redirect:/web/drop";
+		if (mobdrop != null) {
+			return "redirect:/web/drop/mob";
 		}
 		
+		if (bossdrop != null) {
+			return "redirect:/web/drop/boss";
+		}
 		
 		var mobsAll = mobService.findAllWeb();
 		

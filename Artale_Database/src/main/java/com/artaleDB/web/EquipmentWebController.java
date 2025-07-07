@@ -21,7 +21,7 @@ public class EquipmentWebController {
 	
 	@GetMapping
 	public String equipment(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String mob,
-							@RequestParam (required = false) String boss, @RequestParam (required = false) String drop) {
+							@RequestParam (required = false) String boss, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
 		
 		if (home != null) {
 			return "redirect:/home";
@@ -35,8 +35,12 @@ public class EquipmentWebController {
 			return "redirect:/web/boss";
 		}
 		
-		if (drop != null) {
-			return "redirect:/web/drop";
+		if (mobdrop != null) {
+			return "redirect:/web/drop/mob";
+		}
+		
+		if (bossdrop != null) {
+			return "redirect:/web/drop/boss";
 		}
 		
 		var allEquipment = equipmentService.findAllWeb();
