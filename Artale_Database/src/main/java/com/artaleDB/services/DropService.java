@@ -103,11 +103,24 @@ public class DropService {
 		return mobDropRepository.findAll();
 	}
 	
+	public List<MobDrops> findAllEquipmentFromMobName(String mobName) {
+		return mobDropRepository.findAllByMobName(mobName);
+	}
+	
+	public List<MobDrops> findAllMobsDropEquipmentName(String equipmentName) {
+		return mobDropRepository.findAllByEquipmentName(equipmentName);
+	}
 	
 	public List<BossDrops> findAllBossDropsWeb() {
 		return bossDropRepository.findAll();
 	}
 	
+	public List<BossDrops> findAllEquipmentFromBossName(String bossName) {
+		return bossDropRepository.findAllByBossName(bossName);
+	}
 	
+	public List<BossDrops> findAllBossDropEquipmentName(String equipmentName) {
+		return bossDropRepository.findAllByEquipmentName(equipmentName);
+	}
 	
 }
