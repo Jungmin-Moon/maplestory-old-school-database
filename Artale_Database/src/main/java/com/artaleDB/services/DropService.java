@@ -36,7 +36,7 @@ public class DropService {
 		}
 	}
 	
-	public List<MobDrops> findAllFromMob(String mobName) {
+	public List<MobDrops> findAllFromGivenMob(String mobName) {
 		var mobDropsFromGivenMob = mobDropRepository.findAllByMobName(mobName);
 		
 		long count = calculationService.getCount(mobDropsFromGivenMob);
@@ -48,7 +48,7 @@ public class DropService {
 		}
 	}
 	
-	public List<MobDrops> findAllMobDropEquipment(String equipment) {
+	public List<MobDrops> findAllMobThatDropGivenEquipment(String equipment) {
 		var equipmentDropsFromMob = mobDropRepository.findAllByEquipmentName(equipment);
 		
 		long count = calculationService.getCount(equipmentDropsFromMob);
@@ -73,7 +73,7 @@ public class DropService {
 		}
 	}
 	
-	public List<BossDrops> findAllFromBoss(String bossName) {
+	public List<BossDrops> findAllFromGivenBoss(String bossName) {
 		var bossDropsFromGivenMob = bossDropRepository.findAllByBossName(bossName);
 		
 		long count = calculationService.getCount(bossDropsFromGivenMob);
@@ -85,7 +85,7 @@ public class DropService {
 		}
 	}
 	
-	public List<BossDrops> findAllBossDropEquipment(String equipment) {
+	public List<BossDrops> findAllBossThatDropGivenEquipment(String equipment) {
 		var equipmentDropsFromBoss = bossDropRepository.findAllByEquipmentName(equipment);
 		
 		long count = calculationService.getCount(equipmentDropsFromBoss);

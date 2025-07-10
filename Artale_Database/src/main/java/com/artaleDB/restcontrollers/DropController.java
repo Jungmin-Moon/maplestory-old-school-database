@@ -30,12 +30,12 @@ public class DropController {
 	
 	@GetMapping("/mobs/{mobName:[a-zA-Z &.]*}")
 	public List<MobDrops> getAllFromMobName(@PathVariable String mobName) {
-		return dropService.findAllFromMob(mobName);
+		return dropService.findAllFromGivenMob(mobName);
 	}
 	
 	@GetMapping("/mobs/{equipmentName:[a-zA-Z &.]*}")
 	public List<MobDrops> getAllMobWhoDropEquipment(@PathVariable String equipmentName) {
-		return dropService.findAllMobDropEquipment(equipmentName);
+		return dropService.findAllMobThatDropGivenEquipment(equipmentName);
 	}
 	
 	//Boss Drops
@@ -47,11 +47,11 @@ public class DropController {
 	
 	@GetMapping("/boss/{bossName:[a-zA-Z &.]*}")
 	public List<BossDrops> getAllFromBossName(@PathVariable String bossName) {
-		return dropService.findAllFromBoss(bossName);
+		return dropService.findAllFromGivenBoss(bossName);
 	}
 	
 	@GetMapping("/boss/{equipmentName:[a-zA-Z &.]*}")
 	public List<BossDrops> getAllBossWhoDropEquipment(@PathVariable String equipmentName) {
-		return dropService.findAllBossDropEquipment(equipmentName);
+		return dropService.findAllBossThatDropGivenEquipment(equipmentName);
 	}
 }
