@@ -1,5 +1,9 @@
 package com.artaleDB.dto;
 
-public record UserSearchQueryDropsMob() {
+public record UserSearchQueryDropsMob(
+		String mobName,
+		String equipmentName
+		
+		) 
 
-}
+{}
