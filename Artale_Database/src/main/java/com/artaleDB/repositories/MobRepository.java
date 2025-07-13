@@ -62,7 +62,9 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	 */
 	Iterable<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
 	
-	
+	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:mobName% AND m.mobLevel >= :mobLevel AND m.mobEXP >= :mobEXP AND m.mobLocation "
+			+ "LIKE %:mobLocationOne% AND m.mobLocationTwo LIKE %:mobLocationTwo%")
+	List<Mob> findUsingUserQuery(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo);
 	
 	//Non exposed queries 
 	Iterable<Mob> findAllByOrderByMobLevelAsc();

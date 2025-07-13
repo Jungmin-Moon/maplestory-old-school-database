@@ -9,54 +9,54 @@ import jakarta.persistence.Table;
 public class MobDrops {
 	
 	@Id
-	private long mob_drop_id;
+	private long mobDropId;
 	
-	private long mob_id;
+	private long mobId;
 	
-	private long equipment_id;
+	private long equipmentId;
 	
-	private String mob_name;
+	private String mobName;
 	
-	private String equipment_name;
+	private String equipmentName;
 
 	public long getMob_drop_id() {
-		return mob_drop_id;
+		return mobDropId;
 	}
 
 	public void setMob_drop_id(long mob_drop_id) {
-		this.mob_drop_id = mob_drop_id;
+		this.mobDropId = mob_drop_id;
 	}
 
 	public long getMob_id() {
-		return mob_id;
+		return mobId;
 	}
 
 	public void setMob_id(long mob_id) {
-		this.mob_id = mob_id;
+		this.mobId = mob_id;
 	}
 
 	public long getEquipment_id() {
-		return equipment_id;
+		return equipmentId;
 	}
 
 	public void setEquipment_id(long equipment_id) {
-		this.equipment_id = equipment_id;
+		this.equipmentId = equipment_id;
 	}
 	
 	public String getMob_name() {
-		return mob_name;
+		return mobName;
 	}
 
 	public void setMob_name(String mob_name) {
-		this.mob_name = mob_name;
+		this.mobName = mob_name;
 	}
 
 	public String getEquipment_name() {
-		return equipment_name;
+		return equipmentName;
 	}
 
 	public void setEquipment_name(String equipment_name) {
-		this.equipment_name = equipment_name;
+		this.equipmentName = equipment_name;
 	}
 	
 	

@@ -9,54 +9,54 @@ import jakarta.persistence.Table;
 public class BossDrops {
 
 	@Id
-	private long boss_drop_id;
+	private long bossDropId;
 	
-	private long boss_id;
+	private long bossId;
 	
-	private long equipment_id;
+	private long equipmentId;
 	
-	private String boss_name;
+	private String bossName;
 	
-	private String equipment_name;
+	private String equipmentName;
 
 	public long getBoss_drop_id() {
-		return boss_drop_id;
+		return bossDropId;
 	}
 
 	public void setBoss_drop_id(long boss_drop_id) {
-		this.boss_drop_id = boss_drop_id;
+		this.bossDropId = boss_drop_id;
 	}
 
 	public long getBoss_id() {
-		return boss_id;
+		return bossId;
 	}
 
 	public void setBoss_id(long boss_id) {
-		this.boss_id = boss_id;
+		this.bossId = boss_id;
 	}
 
 	public long getEquipment_id() {
-		return equipment_id;
+		return equipmentId;
 	}
 
 	public void setEquipment_id(long equipment_id) {
-		this.equipment_id = equipment_id;
+		this.equipmentId = equipment_id;
 	}
 
 	public String getBoss_name() {
-		return boss_name;
+		return bossName;
 	}
 
 	public void setBoss_name(String boss_name) {
-		this.boss_name = boss_name;
+		this.bossName = boss_name;
 	}
 
 	public String getEquipment_name() {
-		return equipment_name;
+		return equipmentName;
 	}
 
 	public void setEquipment_name(String equipment_name) {
-		this.equipment_name = equipment_name;
+		this.equipmentName = equipment_name;
 	}
 	
 	

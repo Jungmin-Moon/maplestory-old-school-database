@@ -193,4 +193,8 @@ public class MobService {
 	public List<Mob> findAllWeb() {
 		return mobRepo.findAll();	
 	}
+	
+	public List<Mob> findByUserQueryMobWeb(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo) {
+		return mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
+	}
 }
