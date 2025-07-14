@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.artaleDB.dto.UserSearchQueryMob;
 import com.artaleDB.services.MobService;
 
 @Controller
@@ -50,10 +51,10 @@ public class MobWebController {
 		return "mobs.html";
 	}
 	
-	@PostMapping("/search")
+	@PostMapping
 	public String afterSearch(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 			@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, 
-			@RequestParam (required = false) String bossdrop) {
+			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch) {
 		
 		if (home != null) {
 			return "redirect:/home";
@@ -75,10 +76,10 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
+		var userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
+															uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo());
 		
-		//var userMobSearch = mobService.findByUserQueryMobWeb(userSearchMob.mobName(), userSearchMob.mobLevel(), userSearchMob.mobEXP(), userSearchMob.mobLocationOne(), userSearchMob.mobLocationTwo());
-		
-		//model.addAttribute("allMobs", userMobSearch);
+		model.addAttribute("allMobs", userMobSearch);
 		
 		return "mobs.html";
 	}
