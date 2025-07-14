@@ -16,8 +16,6 @@ public class UserSearchQueryMob {
 		this.mobLocationTwo = mobLocationTwo;
 	}
 	
-	
-	
 	public String getMobName() {
 		return mobName;
 	}
