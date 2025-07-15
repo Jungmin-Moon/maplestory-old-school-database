@@ -52,7 +52,7 @@ public class MobWebController {
 	}
 	
 	@PostMapping
-	public String afterSearch(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
+	public String afterSearchMob(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 			@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, 
 			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch) {
 		
