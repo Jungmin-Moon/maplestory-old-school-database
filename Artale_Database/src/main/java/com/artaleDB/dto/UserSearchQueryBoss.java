@@ -4,18 +4,16 @@ public class UserSearchQueryBoss {
 	
 	String bossName;
 	int bossLevel;
-	int bossHP;
 	int bossMinRespawn;
 	int bossMaxRespawn;
 	String bossLocationOne;
 	String bossLocationTwo;
 	
-	public UserSearchQueryBoss(String bossName, int bossLevel, int bossHP, int bossMinRespawn, int bossMaxRespawn,
+	public UserSearchQueryBoss(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn,
 			String bossLocationOne, String bossLocationTwo) {
 		super();
 		this.bossName = bossName;
 		this.bossLevel = bossLevel;
-		this.bossHP = bossHP;
 		this.bossMinRespawn = bossMinRespawn;
 		this.bossMaxRespawn = bossMaxRespawn;
 		this.bossLocationOne = bossLocationOne;
@@ -36,14 +34,6 @@ public class UserSearchQueryBoss {
 
 	public void setBossLevel(int bossLevel) {
 		this.bossLevel = bossLevel;
-	}
-
-	public int getBossHP() {
-		return bossHP;
-	}
-
-	public void setBossHP(int bossHP) {
-		this.bossHP = bossHP;
 	}
 
 	public int getBossMinRespawn() {
