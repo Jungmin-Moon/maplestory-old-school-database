@@ -22,6 +22,30 @@
 		<br />
 		<br />
 		
+		<form action = "/web/equipment" method = "POST">
+			Equipment Name: <input type = "text" name = "equipmentName" />
+			Equipment Type: <select>
+								<option></option>
+							</select>
+				
+			Weapon Type:
+			
+			Armor Type:
+			
+			AccessoryType: 
+			
+			Minimum Level: <input type = "number" name = "minimumLevel" />
+			Warrior: <input type = "checkbox" name = "warrior" />
+			Magician: <input type = "checkbox" name = "magician" />
+			Thief: <input type = "checkbox" name = "thief" />
+			Archer: <input type = "checkbox" name = "archer" />
+			Pirate: <input type = "checkbox" name = "pirate" />
+			Common: <input type = "checkbox" name = "common" />
+		</form>
+		
+		
+		<br />
+		<br />
 		<div th:if = "${#lists.isEmpty(allEquipment)}">There is currently no equipment in the database.</div>
 		
 		<div th:if = "${#lists.size(allEquipment) > 0}">
