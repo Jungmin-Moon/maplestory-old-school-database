@@ -81,14 +81,16 @@
 			Archer: <input type = "checkbox" name = "archer" />
 			Pirate: <input type = "checkbox" name = "pirate" />
 			Common: <input type = "checkbox" name = "common" />
+			<button type = "submit">Submit</button>
 		</form>
 		
 		
 		<br />
 		<br />
-		<div th:if = "${#lists.isEmpty(allEquipment)}">There is currently no equipment in the database.</div>
+		<!--<div th:if = "${#lists.isEmpty(allEquipment)}">There is currently no equipment in the database.</div>-->
 		
-		<div th:if = "${#lists.size(allEquipment) > 0}">
+		<!--<div th:if = "${#lists.size(allEquipment) > 0}">-->
+		<div>
 			<table>
 				<thead>
 					<tr>
