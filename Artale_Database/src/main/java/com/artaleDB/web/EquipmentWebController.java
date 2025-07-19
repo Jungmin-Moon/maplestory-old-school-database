@@ -76,7 +76,7 @@ public class EquipmentWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
-		System.out.println(uSearchEquipment.isArcher());
+		System.out.println(uSearchEquipment.toString());
 		
 		return "equipment";
 	}

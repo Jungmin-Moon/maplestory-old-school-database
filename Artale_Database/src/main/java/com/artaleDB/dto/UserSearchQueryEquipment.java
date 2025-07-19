@@ -8,17 +8,17 @@ public class UserSearchQueryEquipment {
 	String armorType;
 	String accessoryType;
 	int minimumLevel;
-	boolean warrior;
-	boolean magician;
-	boolean thief;
-	boolean archer;
-	boolean pirate;
-	boolean common;
+	int warrior;
+	int magician;
+	int thief;
+	int archer;
+	int pirate;
+	int common;
 	
 	
 	public UserSearchQueryEquipment(String equipmentName, String equipmentType, String weaponType, String armorType,
-			String accessoryType, int minimumLevel, boolean warrior, boolean magician, boolean thief, boolean archer,
-			boolean pirate, boolean common) {
+			String accessoryType, int minimumLevel, int warrior, int magician, int thief, int archer,
+			int pirate, int common) {
 		super();
 		this.equipmentName = equipmentName;
 		this.equipmentType = equipmentType;
@@ -95,65 +95,78 @@ public class UserSearchQueryEquipment {
 	}
 
 
-	public boolean isWarrior() {
+	public int isWarrior() {
 		return warrior;
 	}
 
 
-	public void setWarrior(boolean warrior) {
+	public void setWarrior(int warrior) {
 		this.warrior = warrior;
 	}
 
 
-	public boolean isMagician() {
+	public int isMagician() {
 		return magician;
 	}
 
 
-	public void setMagician(boolean magician) {
+	public void setMagician(int magician) {
 		this.magician = magician;
 	}
 
 
-	public boolean isThief() {
+	public int isThief() {
 		return thief;
 	}
 
 
-	public void setThief(boolean thief) {
+	public void setThief(int thief) {
 		this.thief = thief;
 	}
 
 
-	public boolean isArcher() {
+	public int isArcher() {
 		return archer;
 	}
 
 
-	public void setArcher(boolean archer) {
+	public void setArcher(int archer) {
 		this.archer = archer;
 	}
 
 
-	public boolean isPirate() {
+	public int isPirate() {
 		return pirate;
 	}
 
 
-	public void setPirate(boolean pirate) {
+	public void setPirate(int pirate) {
 		this.pirate = pirate;
 	}
 
 
-	public boolean isCommon() {
+	public int isCommon() {
 		return common;
 	}
 
 
-	public void setCommon(boolean common) {
+	public void setCommon(int common) {
 		this.common = common;
 	}
 	
-	
+	public String toString() {
+		return "Equipment Name: " + equipmentName + "\n" + 
+				"Equipment Type: " + equipmentType + "\n" +
+				"Weapon Type: " + weaponType + "\n" + 
+				"Armor Type: " + armorType + "\n" + 
+				"Accessory Type: " + accessoryType + "\n" +
+				"Minimum Level: " + minimumLevel + "\n" + 
+				"Warrior: " + warrior + "\n" +
+				"Magician: " + magician + "\n" +
+				"Thief: " + thief + "\n" +
+				"Archer: " + archer + "\n" + 
+				"Pirate: " + pirate + "\n" + 
+				"Common: " + common + "\n";
+	}
 	
 }
