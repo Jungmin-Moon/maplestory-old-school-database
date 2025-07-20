@@ -74,6 +74,8 @@ public class BossWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
+		//System.out.println(uBossSearch.getBossName() + " " + uBossSearch.getBossLocation());
+		
 		var userBossSearch = bossService.findByUserQueryBossWeb(uBossSearch.getBossName(), uBossSearch.getBossLevel(), uBossSearch.getBossMinRespawn(), 
 																uBossSearch.getBossMaxRespawn(), uBossSearch.getBossLocation());
 		

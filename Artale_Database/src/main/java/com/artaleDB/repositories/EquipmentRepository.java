@@ -58,7 +58,7 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	
 	//15 web queries based on what inputs the user could pass in to the html form 
-	
+	/*
 	List<Equipment> findAllEquipmentType();
 	
 	List<Equipment> findAllEquipmentTypeOrWeaponType();
@@ -87,7 +87,7 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	List<Equipment> findAllByAllOptions();
 	
-	List<Equipment> findAllByNotDropDownOptions();
+	List<Equipment> findAllByNotDropDownOptions(); */
 	
 	
 	//Non exposed end points
