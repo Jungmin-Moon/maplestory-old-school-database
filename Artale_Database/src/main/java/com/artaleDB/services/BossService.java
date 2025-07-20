@@ -155,4 +155,8 @@ public class BossService {
 	public List<Boss> findAllBossWeb() {
 		return bossRepo.findAll();
 	}
+	
+	public List<Boss> findByUserQueryBossWeb(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn, String bossLocation) {
+		return bossRepo.findByUsingUserQuery(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
+	}
 }	
