@@ -282,4 +282,6 @@ public class EquipmentService {
 	public List<Equipment> findAllWeb() {
 		return equipmentRepository.findAll();
 	}
+	
+	
 }

@@ -57,6 +57,38 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	Iterable<Equipment> findAllByCommon(int common);
 	
 	
+	//15 web queries based on what inputs the user could pass in to the html form 
+	
+	List<Equipment> findAllEquipmentType();
+	
+	List<Equipment> findAllEquipmentTypeOrWeaponType();
+	
+	List<Equipment> findAllEquipmentTypeOrArmorType();
+	
+	List<Equipment> findAllEquipmentTypeOrAccessoryType();
+	
+	List<Equipment> findAllEquipmentTypeOrWeaponTypeOrAmorType();
+	
+	List<Equipment> findAllEquipmentTypeOrWeaponTypeOrAccessoryType();
+	
+	List<Equipment> findAllWeaponType();
+	
+	List<Equipment> findAllWeaponTypeOrArmorType();
+	
+	List<Equipment> findAllWeaponTypeOrAccessoryType();
+	
+	List<Equipment> findAllWeaponTypeOrArmorTypeOrAccessoryType();
+	
+	List<Equipment> findAllArmorType();
+	
+	List<Equipment> findAllArmorTypeOrAccessoryType();
+	
+	List<Equipment> findAllAccessoryType();
+	
+	List<Equipment> findAllByAllOptions();
+	
+	List<Equipment> findAllByNotDropDownOptions();
+	
 	
 	//Non exposed end points
 	Iterable<Equipment> findAllByWeaponAttGreaterThanEqual(int weaponAtt);

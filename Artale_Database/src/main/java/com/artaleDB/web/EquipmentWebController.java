@@ -76,7 +76,11 @@ public class EquipmentWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
-		System.out.println(uSearchEquipment.toString());
+		//System.out.println(uSearchEquipment.toString());
+		
+		
+		
+		//model.addAttribute("allEquipment", );
 		
 		return "equipment";
 	}
