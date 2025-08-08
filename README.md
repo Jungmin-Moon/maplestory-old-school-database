@@ -36,7 +36,7 @@ Updates to the mob list and drop tables that occur will also be added to the dat
 
 # Endpoints Mobs
 | URL | Return Type | Description |
-| :------: | :------: | :------: |
+| :----------------------: | :------: | :------: |
 | /mobs | Iterable<Mob> | Returns a collection of all mobs in the database|
 | /mobs/{name:[a-zA-Z &.]*} | Optional<Mob> | Returns a mob, if it exists by the exact name |
 | /mobs/list/{name:[a-zA-Z &.]*} | Iterable<Mob> | Returns a collection of mobs, that contain the substring |
