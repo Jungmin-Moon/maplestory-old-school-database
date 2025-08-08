@@ -47,4 +47,4 @@ Updates to the mob list and drop tables that occur will also be added to the dat
 | /mobs/min/meso/{meso} | Iterable<Mob> | Returns a collection of mobs whose minimum meso drop is greater than or equal to the given meso value |
 | /mobs/max/meso/{meso} | Iterable<Mob> | Returns a collection of mobs whose maximum meso drop is greater than or equal to the given meso value |
 
-
+# Endpoints Boss
