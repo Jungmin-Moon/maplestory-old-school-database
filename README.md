@@ -18,8 +18,8 @@ instead of having to refer to a google document or spreadsheet.
 | Location | Status |
 | :------: | :-----:|
 | Victoria Island | Complete |
-| Orbis | In Progress |
-| El Nath/Dead Mine | Not Started |
+| Orbis | Complete |
+| El Nath/Dead Mine | In Progress |
 | Ludibrium | Not Started |
 | Clocktower Bottom | Not Started |
 | Aqua Road | Not Started |
@@ -33,4 +33,18 @@ Let users see the list of equipment in the game and their various stats. <br />
 Let users find various information about the mobs in the game so they can better plan where to train at or farm. <br />
 Let users see what equipment are implemented into the game and which mob(s) drop what equipment. <br />
 Updates to the mob list and drop tables that occur will also be added to the database. <br />
+
+# Endpoints Mobs
+| URL | Return Type | Description |
+| :------: | :------: | :------: |
+| /mobs | Iterable<Mob> | Returns a collection of all mobs in the database|
+| /mobs/{name:[a-zA-Z &.]*} | Optional<Mob> | Returns a mob, if it exists by the exact name |
+| /mobs/list/{name:[a-zA-Z &.]*} | Iterable<Mob> | Returns a collection of mobs, that contain the substring |
+| /mobs/location/{location:[a-zA-Z ]*} | Iterable<Mob> | Returns a collection of mobs that are in that location. The continents like Victoria Island etc |
+| /mobs/level/{level} | Iterable<Mob> | Returns a collection of mobs whose level is equal to the given level |
+| /mobs/exp/{exp} | Iterable<Mob> | Returns a collection of mobs who give experience points equal to the given experience value |
+| /mobs/min/exp/{exp} | Iterable<Mob> | Returns a collection of mobs who give experience points greater than or equal to the given experience value |
+| /mobs/min/meso/{meso} | Iterable<Mob> | Returns a collection of mobs whose minimum meso drop is greater than or equal to the given meso value |
+| /mobs/max/meso/{meso} | Iterable<Mob> | Returns a collection of mobs whose maximum meso drop is greater than or equal to the given meso value |
+
 
