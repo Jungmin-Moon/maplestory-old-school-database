@@ -1,8 +1,13 @@
 package com.artaleDB.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.artaleDB.entities.Mob;
@@ -190,11 +195,31 @@ public class MobService {
 	}
 	
 	
-	public List<Mob> findAllWeb() {
-		return mobRepo.findAll();	
+	public Page<Mob> findAllWeb(Pageable pageable) {
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
+		
+		List<Mob> allMobsPage;
+		List<Mob> allMobs = mobRepo.findAllByOrderByMobLevelAsc();
+		
+		if (allMobs.size() < start) {
+			allMobsPage = Collections.emptyList();
+		} else {
+			int toIndex = Math.min(start + pageSize, allMobs.size());
+			allMobsPage = allMobs.subList(start, toIndex);
+		}
+		
+		Page<Mob> mobPage = new PageImpl<Mob>(allMobsPage, PageRequest.of(currentPage, pageSize), allMobs.size());
+		
+		return mobPage;
+		
+		//return mobRepo.findAll();	
 	}
 	
 	public List<Mob> findByUserQueryMobWeb(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo) {
+		
+		
 		return mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
 	}
 }

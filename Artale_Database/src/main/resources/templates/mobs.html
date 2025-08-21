@@ -48,7 +48,7 @@
 				</thead>
 				
 				<tbody>
-					<tr th:each = "mobs: ${allMobs}">
+					<tr th:each = "mobs: ${mobPage.content}">
 						<td th:text = "${mobs.mobName}"></td>
 						<td th:text = "${mobs.mobLevel}"></td>
 						<td th:text = "${mobs.mobEXP}"></td>
@@ -57,6 +57,12 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<div th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
+				<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber})}"
+					th:text = ${pageNumber}
+					th:class = "${pageNumber == mobPage.number + 1} ? active"></a>
+			</div>
 		</div>
 	</body>
 	
