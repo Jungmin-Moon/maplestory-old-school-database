@@ -48,7 +48,12 @@ public class HomeController {
 		
 		var databaseUpdates = databaseUpdatesService.getlast15Updates(LocalDateTime.now());
 		
-		model.addAttribute("databaseUpdates", databaseUpdates);
+		var dateTimes = databaseUpdatesService.convertTime(databaseUpdates);
+		
+		var convertedUpdates = databaseUpdatesService.makeReadable(databaseUpdates, dateTimes);
+		
+		model.addAttribute("databaseUpdates", convertedUpdates);
+		//model.addAttribute("timeConverted", dateTimes);
 		
 		return "home.html";
 	}

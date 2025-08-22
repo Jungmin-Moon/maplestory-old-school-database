@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 public class AdminUpdates {
 	String updateText;
-	LocalDateTime localDateTime;
+	String localDateTime;
 	
 	
-	public AdminUpdates(String updateText, LocalDateTime localDateTime) {
+	public AdminUpdates(String updateText, String localDateTime) {
 		super();
 		this.updateText = updateText;
 		this.localDateTime = localDateTime;
@@ -24,12 +24,12 @@ public class AdminUpdates {
 	}
 
 
-	public LocalDateTime getLocalDateTime() {
+	public String getLocalDateTime() {
 		return localDateTime;
 	}
 
 
-	public void setLocalDateTime(LocalDateTime localDateTime) {
+	public void setLocalDateTime(String localDateTime) {
 		this.localDateTime = localDateTime;
 	}
 	

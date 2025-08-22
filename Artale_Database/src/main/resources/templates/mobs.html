@@ -58,11 +58,12 @@
 				</tbody>
 			</table>
 			
-			<div th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
+			<span style = "white-space: nowrap;" th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
 				<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber})}"
 					th:text = ${pageNumber}
 					th:class = "${pageNumber == mobPage.number + 1} ? active"></a>
-			</div>
+					&nbsp;&nbsp;
+			</span>
 		</div>
 	</body>
 	
