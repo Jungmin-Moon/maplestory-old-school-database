@@ -57,13 +57,33 @@
 					</tr>
 				</tbody>
 			</table>
-			
-			<span style = "white-space: nowrap;" th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
-				<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber})}"
-					th:text = ${pageNumber}
-					th:class = "${pageNumber == mobPage.number + 1} ? active"></a>
+			<div>
+				<span>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = 1)}">First</a>
 					&nbsp;&nbsp;
-			</span>
+				</span> 
+				
+				<span th:if = "${currentPage != 1}">
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} - 1)}">Previous</a>
+					&nbsp;&nbsp;
+				</span>
+				
+				<span th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber})}"
+						th:text = ${pageNumber}
+						th:class = "${pageNumber == mobPage.number + 1} ? active"></a>
+						&nbsp;&nbsp;
+				</span>
+				
+				<span th:if = "${currentPage != mobPage.totalPages}">
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} + 1)}">Next</a>
+					&nbsp;&nbsp;
+				</span>
+				
+				<span>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${mobPage.totalPages})}">Last</a>
+				</span>
+			</div>
 		</div>
 	</body>
 	

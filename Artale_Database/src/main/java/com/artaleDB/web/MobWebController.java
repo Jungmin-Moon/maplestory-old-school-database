@@ -60,7 +60,7 @@ public class MobWebController {
 		Page<Mob> mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
 		
 		model.addAttribute("mobPage", mobPage);
-		
+		model.addAttribute("currentPage", currentPage);		
 		int totalPages = mobPage.getTotalPages();
 		
 		if (totalPages > 0) {
