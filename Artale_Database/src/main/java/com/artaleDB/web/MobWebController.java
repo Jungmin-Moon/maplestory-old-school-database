@@ -53,27 +53,27 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
+		
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(20);
-	
-		//var mobsAll = mobService.findAllWeb();
-		Page<Mob> mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
-		
+
+		var mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
+
 		model.addAttribute("mobPage", mobPage);
 		model.addAttribute("currentPage", currentPage);		
 		int totalPages = mobPage.getTotalPages();
 		
 		if (totalPages > 0) {
 			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-												.boxed()
-												.collect(Collectors.toList());
+											.boxed()
+											.collect(Collectors.toList());
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
-		
 		return "mobs.html";
 	}
 	
-	@PostMapping
+
+	@PostMapping()
 	public String afterSearchMob(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 			@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, 
 			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch, 
@@ -104,7 +104,7 @@ public class MobWebController {
 		
 		Page<Mob> userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
 															uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
-		System.out.println(userMobSearch.getTotalPages());
+		
 		model.addAttribute("mobPage", userMobSearch);
 		model.addAttribute("currentPage", currentPage);
 		int totalPages = userMobSearch.getTotalPages();
@@ -117,5 +117,5 @@ public class MobWebController {
 		}
 		
 		return "mobs.html";
-	}
+	} 
 }

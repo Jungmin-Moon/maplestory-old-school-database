@@ -222,8 +222,15 @@ public class MobService {
 		int currentPage = pageable.getPageNumber();
 		int start = currentPage * pageSize;
 		
+		
 		List<Mob> mobQueryPage;
 		var mobQueryResult = mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
+		
+		System.out.println(mobQueryResult.size());
+		/*
+		for (int i = 0; i < 10; i++) {
+			System.out.println(mobQueryResult.get(i).getMobName());
+		} */
 		
 		if (mobQueryResult.size() < start) {
 			mobQueryPage = Collections.emptyList();
