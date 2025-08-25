@@ -201,7 +201,7 @@ public class MobService {
 		int start = currentPage * pageSize;
 		
 		List<Mob> allMobsPage;
-		List<Mob> allMobs = mobRepo.findAllByOrderByMobLevelAsc();
+		var allMobs = mobRepo.findAllByOrderByMobLevelAsc();
 		
 		if (allMobs.size() < start) {
 			allMobsPage = Collections.emptyList();
@@ -217,9 +217,23 @@ public class MobService {
 		//return mobRepo.findAll();	
 	}
 	
-	public List<Mob> findByUserQueryMobWeb(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo) {
+	public Page<Mob> findByUserQueryMobWeb(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo, Pageable pageable) {
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
 		
+		List<Mob> mobQueryPage;
+		var mobQueryResult = mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
 		
-		return mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
+		if (mobQueryResult.size() < start) {
+			mobQueryPage = Collections.emptyList();
+		} else {
+			int toIndex = Math.min(start + pageSize, mobQueryResult.size());
+			mobQueryPage = mobQueryResult.subList(start, toIndex);
+		}
+		
+		return new PageImpl<Mob>(mobQueryPage, PageRequest.of(currentPage, pageSize), mobQueryResult.size());
+		
+		//return mobResults;
 	}
 }

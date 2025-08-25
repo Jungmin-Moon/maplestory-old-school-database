@@ -36,7 +36,7 @@
 		
 		<br />
 		<br />
-		<div>
+		<div th:if = "${mobPage.totalPages > 0}">
 			<table>
 				<thead>
 					<tr>
@@ -58,7 +58,7 @@
 				</tbody>
 			</table>
 			<div>
-				<span>
+				<span th:if = "${mobPage.totalPages >= 1}">			
 					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = 1)}">First</a>
 					&nbsp;&nbsp;
 				</span> 

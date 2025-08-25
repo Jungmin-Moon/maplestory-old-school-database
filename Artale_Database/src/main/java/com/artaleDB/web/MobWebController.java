@@ -55,7 +55,7 @@ public class MobWebController {
 		
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(20);
-		
+	
 		//var mobsAll = mobService.findAllWeb();
 		Page<Mob> mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
 		
@@ -70,15 +70,14 @@ public class MobWebController {
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
 		
-		//model.addAttribute("allMobs", mobsAll);
-		
 		return "mobs.html";
 	}
 	
 	@PostMapping
 	public String afterSearchMob(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 			@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, 
-			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch) {
+			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch, 
+			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
 		
 		if (home != null) {
 			return "redirect:/home";
@@ -100,10 +99,22 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
-		var userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
-															uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo());
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(20);
 		
-		model.addAttribute("allMobs", userMobSearch);
+		Page<Mob> userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
+															uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
+		System.out.println(userMobSearch.getTotalPages());
+		model.addAttribute("mobPage", userMobSearch);
+		model.addAttribute("currentPage", currentPage);
+		int totalPages = userMobSearch.getTotalPages();
+		
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+													.boxed()
+													.collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
 		
 		return "mobs.html";
 	}
