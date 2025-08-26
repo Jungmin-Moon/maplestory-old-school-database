@@ -10,9 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.artaleDB.dto.UserSearchQueryMob;
 import com.artaleDB.entities.Mob;
@@ -32,7 +34,8 @@ public class MobWebController {
 	@GetMapping
 	public String mobHome(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop,
-							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
+							@RequestParam(required = false) UserSearchQueryMob uMobSearch) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -53,21 +56,43 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
+		//model.addAttribute("uMobSearch", new UserSearchQueryMob());
 		
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(20);
-
-		var mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
-
-		model.addAttribute("mobPage", mobPage);
-		model.addAttribute("currentPage", currentPage);		
-		int totalPages = mobPage.getTotalPages();
+		System.out.println("Search form is currently: " + uMobSearch);
 		
-		if (totalPages > 0) {
-			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-											.boxed()
-											.collect(Collectors.toList());
-			model.addAttribute("pageNumbers", pageNumbers);
+		if (uMobSearch == null) {
+			int currentPage = page.orElse(1);
+			int pageSize = size.orElse(20);
+
+			var mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
+
+			model.addAttribute("mobPage", mobPage);
+			model.addAttribute("currentPage", currentPage);		
+			int totalPages = mobPage.getTotalPages();
+		
+			if (totalPages > 0) {
+				List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+												.boxed()
+												.collect(Collectors.toList());
+				model.addAttribute("pageNumbers", pageNumbers);
+			}
+		} else {
+			int currentPage = page.orElse(1);
+			int pageSize = size.orElse(20);
+			
+			var userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
+																uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
+			//System.out.println(userMobSearch.getTotalElements());
+			model.addAttribute("mobPage", userMobSearch);
+			model.addAttribute("currentPage", currentPage);
+			int totalPages = userMobSearch.getTotalPages();
+			
+			if (totalPages > 0) {
+				List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+														.boxed()
+														.collect(Collectors.toList());
+				model.addAttribute("pageNumbers", pageNumbers);
+			}
 		}
 		return "mobs.html";
 	}

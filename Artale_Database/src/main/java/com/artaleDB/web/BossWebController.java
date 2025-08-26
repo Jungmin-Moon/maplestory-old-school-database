@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.artaleDB.dto.UserSearchQueryBoss;
 import com.artaleDB.services.BossService;
@@ -23,7 +24,9 @@ public class BossWebController {
 	
 	@GetMapping
 	public String bossHome(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String mob,
-							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
+							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop,
+							@RequestParam(required = false) String bossName, @RequestParam(required = false) Integer bossLevel, @RequestParam(required = false) Integer bossMinRespawn, 
+							@RequestParam(required = false) Integer bossMaxRespawn, @RequestParam(required = false) String bossLocation) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -44,9 +47,22 @@ public class BossWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
-		var allBoss = bossService.findAllBossWeb();
+		//UserSearchQueryBoss uSearch = new UserSearchQueryBoss(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
 		
-		model.addAttribute("allBoss", allBoss);
+		//System.out.println(bossLevel);
+		
+		if (bossName == null && bossLevel == null && bossMinRespawn == null && bossMaxRespawn == null && bossLocation == null) {
+			var allBoss = bossService.findAllBossWeb();
+			model.addAttribute("allBoss", allBoss);
+			//model.addAttribute("allBoss", allBoss);
+		} else {
+			UserSearchQueryBoss uSearch = new UserSearchQueryBoss(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
+			var userBossSearch = bossService.findByUserQueryBossWeb(uSearch.getBossName(), uSearch.getBossLevel(), uSearch.getBossMinRespawn(), 
+					uSearch.getBossMaxRespawn(), uSearch.getBossLocation());
+
+			model.addAttribute("allBoss", userBossSearch);
+		}
+		
 		
 		return "bosses.html";
 	}

@@ -7,6 +7,7 @@ public class UserSearchQueryMob {
 	String mobLocationOne;
 	String mobLocationTwo;
 	
+	/*
 	public UserSearchQueryMob(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo) {
 		super();
 		this.mobName = mobName;
@@ -14,7 +15,7 @@ public class UserSearchQueryMob {
 		this.mobEXP = mobEXP;
 		this.mobLocationOne = mobLocationOne;
 		this.mobLocationTwo = mobLocationTwo;
-	}
+	} */
 	
 	public String getMobName() {
 		return mobName;

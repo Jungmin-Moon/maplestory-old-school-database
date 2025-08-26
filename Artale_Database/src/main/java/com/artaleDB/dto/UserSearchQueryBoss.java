@@ -8,6 +8,10 @@ public class UserSearchQueryBoss {
 	int bossMaxRespawn;
 	String bossLocation;
 	
+	public UserSearchQueryBoss() {
+		
+	}
+	
 	public UserSearchQueryBoss(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn,
 			String bossLocation) {
 		super();
