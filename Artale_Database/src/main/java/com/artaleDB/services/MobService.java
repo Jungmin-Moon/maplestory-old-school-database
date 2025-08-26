@@ -226,12 +226,6 @@ public class MobService {
 		List<Mob> mobQueryPage;
 		var mobQueryResult = mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
 		
-		System.out.println(mobQueryResult.size());
-		/*
-		for (int i = 0; i < 10; i++) {
-			System.out.println(mobQueryResult.get(i).getMobName());
-		} */
-		
 		if (mobQueryResult.size() < start) {
 			mobQueryPage = Collections.emptyList();
 		} else {

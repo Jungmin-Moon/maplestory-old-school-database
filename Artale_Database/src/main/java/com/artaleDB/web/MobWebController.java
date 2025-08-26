@@ -5,19 +5,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.artaleDB.dto.UserSearchQueryMob;
-import com.artaleDB.entities.Mob;
 import com.artaleDB.services.MobService;
 
 @Controller
@@ -35,7 +31,9 @@ public class MobWebController {
 	public String mobHome(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
 							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop,
 							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
-							@RequestParam(required = false) UserSearchQueryMob uMobSearch) {
+							@RequestParam(required = false) String mobName, @RequestParam(required = false) Integer mobLevel, @RequestParam(required = false) Integer mobEXP,
+							@RequestParam(required = false) String mobLocationOne, @RequestParam(required = false) String mobLocationTwo,
+							@RequestParam("level") Optional<Integer> level) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -56,18 +54,19 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
-		//model.addAttribute("uMobSearch", new UserSearchQueryMob());
 		
-		System.out.println("Search form is currently: " + uMobSearch);
-		
-		if (uMobSearch == null) {
+		if (mobName == null && mobLevel == null && mobEXP == null && mobLocationOne == null && mobLocationTwo == null) {
 			int currentPage = page.orElse(1);
 			int pageSize = size.orElse(20);
 
 			var mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
-
+			
+			UserSearchQueryMob uMobSearch = new UserSearchQueryMob("", 0, 0, "", "");
+			
 			model.addAttribute("mobPage", mobPage);
-			model.addAttribute("currentPage", currentPage);		
+			model.addAttribute("currentPage", currentPage);
+			//model.addAttribute("filter", uMobSearch);
+			
 			int totalPages = mobPage.getTotalPages();
 		
 			if (totalPages > 0) {
@@ -76,15 +75,20 @@ public class MobWebController {
 												.collect(Collectors.toList());
 				model.addAttribute("pageNumbers", pageNumbers);
 			}
+			
 		} else {
+			
+			UserSearchQueryMob uMobSearch = new UserSearchQueryMob(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
 			int currentPage = page.orElse(1);
 			int pageSize = size.orElse(20);
 			
 			var userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
 																uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
-			//System.out.println(userMobSearch.getTotalElements());
+
+			
 			model.addAttribute("mobPage", userMobSearch);
 			model.addAttribute("currentPage", currentPage);
+			//model.addAttribute("filter", userMobSearch);
 			int totalPages = userMobSearch.getTotalPages();
 			
 			if (totalPages > 0) {
@@ -97,50 +101,4 @@ public class MobWebController {
 		return "mobs.html";
 	}
 	
-
-	@PostMapping()
-	public String afterSearchMob(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String boss, 
-			@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, 
-			@RequestParam (required = false) String bossdrop, UserSearchQueryMob uMobSearch, 
-			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-		
-		if (home != null) {
-			return "redirect:/home";
-		}
-		
-		if (boss != null) {
-			return "redirect:/web/boss";
-		}
-		
-		if (equipment != null) {
-			return "redirect:/web/equipment";
-		}
-		
-		if (mobdrop != null) {
-			return "redirect:/web/drop/mob";
-		}
-		
-		if (bossdrop != null) {
-			return "redirect:/web/drop/boss";
-		}
-		
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(20);
-		
-		Page<Mob> userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
-															uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
-		
-		model.addAttribute("mobPage", userMobSearch);
-		model.addAttribute("currentPage", currentPage);
-		int totalPages = userMobSearch.getTotalPages();
-		
-		if (totalPages > 0) {
-			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-													.boxed()
-													.collect(Collectors.toList());
-			model.addAttribute("pageNumbers", pageNumbers);
-		}
-		
-		return "mobs.html";
-	} 
 }
