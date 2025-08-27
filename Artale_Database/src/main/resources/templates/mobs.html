@@ -61,32 +61,36 @@
 			
 			<div>
 				<span th:if = "${mobPage.totalPages >= 1}">			
-					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = 1)}">First</a>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = 1, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
+									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}">First</a>
 					&nbsp;&nbsp;
 				</span> 
 				
 				<span th:if = "${currentPage != 1}">
-					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} - 1)}">Previous</a>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} - 1, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
+									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}">Previous</a>
 					&nbsp;&nbsp;
 				</span>
 				
 				<span th:if = "${mobPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
-					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber})}"
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${pageNumber}, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
+									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}"
 						th:text = ${pageNumber}></a>
 						&nbsp;&nbsp;
 				</span>
 				
 				<span th:if = "${currentPage != mobPage.totalPages}">
-					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} + 1)}">Next</a>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${currentPage} + 1, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
+									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}">Next</a>
 					&nbsp;&nbsp;
 				</span>
 				
 				<span>
-					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${mobPage.totalPages})}">Last</a>
+					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = ${mobPage.totalPages}, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
+									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}">Last</a>
 				</span>
 			</div>
 		</div>
-		<script type = "text/javascript" src = "/js/mobWeb.js"></script>
 	</body>
 	
 </html>

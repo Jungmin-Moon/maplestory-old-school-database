@@ -65,7 +65,7 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	//Web Query
 	List<Mob> findAllByOrderByMobLevelAsc();
 	
-	@Query("SELECT m FROM Mob m WHERE m.mobLevel >= :mobLevel AND m.mobName LIKE %:mobName% AND m.mobEXP >= :mobEXP AND m.mobLocation LIKE %:mobLocationOne% AND m.mobLocationTwo LIKE %:mobLocationTwo%")
+	@Query("SELECT m FROM Mob m WHERE m.mobLevel >= :mobLevel AND m.mobName LIKE %:mobName% AND m.mobEXP >= :mobEXP AND m.mobLocation LIKE %:mobLocationOne% AND m.mobLocationTwo LIKE %:mobLocationTwo% ORDER BY m.mobLevel ASC")
 	List<Mob> findUsingUserQuery(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo);
 	
 	//SELECT m FROM Mob m WHERE m.mobName LIKE %:mobName% AND m.mobLevel >= :mobLevel AND m.mobEXP >= :mobEXP AND m.mobLocation LIKE %:mobLocationOne% OR m.mobLocationTwo LIKE %:mobLocationTwo%

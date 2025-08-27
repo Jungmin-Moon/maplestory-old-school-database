@@ -5,15 +5,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.artaleDB.dto.UserSearchQueryMob;
+import com.artaleDB.entities.Mob;
 import com.artaleDB.services.MobService;
 
 @Controller
@@ -33,7 +34,9 @@ public class MobWebController {
 							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
 							@RequestParam(required = false) String mobName, @RequestParam(required = false) Integer mobLevel, @RequestParam(required = false) Integer mobEXP,
 							@RequestParam(required = false) String mobLocationOne, @RequestParam(required = false) String mobLocationTwo,
-							@RequestParam("level") Optional<Integer> level) {
+							@RequestParam("mobName") Optional<String> name, @RequestParam("mobLevel") Optional<Integer> level, 
+							@RequestParam("mobEXP") Optional<Integer> exp, @RequestParam("mobLocationOne") Optional<String> locationOne, 
+							@RequestParam("mobLocationOne") Optional<String> locationTwo) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -54,49 +57,52 @@ public class MobWebController {
 			return "redirect:/web/drop/boss";
 		}
 		
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(20);
+		String mName = name.orElse("");
+		int mLevel = level.orElse(0);
+		int mEXP = exp.orElse(0);
+		String mLocationOne = locationOne.orElse("");
+		String mLocationTwo = locationTwo.orElse("");
+		
+		Page<Mob> mobPage;
 		
 		if (mobName == null && mobLevel == null && mobEXP == null && mobLocationOne == null && mobLocationTwo == null) {
-			int currentPage = page.orElse(1);
-			int pageSize = size.orElse(20);
 
-			var mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
-			
-			UserSearchQueryMob uMobSearch = new UserSearchQueryMob("", 0, 0, "", "");
-			
-			model.addAttribute("mobPage", mobPage);
-			model.addAttribute("currentPage", currentPage);
-			//model.addAttribute("filter", uMobSearch);
-			
-			int totalPages = mobPage.getTotalPages();
-		
-			if (totalPages > 0) {
-				List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-												.boxed()
-												.collect(Collectors.toList());
-				model.addAttribute("pageNumbers", pageNumbers);
-			}
-			
+			mobPage = mobService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
+
 		} else {
 			
-			UserSearchQueryMob uMobSearch = new UserSearchQueryMob(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
-			int currentPage = page.orElse(1);
-			int pageSize = size.orElse(20);
-			
-			var userMobSearch = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
-																uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
-
-			
-			model.addAttribute("mobPage", userMobSearch);
-			model.addAttribute("currentPage", currentPage);
-			//model.addAttribute("filter", userMobSearch);
-			int totalPages = userMobSearch.getTotalPages();
-			
-			if (totalPages > 0) {
-				List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-														.boxed()
-														.collect(Collectors.toList());
-				model.addAttribute("pageNumbers", pageNumbers);
+			if (mobEXP == null) {
+				mobEXP = 0;
 			}
+			
+			UserSearchQueryMob uMobSearch = new UserSearchQueryMob(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
+			mobPage = mobService.findByUserQueryMobWeb(uMobSearch.getMobName(), uMobSearch.getMobLevel(), uMobSearch.getMobEXP(), 
+																uMobSearch.getMobLocationOne(), uMobSearch.getMobLocationTwo(), PageRequest.of(currentPage - 1, pageSize));
+			mName = mobName;
+			mLevel = mobLevel;
+			mEXP = mobEXP;
+			mLocationOne = mobLocationOne;
+			mLocationTwo = mobLocationTwo;
+			
+		}
+		
+
+		model.addAttribute("mobPage", mobPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("mobLevelFilter", mLevel);
+		model.addAttribute("mobNameFilter", mName);
+		model.addAttribute("mobExpFilter", mEXP);
+		model.addAttribute("mobLocationOneFilter",mLocationOne);
+		model.addAttribute("mobLocationTwoFilter", mLocationTwo);
+		int totalPages = mobPage.getTotalPages();
+	
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+											.boxed()
+											.collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
 		}
 		return "mobs.html";
 	}
