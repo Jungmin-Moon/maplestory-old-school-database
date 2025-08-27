@@ -33,10 +33,7 @@ public class MobWebController {
 							@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop,
 							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
 							@RequestParam(required = false) String mobName, @RequestParam(required = false) Integer mobLevel, @RequestParam(required = false) Integer mobEXP,
-							@RequestParam(required = false) String mobLocationOne, @RequestParam(required = false) String mobLocationTwo,
-							@RequestParam("mobName") Optional<String> name, @RequestParam("mobLevel") Optional<Integer> level, 
-							@RequestParam("mobEXP") Optional<Integer> exp, @RequestParam("mobLocationOne") Optional<String> locationOne, 
-							@RequestParam("mobLocationOne") Optional<String> locationTwo) {
+							@RequestParam(required = false) String mobLocationOne, @RequestParam(required = false) String mobLocationTwo) {
 		if (home != null) {
 			return "redirect:/home";
 		}
@@ -59,11 +56,12 @@ public class MobWebController {
 		
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(20);
-		String mName = name.orElse("");
-		int mLevel = level.orElse(0);
-		int mEXP = exp.orElse(0);
-		String mLocationOne = locationOne.orElse("");
-		String mLocationTwo = locationTwo.orElse("");
+
+		String mName = "";
+		int mLevel = 0;
+		int mEXP = 0;
+		String mLocationOne = "";
+		String mLocationTwo = "";
 		
 		Page<Mob> mobPage;
 		
@@ -87,7 +85,6 @@ public class MobWebController {
 			mLocationTwo = mobLocationTwo;
 			
 		}
-		
 
 		model.addAttribute("mobPage", mobPage);
 		model.addAttribute("currentPage", currentPage);

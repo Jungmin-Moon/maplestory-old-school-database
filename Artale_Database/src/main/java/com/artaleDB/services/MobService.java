@@ -213,8 +213,6 @@ public class MobService {
 		Page<Mob> mobPage = new PageImpl<Mob>(allMobsPage, PageRequest.of(currentPage, pageSize), allMobs.size());
 		
 		return mobPage;
-		
-		//return mobRepo.findAll();	
 	}
 	
 	public Page<Mob> findByUserQueryMobWeb(String mobName, int mobLevel, int mobEXP, String mobLocationOne, String mobLocationTwo, Pageable pageable) {
@@ -225,7 +223,6 @@ public class MobService {
 		
 		List<Mob> mobQueryPage;
 		var mobQueryResult = mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
-		//System.out.println(mobQueryResult.size());
 		if (mobQueryResult.size() < start) {
 			mobQueryPage = Collections.emptyList();
 		} else {
@@ -234,7 +231,5 @@ public class MobService {
 		}
 		
 		return new PageImpl<Mob>(mobQueryPage, PageRequest.of(currentPage, pageSize), mobQueryResult.size());
-		
-		//return mobResults;
 	}
 }
