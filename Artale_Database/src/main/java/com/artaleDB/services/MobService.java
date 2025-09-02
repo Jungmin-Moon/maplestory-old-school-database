@@ -23,10 +23,12 @@ public class MobService {
 	
 	MobRepository mobRepo;
 	CalculationService calculationService;
+	ListChecker listChecker;
 	
-	MobService(MobRepository mobRepo, CalculationService calculationService) {
+	MobService(MobRepository mobRepo, CalculationService calculationService, ListChecker listChecker) {
 		this.mobRepo = mobRepo;
 		this.calculationService = calculationService;
+		this.listChecker = listChecker;
 	}
 	
 	/*
@@ -203,12 +205,7 @@ public class MobService {
 		List<Mob> allMobsPage;
 		var allMobs = mobRepo.findAllByOrderByMobLevelAsc();
 		
-		if (allMobs.size() < start) {
-			allMobsPage = Collections.emptyList();
-		} else {
-			int toIndex = Math.min(start + pageSize, allMobs.size());
-			allMobsPage = allMobs.subList(start, toIndex);
-		}
+		allMobsPage = listChecker.checkIfEmptyElseCreateSubList(allMobs, start, pageSize, allMobs.size());
 		
 		Page<Mob> mobPage = new PageImpl<Mob>(allMobsPage, PageRequest.of(currentPage, pageSize), allMobs.size());
 		
@@ -220,15 +217,10 @@ public class MobService {
 		int currentPage = pageable.getPageNumber();
 		int start = currentPage * pageSize;
 		
-		
 		List<Mob> mobQueryPage;
 		var mobQueryResult = mobRepo.findUsingUserQuery(mobName, mobLevel, mobEXP, mobLocationOne, mobLocationTwo);
-		if (mobQueryResult.size() < start) {
-			mobQueryPage = Collections.emptyList();
-		} else {
-			int toIndex = Math.min(start + pageSize, mobQueryResult.size());
-			mobQueryPage = mobQueryResult.subList(start, toIndex);
-		}
+		
+		mobQueryPage = listChecker.checkIfEmptyElseCreateSubList(mobQueryResult, start, pageSize, mobQueryResult.size());
 		
 		return new PageImpl<Mob>(mobQueryPage, PageRequest.of(currentPage, pageSize), mobQueryResult.size());
 	}
