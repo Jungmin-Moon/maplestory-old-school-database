@@ -3,6 +3,10 @@ package com.artaleDB.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.artaleDB.entities.Boss;
@@ -17,10 +21,12 @@ public class BossService {
 
 	BossRepository bossRepo;
 	CalculationService calculationService;
+	ListChecker listChecker;
 	
-	BossService(BossRepository bossRepo, CalculationService calculationService) {
+	BossService(BossRepository bossRepo, CalculationService calculationService, ListChecker listChecker) {
 		this.bossRepo = bossRepo;
 		this.calculationService = calculationService;
+		this.listChecker = listChecker;
 	}
 	
 	/*
@@ -152,11 +158,30 @@ public class BossService {
 		}
 	}
 	
-	public List<Boss> findAllBossWeb() {
-		return bossRepo.findAll();
+	public Page<Boss> findAllBossWeb(Pageable pageable) {
+		
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
+		
+		List<Boss> allBossesPage;
+		var allBosses = bossRepo.findAll();
+		
+		allBossesPage = listChecker.checkIfEmptyElseCreateSubList(allBosses, start, pageSize, allBosses.size());
+		
+		return new PageImpl<Boss>(allBossesPage, PageRequest.of(currentPage, pageSize), allBosses.size());
 	}
 	
-	public List<Boss> findByUserQueryBossWeb(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn, String bossLocation) {
-		return bossRepo.findByUsingUserQuery(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
+	public Page<Boss> findByUserQueryBossWeb(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn, String bossLocation, Pageable pageable) {
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
+		
+		List<Boss> bossQueryPage;
+		var bossQueryResult =  bossRepo.findByUsingUserQuery(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
+		
+		bossQueryPage = listChecker.checkIfEmptyElseCreateSubList(bossQueryResult, start, pageSize, bossQueryResult.size());
+		
+		return new PageImpl<Boss>(bossQueryPage, PageRequest.of(currentPage, pageSize), bossQueryResult.size());
 	}
 }	
