@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.artaleDB.kafka.KafkaSender;
 import com.artaleDB.services.DatabaseUpdatesService;
 
 @Controller
@@ -16,9 +16,11 @@ import com.artaleDB.services.DatabaseUpdatesService;
 public class HomeController {
 	
 	DatabaseUpdatesService databaseUpdatesService;
+	KafkaSender kafkaSender;
 	
-	HomeController(DatabaseUpdatesService databaseUpdatesService) {
+	HomeController(DatabaseUpdatesService databaseUpdatesService, KafkaSender kafkaSender) {
 		this.databaseUpdatesService = databaseUpdatesService;
+		this.kafkaSender = kafkaSender;
 	}
 	
 	
@@ -27,6 +29,7 @@ public class HomeController {
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
 		
 		if (mob != null) {
+			kafkaSender.sendMessage("Link-Click-Events", "Mob was clicked.");
 			return "redirect:/web/mob";
 		} 
 		
