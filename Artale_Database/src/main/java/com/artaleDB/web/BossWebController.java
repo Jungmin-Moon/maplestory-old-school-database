@@ -80,6 +80,12 @@ public class BossWebController {
 		}
 		
 		model.addAttribute("bossPage", bossPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("bossNameFilter", bName);
+		model.addAttribute("bossLevelFilter", bLevel);
+		model.addAttribute("bossMinRespawnFilter", bMinRespawn);
+		model.addAttribute("bossMaxRespawnFilter", bMaxRespawn);
+		model.addAttribute("bossLocationFilter", bLocation);
 		
 		int totalPage = bossPage.getTotalPages();
 		
