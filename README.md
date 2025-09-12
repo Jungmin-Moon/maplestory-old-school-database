@@ -7,7 +7,8 @@ instead of having to refer to a google document or spreadsheet.
 # Technology Used 
 . MySQL <br />
 . Spring <br />
-. REST <br />
+. Apache Kafka <br />
+. Docker <br />
 
 # Sheet currently being worked on:
 . https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
