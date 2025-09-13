@@ -29,7 +29,7 @@ public class HomeController {
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
 		
 		if (mob != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Mob was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Mob was clicked.");
 			return "redirect:/web/mob";
 		} 
 		
