@@ -28,4 +28,26 @@ public class KafkaTopicConfig {
 	public NewTopic topic1() {
 		return TopicBuilder.name("Link-Click-Events").build();
 	}
+	
+	
+	@Bean
+	public NewTopic topic2() {
+		return TopicBuilder.name("Mob-Search-Choices").build();
+	}
+	
+	@Bean
+	public NewTopic topic3() {
+		return TopicBuilder.name("Boss-Search-Choices").build();
+		
+	}
+	
+	@Bean
+	public NewTopic topic4() {
+		return TopicBuilder.name("Drop-Search-Choices").build();
+	}
+	
+	@Bean
+	public NewTopic topic5() {
+		return TopicBuilder.name("Equipment-Search-Choices").build();
+	}
 }
