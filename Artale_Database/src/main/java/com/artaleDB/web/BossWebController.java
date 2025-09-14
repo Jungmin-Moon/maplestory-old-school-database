@@ -1,5 +1,7 @@
 package com.artaleDB.web;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.artaleDB.dto.UserSearchQueryBoss;
 import com.artaleDB.entities.Boss;
+import com.artaleDB.kafka.KafkaSender;
 import com.artaleDB.services.BossService;
 
 @Controller
@@ -22,9 +25,11 @@ import com.artaleDB.services.BossService;
 public class BossWebController {
 	
 	BossService bossService;
+	KafkaSender kafkaSender;
 	
-	BossWebController(BossService bossService) {
+	BossWebController(BossService bossService, KafkaSender kafkaSender) {
 		this.bossService = bossService;	
+		this.kafkaSender = kafkaSender;
 	}
 	
 	
@@ -34,23 +39,31 @@ public class BossWebController {
 							@RequestParam(required = false) String bossName, @RequestParam(required = false) Integer bossLevel, @RequestParam(required = false) Integer bossMinRespawn, 
 							@RequestParam(required = false) Integer bossMaxRespawn, @RequestParam(required = false) String bossLocation,
 							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm");
+		
 		if (home != null) {
+			kafkaSender.sendMessageLinkClick("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Boss search to Home was clicked.");
 			return "redirect:/home";
 		}
 		
 		if (mob != null) {
+			kafkaSender.sendMessageLinkClick("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Boss search to Mob search was clicked.");
 			return "redirect:/web/mob";
 		}
 		
 		if (equipment != null) {
+			kafkaSender.sendMessageLinkClick("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Boss search to Equipment search was clicked.");
 			return "redirect:/web/equipment";
 		}
 		
 		if (mobdrop != null) {
+			kafkaSender.sendMessageLinkClick("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Boss search to Mob drop search was clicked.");
 			return "redirect:/web/drop/mob";
 		}
 		
 		if (bossdrop != null) {
+			kafkaSender.sendMessageLinkClick("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Boss search to Boss drop search was clicked.");
 			return "redirect:/web/drop/boss";
 		}
 		
@@ -71,6 +84,9 @@ public class BossWebController {
 				bossMaxRespawn = 0;
 			}
 			UserSearchQueryBoss uSearch = new UserSearchQueryBoss(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
+			
+			//kafkaSender.send
+			
 			bossPage = bossService.findByUserQueryBossWeb(uSearch.getBossName(), uSearch.getBossLevel(), uSearch.getBossMinRespawn(), 
 					uSearch.getBossMaxRespawn(), uSearch.getBossLocation(), PageRequest.of(currentPage - 1, pageSize));
 			
