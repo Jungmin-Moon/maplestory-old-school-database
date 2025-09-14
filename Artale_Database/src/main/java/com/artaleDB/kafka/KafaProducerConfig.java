@@ -19,6 +19,8 @@ public class KafaProducerConfig {
 	@Value(value = "${spring.kafka.bootstrap-servers}")
 	private String bootstrapAddress;
 
+	
+	//ProducerFactory for events that involve clicking links to navigate through the website
     @Bean
     ProducerFactory<String, String> producerFactoryLinkClicks() {
 		Map<String, Object> configProps = new HashMap<>();
@@ -29,7 +31,8 @@ public class KafaProducerConfig {
 		
 		return new DefaultKafkaProducerFactory<>(configProps);
 	}
-	
+    
+	//ProducerFactory created with a generic to allow for the various types of searches that can be done and serialized with JSON
 	@Bean
 	<T> ProducerFactory<String, T> producerFactorySearch() {
 		Map<String, Object> configProps = new HashMap<>();
@@ -41,11 +44,14 @@ public class KafaProducerConfig {
 		return new DefaultKafkaProducerFactory<>(configProps);
 	}
 	
+	//The KafkaTemplate for the events that involve clicking links
 	@Bean
 	KafkaTemplate<String, String> kafkaTemplateLinkClicks() {
 		return new KafkaTemplate<>(producerFactoryLinkClicks());
 	}
 	
+	
+	//The KafkaTemplate for the events that involve the different searches available
 	@Bean
 	<T> KafkaTemplate<String, T> kafkaTemplateSearch() {
 		return new KafkaTemplate<>(producerFactorySearch());

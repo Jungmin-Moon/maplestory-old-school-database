@@ -24,28 +24,32 @@ public class KafkaTopicConfig {
 		return new KafkaAdmin(configs);
 	}
 	
+	//Topic to keep track of user site navigation
 	@Bean
 	public NewTopic topic1() {
 		return TopicBuilder.name("Link-Click-Events").build();
 	}
 	
-	
+	//Topic to keep track of what users searched for in the Mob search page
 	@Bean
 	public NewTopic topic2() {
 		return TopicBuilder.name("Mob-Search-Choices").build();
 	}
 	
+	//Topic to keep track of what users searched for in the Boss search page
 	@Bean
 	public NewTopic topic3() {
 		return TopicBuilder.name("Boss-Search-Choices").build();
 		
 	}
 	
+	//Topic to keep track of what users searched for in the Drops search page 
 	@Bean
 	public NewTopic topic4() {
 		return TopicBuilder.name("Drop-Search-Choices").build();
 	}
 	
+	//Topic to keep track of what users searched for in the Equipment search page
 	@Bean
 	public NewTopic topic5() {
 		return TopicBuilder.name("Equipment-Search-Choices").build();

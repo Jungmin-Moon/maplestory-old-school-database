@@ -69,7 +69,7 @@ public class BossWebController {
 		
 		Page<Boss> bossPage;
 		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(5);
+		int pageSize = size.orElse(20);
 		
 		String bName = "";
 		int bLevel = 0;
@@ -85,7 +85,7 @@ public class BossWebController {
 			}
 			UserSearchQueryBoss uSearch = new UserSearchQueryBoss(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
 			
-			//kafkaSender.send
+			kafkaSender.sendMessageBossSearch("Boss-Search-Choices", LocalDateTime.now().format(formatter).toString(), uSearch);
 			
 			bossPage = bossService.findByUserQueryBossWeb(uSearch.getBossName(), uSearch.getBossLevel(), uSearch.getBossMinRespawn(), 
 					uSearch.getBossMaxRespawn(), uSearch.getBossLocation(), PageRequest.of(currentPage - 1, pageSize));
