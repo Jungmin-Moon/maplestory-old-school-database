@@ -78,7 +78,7 @@
 					&nbsp;&nbsp;
 				</span>
 				
-				<span th:if = "${bossPage.totalPages > 0" th:each = "pageNumber : ${pageNumbers}">
+				<span th:if = "${bossPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
 					<a th:href = "@{/web/boss(size = ${bossPage.size}, page = ${pageNumber}, bossName = ${bossNameFilter}, bossLevel = ${bossLevelFilter}, bossMinRespawn = ${bossMinRespawnFilter},
 								bossMaxRepsawn = ${bossMaxRespawnFilter}, bossLocation = ${bossLocationFilter})}"
 						th:text = ${pageNumber}></a>
@@ -91,7 +91,7 @@
 						&nbsp;&nbsp;
 				</span>
 				
-				<span th:if = "${bossPage.totalPages > 1">
+				<span th:if = "${bossPage.totalPages > 1}">
 					<a th:href = "@{/web/boss(size = ${bossPage.size}, page = ${bossPage.totalPages}, bossName = ${bossNameFilter}, bossLevel = ${bossLevelFilter}, bossMinRespawn = ${bossMinRespawnFilter},
 								bossMaxRepsawn = ${bossMaxRespawnFilter}, bossLocation = ${bossLocationFilter})}"></a>
 				</span>

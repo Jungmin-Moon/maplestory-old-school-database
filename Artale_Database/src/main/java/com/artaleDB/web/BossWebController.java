@@ -67,6 +67,9 @@ public class BossWebController {
 		if (bossName == null && bossLevel == null && bossMinRespawn == null && bossMaxRespawn == null && bossLocation == null) {
 			bossPage = bossService.findAllBossWeb(PageRequest.of(currentPage - 1, pageSize));
 		} else {
+			if (bossMaxRespawn == null) {
+				bossMaxRespawn = 0;
+			}
 			UserSearchQueryBoss uSearch = new UserSearchQueryBoss(bossName, bossLevel, bossMinRespawn, bossMaxRespawn, bossLocation);
 			bossPage = bossService.findByUserQueryBossWeb(uSearch.getBossName(), uSearch.getBossLevel(), uSearch.getBossMinRespawn(), 
 					uSearch.getBossMaxRespawn(), uSearch.getBossLocation(), PageRequest.of(currentPage - 1, pageSize));

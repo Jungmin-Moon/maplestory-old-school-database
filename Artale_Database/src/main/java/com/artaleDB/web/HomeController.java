@@ -1,6 +1,7 @@
 package com.artaleDB.web;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,28 +29,30 @@ public class HomeController {
 	public String home(Model model, @RequestParam (required = false) String mob, @RequestParam (required = false) String boss,
 						@RequestParam (required = false) String equipment, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop) {
 		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm");
+		
 		if (mob != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Mob search was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Home to Mob search was clicked.");
 			return "redirect:/web/mob";
 		} 
 		
 		if (boss != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Boss search was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Home to Boss search was clicked.");
 			return "redirect:/web/boss";
 		}
 		
 		if (equipment != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Equipment search was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Home to Equipment search was clicked.");
 			return "redirect:/web/equipment";
 		}
 		
 		if (mobdrop != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Mob drop search was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Home to Mob drop search was clicked.");
 			return "redirect:/web/drop/mob";
 		}
 		
 		if (bossdrop != null) {
-			kafkaSender.sendMessage("Link-Click-Events", "Key-1", "Boss drop search was clicked.");
+			kafkaSender.sendMessage("Link-Click-Events", LocalDateTime.now().format(formatter).toString(), "Home to Boss drop search was clicked.");
 			return "redirect:/web/drop/boss";
 		}
 		
