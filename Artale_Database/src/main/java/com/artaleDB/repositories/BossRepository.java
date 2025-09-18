@@ -36,7 +36,7 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
 	
 	
-	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:bossName% AND b.bossLevel >= :bossLevel AND b.bossMinRespawn >= :bossMinRespawn AND b.bossMaxRespawn >= :bossMaxRespawn AND b.bossLocation LIKE %:bossLocation%")
+	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:bossName% AND b.bossLevel >= :bossLevel AND b.bossMinRespawn >= :bossMinRespawn AND b.bossMaxRespawn >= :bossMaxRespawn AND b.bossLocation LIKE %:bossLocation% ORDER BY b.bossLevel ASC")
 	List<Boss> findByUsingUserQuery(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn, String bossLocation);
 	
 	//Non REST endpoints queries
