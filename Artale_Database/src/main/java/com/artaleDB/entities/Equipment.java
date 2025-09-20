@@ -47,16 +47,16 @@ public class Equipment {
 	 * Generally a weapon with weapon attack, will not have magic att and vice versa
 	 * All weapons have attack speed that can be of value between 
 	 */
-	private int weaponAtt;
-	private int magicAtt;
-	private int attSpeed;
+	private String weaponAtt;
+	private String magicAtt;
+	private String attSpeed;
 	
 	/*
 	 * Represents the weapon defense and magic defense of armor and some accessories
 	 * Can be some value 0 to N
 	 */
-	private int weaponDef;
-	private int magicDef;
+	private String weaponDef;
+	private String magicDef;
 	
 	/*
 	 * Represents what jobs can wear the equipment
@@ -78,24 +78,6 @@ public class Equipment {
 	private int requiredDex;
 	private int requiredInt;
 	private int requiredLuk;
-	
-	/*
-	 * Represents effects that a piece of equipment can give, such as STR + 2 and LUK + 1
-	 * Will be written in text due to what can be an option
-	 */
-	private String effects;
-	
-	/*
-	 * Represents the times a user can scroll an item and succeed or fail
-	 * Can be some value between 0 and N
-	 */
-	private int upgrades;
-	
-	/*
-	 * Represents the meso a user can get if they sell it to NPC
-	 * Can be a value from 0 to N
-	 */
-	private int npcVendorPrice;
 	
 	
 	public long getId() {
@@ -140,34 +122,34 @@ public class Equipment {
 	public void setMinimumLevel(int minimumLevel) {
 		this.minimumLevel = minimumLevel;
 	}
-	public int getWeaponAtt() {
+	public String getWeaponAtt() {
 		return weaponAtt;
 	}
-	public void setWeaponAtt(int weaponAtt) {
+	public void setWeaponAtt(String weaponAtt) {
 		this.weaponAtt = weaponAtt;
 	}
-	public int getMagicAtt() {
+	public String getMagicAtt() {
 		return magicAtt;
 	}
-	public void setMagicAtt(int magicAtt) {
+	public void setMagicAtt(String magicAtt) {
 		this.magicAtt = magicAtt;
 	}
-	public int getAttSpeed() {
+	public String getAttSpeed() {
 		return attSpeed;
 	}
-	public void setAttSpeed(int attSpeed) {
+	public void setAttSpeed(String attSpeed) {
 		this.attSpeed = attSpeed;
 	}
-	public int getWeaponDef() {
+	public String getWeaponDef() {
 		return weaponDef;
 	}
-	public void setWeaponDef(int weaponDef) {
+	public void setWeaponDef(String weaponDef) {
 		this.weaponDef = weaponDef;
 	}
-	public int getMagicDef() {
+	public String getMagicDef() {
 		return magicDef;
 	}
-	public void setMagicDef(int magicDef) {
+	public void setMagicDef(String magicDef) {
 		this.magicDef = magicDef;
 	}
 	public int isWarrior() {
@@ -230,22 +212,6 @@ public class Equipment {
 	public void setRequiredLuk(int requiredLuk) {
 		this.requiredLuk = requiredLuk;
 	}
-	public String getEffects() {
-		return effects;
-	}
-	public void setEffects(String effects) {
-		this.effects = effects;
-	}
-	public int getUpgrades() {
-		return upgrades;
-	}
-	public void setUpgrades(int upgrades) {
-		this.upgrades = upgrades;
-	}
-	public int getNpcVendorPrice() {
-		return npcVendorPrice;
-	}
-	public void setNpcVendorPrice(int npcVendorPrice) {
-		this.npcVendorPrice = npcVendorPrice;
-	}
+
+
 }
