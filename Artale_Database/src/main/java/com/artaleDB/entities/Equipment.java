@@ -22,9 +22,6 @@ public class Equipment {
 	/* Represents the name of the equipment */
 	private String equipmentName;
 	
-	/* Represents if the equipment is a weapon, armor or accessory */
-	private String equipmentType;
-	
 	/* Each of the three represents a type for each category of equipment
 	 * If equipment is a weapon, armorType and accessoryType will be represented with a dash ( - )
 	 * If equipment is an armor, weapon and accessory will be represented with a dash ( - )
@@ -91,12 +88,6 @@ public class Equipment {
 	}
 	public void setEquipmentName(String equipmentName) {
 		this.equipmentName = equipmentName;
-	}
-	public String getEquipmentType() {
-		return equipmentType;
-	}
-	public void setEquipmentType(String equipmentType) {
-		this.equipmentType = equipmentType;
 	}
 	public String getWeaponType() {
 		return weaponType;
