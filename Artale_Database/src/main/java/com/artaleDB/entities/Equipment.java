@@ -22,19 +22,8 @@ public class Equipment {
 	/* Represents the name of the equipment */
 	private String equipmentName;
 	
-	/* Each of the three represents a type for each category of equipment
-	 * If equipment is a weapon, armorType and accessoryType will be represented with a dash ( - )
-	 * If equipment is an armor, weapon and accessory will be represented with a dash ( - )
-	 * If equipment is an accessory, weapon and armor will be represented with a dash ( - )
-	 * Weapons can only be weapon types that exist in Maplestory in this era of the game: 
-	 * [One Handed Sword, Two Handed Sword, One Handed Axe, Two Handed Axe, One Handed Blunt Weapon, Two Handed Blunt Weapon, Bow, 
-	 * Crossbow, Claw, Dagger, Spear, Polearm, Wand, Staff, Knuckle, Gun]
-	 * Armors can only be [Hat, Top, Overall, Bottom, Shoes, Gloves, Cape, Shield]
-	 * Accessories can only be [Earring, Eye Accessory, Face Accessory, Pendant, Belt, Medal, Ring, Shoulderpad]
-	 */
-	private String weaponType;
-	private String armorType;
-	private String accessoryType;
+	/* Represents the type of equipment, which could be any weapon type, any armor type, accessory type etc */
+	private String equipmentType;
 	
 	/* Represents the minimum level needed to equip something. The value of this can be from 0 to 200*/
 	private int minimumLevel;
@@ -89,23 +78,12 @@ public class Equipment {
 	public void setEquipmentName(String equipmentName) {
 		this.equipmentName = equipmentName;
 	}
-	public String getWeaponType() {
-		return weaponType;
+	
+	public String getEquipmentType() {
+		return equipmentType;
 	}
-	public void setWeaponType(String weaponType) {
-		this.weaponType = weaponType;
-	}
-	public String getArmorType() {
-		return armorType;
-	}
-	public void setArmorType(String armorType) {
-		this.armorType = armorType;
-	}
-	public String getAccessoryType() {
-		return accessoryType;
-	}
-	public void setAccessoryType(String accessoryType) {
-		this.accessoryType = accessoryType;
+	public void setEquipmentType(String equipmentType) {
+		this.equipmentType = equipmentType;
 	}
 	public int getMinimumLevel() {
 		return minimumLevel;
