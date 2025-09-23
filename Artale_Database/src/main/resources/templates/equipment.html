@@ -22,7 +22,7 @@
 		<br />
 		<br />
 		
-		<form action = "/web/equipment" method = "POST">
+		<form action = "/web/equipment" method = "GET">
 			Equipment Name: <input type = "text" name = "equipmentName" />
 				
 			Equipment Type: <select name = "equipmentType">
@@ -59,26 +59,69 @@
 							 <option value = "medal">Medal</option>
 							 <option value = "ring">Ring</option>
 						    <select>
+			<div id = "weapons">					
+				One Handed Sword: <input type = "checkbox" name = "one handed sword" value = "1" />
+								  <input type = "hidden" name = "one handed sword" value = "0" />
+				Two Handed Sword: <input type = "checkbox" name = "two handed sword" value = "1" />
+								  <input type = "hidden" name = "two handed sword" value = "0" />
+				One Handed Axe: 
+				Two Handed Axe:
+				One Handed Blunt Weapon:
+				Bow:
+				Crossbow: 
+				Claw:
+				Dagger:
+				Spear:
+				Polearm:
+				Wand: 
+				Staff:
+				Knuckle:
+				Gun:
+				
+			</div>
 			
-			Minimum Level: <input type = "number" name = "minimumLevel" value = "0" />
+			<div id = "armor">
+				Hat:
+				Top:
+				Overall:
+				Bottom:
+				Shoes:
+				Gloves:
+				Cape:
+				Shiedl:
+				Earring:
+				Eye Accessory:
+				Face Accessory:
+				Pendant: 
+				Belt:
+				Medal: 
+				Ring: 
+			</div>			
 			
-			Warrior: <input type = "checkbox" name = "warrior" value = "1" />
-			         <input type = "hidden" name = "warrior" value = "0" />
+			<div>		
+				Minimum Level: <input type = "number" name = "minimumLevel" value = "0" />
+			</div>
 			
-			Magician: <input type = "checkbox" name = "magician" value = "1" />
-			          <input type = "hidden" name = "magician" value = "0" />
+			<div id = "classes">
+				Warrior: <input type = "checkbox" name = "warrior" value = "1" />
+				         <input type = "hidden" name = "warrior" value = "0" />
+				
+				Magician: <input type = "checkbox" name = "magician" value = "1" />
+				          <input type = "hidden" name = "magician" value = "0" />
+				
+				Thief: <input type = "checkbox" name = "thief" value = "1" />
+				       <input type = "hidden" name = "thief" value = "0" />
+				
+				Archer: <input type = "checkbox" name = "archer" value = "1" />
+				        <input type = "hidden" name = "archer" value = "0" />
+				
+				Pirate: <input type = "checkbox" name = "pirate" value = "1" />
+				        <input type = "hidden" name = "pirate" value = "0" />
+				
+				Common: <input type = "checkbox" name = "common" value = "1"/>
+				        <input type = "hidden" name = "common" value = "0" />
+			</div>
 			
-			Thief: <input type = "checkbox" name = "thief" value = "1" />
-			       <input type = "hidden" name = "thief" value = "0" />
-			
-			Archer: <input type = "checkbox" name = "archer" value = "1" />
-			        <input type = "hidden" name = "archer" value = "0" />
-			
-			Pirate: <input type = "checkbox" name = "pirate" value = "1" />
-			        <input type = "hidden" name = "pirate" value = "0" />
-			
-			Common: <input type = "checkbox" name = "common" value = "1"/>
-			        <input type = "hidden" name = "common" value = "0" />
 			<button type = "submit">Submit</button>
 		</form>
 		

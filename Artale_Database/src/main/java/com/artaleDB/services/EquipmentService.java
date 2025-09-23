@@ -76,13 +76,13 @@ public class EquipmentService {
 		}
 	}
 	
-	/*
+	/* To be removed
 	 * Service method that returns a collection of equipment whose type is equal to the passed in string [Armor, Weapon or Accessory]
 	 * 
 	 * @param equipmentType the string representing what equipment type the user is searching for
 	 * @return Iterable<Equipment> a collection of equipment who type is equal to the passed in parameter
 	 * @throws NoneFoundException if no equipment in the database has their type equal to the string parameter
-	 */
+	 
 	public Iterable<Equipment> getEquipmentByType(String equipmentType) {
 		var equipmentListByType = equipmentRepository.findByEquipmentType(equipmentType);
 		
@@ -93,7 +93,7 @@ public class EquipmentService {
 		} else {
 			return equipmentListByType;
 		}
-	}
+	} */
 	
 	/*
 	 * Service method that returns a collection of equipment whose weapon type is equal to the passed in string

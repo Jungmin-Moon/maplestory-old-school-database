@@ -51,37 +51,4 @@ public class EquipmentWebController {
 		
 		return "equipment";
 	}
-	
-	@PostMapping
-	public String afterSearchEquipment(Model model, @RequestParam (required = false) String home, @RequestParam (required = false) String mob,
-							@RequestParam (required = false) String boss, @RequestParam (required = false) String mobdrop, @RequestParam (required = false) String bossdrop, 
-							UserSearchQueryEquipment uSearchEquipment) {
-		if (home != null) {
-			return "redirect:/home";
-		}
-		
-		if (mob != null) {
-			return "redirect:/web/mob";
-		}
-		
-		if (boss != null) {
-			return "redirect:/web/boss";
-		}
-		
-		if (mobdrop != null) {
-			return "redirect:/web/drop/mob";
-		}
-		
-		if (bossdrop != null) {
-			return "redirect:/web/drop/boss";
-		}
-		
-		//System.out.println(uSearchEquipment.toString());
-		
-		
-		
-		//model.addAttribute("allEquipment", );
-		
-		return "equipment";
-	}
 }

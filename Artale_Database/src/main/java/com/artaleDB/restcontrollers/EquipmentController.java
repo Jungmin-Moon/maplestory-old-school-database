@@ -57,17 +57,17 @@ public class EquipmentController {
 		return equipmentService.getEquipmentByNamePartialMatch(substring);
 	}
 	
-	/*
+	/* To be removed
 	 * Method that returns a collection of equipment whose equipment type is that of the parameter
 	 * 
 	 * @param equipmentType represents what type of equipment the user is searching for
 	 * @return Iterable<Equipment> a collection of equipment whose equipment type is equal to the parameter
 	 * @throws NoneFoundException if no equipment can be found with the same equipment type
-	 */
+	 *
 	@GetMapping("/list/equipment/{equipmentType:[a-zA-Z]*}")
 	public Iterable<Equipment> getAllByType(@PathVariable String equipmentType) {
 		return equipmentService.getEquipmentByType(equipmentType);
-	}
+	} */
 	
 	/*
 	 * Method that returns a collection of equipment whose weapon type is that of the parameter
@@ -76,7 +76,7 @@ public class EquipmentController {
 	 * @return Iterable<Equipment> a collection of equipment whose weapon type is equal to the parameter
 	 * @throws NoneFoundException if no equipment can be found with the same weapon type
 	 */
-	@GetMapping("/list/weapons/{weaponType:[a-zA-Z ]*}")
+	@GetMapping("/list/equipment/weapons/{weaponType:[a-zA-Z ]*}")
 	public Iterable<Equipment> getAllByWeaponType(@PathVariable String weaponType) {
 		return equipmentService.getAllByWeaponType(weaponType);
 	}
@@ -88,7 +88,7 @@ public class EquipmentController {
 	 * @return Iterable<Equipment> a collection of equipment whose armor type is equal to the parameter
 	 * @throws NoneFoundException if no equipment can be found with the same armor type
 	 */
-	@GetMapping("/list/armors/{armorType:[a-zA-Z]*}")
+	@GetMapping("/list/equipment/armors/{armorType:[a-zA-Z]*}")
 	public Iterable<Equipment> getAllByArmorType(@PathVariable String armorType) {
 		return equipmentService.getAllByArmorType(armorType);
 	}
@@ -100,7 +100,7 @@ public class EquipmentController {
 	 * @return Iterable<Equipment> a collection of equipment whose accessory type is equal to the parameter
 	 * @throws NoneFoundException if no equipment can be found with the same accessory type
 	 */
-	@GetMapping("/list/accessories/{accessoryType:[a-zA-Z ]*}")
+	@GetMapping("/list/equipment/accessories/{accessoryType:[a-zA-Z ]*}")
 	public Iterable<Equipment> getAllByAccessoryType(@PathVariable String accessoryType) {
 		return equipmentService.getAllByAccessoryType(accessoryType);
 	}

@@ -13,19 +13,20 @@ import com.artaleDB.entities.Equipment;
 public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	/* Query that finds equipment in the database whose type is equal to the passed in String*/
+	/* To be removed
 	@Query("SELECT e FROM Equipment e WHERE e.equipmentType = :equipmentType")
-	Iterable<Equipment> findByEquipmentType(String equipmentType);
+	Iterable<Equipment> findByEquipmentType(String equipmentType); */
 	
 	/* Query that finds equipment where the weaponType is equal to the passed in String*/
-	@Query("SELECT e FROM Equipment e WHERE e.weaponType = :weaponType")
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentType = :weaponType")
 	Iterable<Equipment> findByWeaponType(String weaponType);
 	
 	/* Query that finds equipment where the armorType is equal to the passed in String*/
-	@Query("SELECT e FROM Equipment e WHERE e.armorType = :armorType")
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentType = :armorType")
 	Iterable<Equipment> findByArmorType(String armorType);
 	
 	/* Query that finds equipment where the accessoryType is equal to the passed in String*/
-	@Query("SELECT e FROM Equipment e WHERE e.accessoryType = :accessoryType")
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentType = :accessoryType")
 	Iterable<Equipment> findByAccessoryType(String accessoryType);
 	
 	/* Query to find equipment whose name is equal to the passed in String*/

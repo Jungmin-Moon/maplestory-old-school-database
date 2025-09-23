@@ -4,9 +4,6 @@ public class UserSearchQueryEquipment {
 	
 	String equipmentName;
 	String equipmentType;
-	String weaponType;
-	String armorType;
-	String accessoryType;
 	int minimumLevel;
 	int warrior;
 	int magician;
@@ -16,15 +13,12 @@ public class UserSearchQueryEquipment {
 	int common;
 	
 	
-	public UserSearchQueryEquipment(String equipmentName, String equipmentType, String weaponType, String armorType,
-			String accessoryType, int minimumLevel, int warrior, int magician, int thief, int archer,
+	public UserSearchQueryEquipment(String equipmentName, String equipmentType,
+			int minimumLevel, int warrior, int magician, int thief, int archer,
 			int pirate, int common) {
 		super();
 		this.equipmentName = equipmentName;
 		this.equipmentType = equipmentType;
-		this.weaponType = weaponType;
-		this.armorType = armorType;
-		this.accessoryType = accessoryType;
 		this.minimumLevel = minimumLevel;
 		this.warrior = warrior;
 		this.magician = magician;
@@ -55,34 +49,6 @@ public class UserSearchQueryEquipment {
 	}
 
 
-	public String getWeaponType() {
-		return weaponType;
-	}
-
-
-	public void setWeaponType(String weaponType) {
-		this.weaponType = weaponType;
-	}
-
-
-	public String getArmorType() {
-		return armorType;
-	}
-
-
-	public void setArmorType(String armorType) {
-		this.armorType = armorType;
-	}
-
-
-	public String getAccessoryType() {
-		return accessoryType;
-	}
-
-
-	public void setAccessoryType(String accessoryType) {
-		this.accessoryType = accessoryType;
-	}
 
 
 	public int getMinimumLevel() {
@@ -156,10 +122,7 @@ public class UserSearchQueryEquipment {
 	
 	public String toString() {
 		return "Equipment Name: " + equipmentName + "\n" + 
-				"Equipment Type: " + equipmentType + "\n" +
-				"Weapon Type: " + weaponType + "\n" + 
-				"Armor Type: " + armorType + "\n" + 
-				"Accessory Type: " + accessoryType + "\n" +
+				"Equipment Type: " + equipmentType + "\n" + 
 				"Minimum Level: " + minimumLevel + "\n" + 
 				"Warrior: " + warrior + "\n" +
 				"Magician: " + magician + "\n" +
