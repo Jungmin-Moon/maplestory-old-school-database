@@ -25,78 +25,40 @@
 		<form action = "/web/equipment" method = "GET">
 			Equipment Name: <input type = "text" name = "equipmentName" />
 				
-			Equipment Type: <select name = "equipmentType">
-						 	 <option value = ""></option>
-							 <option value = "one handed sword">One Handed Sword</option>
-							 <option value = "two handed sword">Two Handed Sword</option>
-							 <option value = "one handed axe">One Handed Axe</option>
-							 <option value = "two handed axe">Two Handed Axe</option>
-							 <option value = "one handed blunt weapon">One Handed Blunt Weapon</option>
-							 <option value = "two handed blunt weapon">Two Handed Blunt Weapon</option>
-							 <option value = "bow">Bow</option>
-							 <option value = "crossbow">Crossbow</option>
-							 <option value = "claw">Claw</option>
-							 <option value = "dagger">Dagger</option>
-							 <option value = "spear">Spear</option>
-							 <option value = "polearm">Polearm</option>
-							 <option value = "wand">Wand</option>
-							 <option value = "staff">Staff</option>
-							 <option value = "knuckle">Knuckle</option>
-							 <option value = "gun">Gun</option>
-						     <option value = "hat">Hat</option>
-						     <option value = "top">Top</option>
-						     <option value = "overall">Overall</option>
-						     <option value = "bottom">Bottom</option>
-						     <option value = "shoes">Shoes</option>
-						     <option value = "gloves">Gloves</option>
-						     <option value = "cape">Cape</option>
-						     <option value = "shield">Shield</option>
-							 <option value = "earring">Earring</option>
-							 <option value = "eye accessory">Eye Accessory</option>
-							 <option value = "face accessory">Face Accessory</option>
-							 <option value = "pendant">Pendant</option>
-							 <option value = "belt">Belt</option>
-							 <option value = "medal">Medal</option>
-							 <option value = "ring">Ring</option>
-						    <select>
-			<div id = "weapons">					
-				One Handed Sword: <input type = "checkbox" name = "one handed sword" value = "1" />
-								  <input type = "hidden" name = "one handed sword" value = "0" />
-				Two Handed Sword: <input type = "checkbox" name = "two handed sword" value = "1" />
-								  <input type = "hidden" name = "two handed sword" value = "0" />
-				One Handed Axe: 
-				Two Handed Axe:
-				One Handed Blunt Weapon:
-				Bow:
-				Crossbow: 
-				Claw:
-				Dagger:
-				Spear:
-				Polearm:
-				Wand: 
-				Staff:
-				Knuckle:
-				Gun:
-				
-			</div>
-			
-			<div id = "armor">
-				Hat:
-				Top:
-				Overall:
-				Bottom:
-				Shoes:
-				Gloves:
-				Cape:
-				Shiedl:
-				Earring:
-				Eye Accessory:
-				Face Accessory:
-				Pendant: 
-				Belt:
-				Medal: 
-				Ring: 
-			</div>			
+			<div id = "equipment">
+				Equipment Type: <select name = "equipmentType" multiple>
+					                 <option value = ""></option>
+									 <option value = "">One Handed Sword</option>
+									 <option value = "">Two Handed Sword</option>
+									 <option value = "">One Handed Axe</option>
+									 <option value = "">Two Handed Axe</option>
+									 <option value = "">One Handed Blunt Weapon</option>
+									 <option value = "">Two Handed Blunt Weapon</option>
+									 <option value = "">Bow</option>
+									 <option value = "">Crossbow</option>
+									 <option value = "">Dagger</option>
+									 <option value = "">Claw</option>
+									 <option value = "">Spear</option>
+									 <option value = "">Polearm</option>
+									 <option value = "">Wand</option>
+									 <option value = "">Staff</option>
+									 <option value = "">Knuckle</option>
+									 <option value = "">Gun</option>
+									 <option value = "">Hat</option>
+									 <option value = "">Top</option>
+									 <option value = "">Overall</option>
+									 <option value = "">Bottom</option>
+									 <option value = "">Shoes</option>
+									 <option value = "">Gloves</option>
+									 <option value = "">Cape</option>
+									 <option value = "">Shield</option>
+									 <option value = "">Earring</option>
+									 <option value = "">Eye Accessory</option>
+									 <option value = "">Face Accessory</option>
+									 <option value = "">Pendant</option>
+									 <option value = "">Belt</option>
+								</select>
+			</div>		
 			
 			<div>		
 				Minimum Level: <input type = "number" name = "minimumLevel" value = "0" />
@@ -120,6 +82,9 @@
 				
 				Common: <input type = "checkbox" name = "common" value = "1"/>
 				        <input type = "hidden" name = "common" value = "0" />
+						
+				Beginner: <input type = "checkbox" name = "beginner" value = "1" />
+						  <input type = "hidden" name = "beginner" value = "0" />
 			</div>
 			
 			<button type = "submit">Submit</button>

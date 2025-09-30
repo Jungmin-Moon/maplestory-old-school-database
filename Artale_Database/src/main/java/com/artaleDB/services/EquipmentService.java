@@ -279,6 +279,24 @@ public class EquipmentService {
 		}
 	}
 	
+	/*
+	 * Service method that returns a collection of equipment that can only be worn by beginners
+	 * 
+	 * @return Iterable<Equipment> a collection of equipment that can be worn by beginners
+	 * @throws NoneFoundException if no equipment in the database can be worn by beginners
+	 */
+	public Iterable<Equipment> getAllEquipableBeginner() {
+		var equipmentListEquippableBeginner = equipmentRepository.findAllByBeginner(1);
+		
+		long count = calculationService.getCount(equipmentListEquippableBeginner);
+		
+		if (count <= 0) {
+			throw new NoneFoundException("There were no equipment that only beginners can equip found.");
+		} else {
+			return equipmentListEquippableBeginner;
+		}
+	}
+	
 	public List<Equipment> findAllWeb() {
 		return equipmentRepository.findAll();
 	}

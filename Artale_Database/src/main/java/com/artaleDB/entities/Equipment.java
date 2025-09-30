@@ -55,6 +55,7 @@ public class Equipment {
 	private int pirate;
 	private int archer;
 	private int common;
+	private int beginner;
 	
 	/*
 	 * Represents the required amount of a stat needed to wear the equpiment
@@ -72,6 +73,8 @@ public class Equipment {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	//Methods for getting and setting various Equipment attributes
 	public String getEquipmentName() {
 		return equipmentName;
 	}
@@ -85,96 +88,121 @@ public class Equipment {
 	public void setEquipmentType(String equipmentType) {
 		this.equipmentType = equipmentType;
 	}
+	
 	public int getMinimumLevel() {
 		return minimumLevel;
 	}
 	public void setMinimumLevel(int minimumLevel) {
 		this.minimumLevel = minimumLevel;
 	}
+	
 	public String getWeaponAtt() {
 		return weaponAtt;
 	}
 	public void setWeaponAtt(String weaponAtt) {
 		this.weaponAtt = weaponAtt;
 	}
+	
 	public String getMagicAtt() {
 		return magicAtt;
 	}
 	public void setMagicAtt(String magicAtt) {
 		this.magicAtt = magicAtt;
 	}
+	
 	public String getAttSpeed() {
 		return attSpeed;
 	}
 	public void setAttSpeed(String attSpeed) {
 		this.attSpeed = attSpeed;
 	}
+	
 	public String getWeaponDef() {
 		return weaponDef;
 	}
 	public void setWeaponDef(String weaponDef) {
 		this.weaponDef = weaponDef;
 	}
+	
 	public String getMagicDef() {
 		return magicDef;
 	}
 	public void setMagicDef(String magicDef) {
 		this.magicDef = magicDef;
 	}
+	
+	
+	//Methods to get and set for Jobs
 	public int isWarrior() {
 		return warrior;
 	}
 	public void setWarrior(int warrior) {
 		this.warrior = warrior;
 	}
+	
 	public int isMagician() {
 		return magician;
 	}
 	public void setMagician(int magician) {
 		this.magician = magician;
 	}
+	
 	public int isThief() {
 		return thief;
 	}
 	public void setThief(int thief) {
 		this.thief = thief;
 	}
+	
 	public int isPirate() {
 		return pirate;
 	}
 	public void setPirate(int pirate) {
 		this.pirate = pirate;
 	}
+	
 	public int isArcher() {
 		return archer;
 	}
 	public void setArcher(int archer) {
 		this.archer = archer;
 	}
+	
+	public int getBeginner() {
+		return beginner;
+	}
+	public void setBeginner(int beginner) {
+		this.beginner = beginner;
+	}
+	
 	public int isCommon() {
 		return common;
 	}
 	public void setCommon(int common) {
 		this.common = common;
 	}
+	
 	public int getRequiredStr() {
 		return requiredStr;
 	}
 	public void setRequiredStr(int requiredStr) {
 		this.requiredStr = requiredStr;
 	}
+	
 	public int getRequiredDex() {
 		return requiredDex;
 	}
 	public void setRequiredDex(int requiredDex) {
 		this.requiredDex = requiredDex;
 	}
+	
 	public int getRequiredInt() {
 		return requiredInt;
 	}
 	public void setRequiredInt(int requiredInt) {
 		this.requiredInt = requiredInt;
 	}
+	
 	public int getRequiredLuk() {
 		return requiredLuk;
 	}

@@ -10,12 +10,13 @@ public class UserSearchQueryEquipment {
 	int thief;
 	int archer;
 	int pirate;
+	int beginner;
 	int common;
 	
 	
 	public UserSearchQueryEquipment(String equipmentName, String equipmentType,
 			int minimumLevel, int warrior, int magician, int thief, int archer,
-			int pirate, int common) {
+			int pirate, int beginner, int common) {
 		super();
 		this.equipmentName = equipmentName;
 		this.equipmentType = equipmentType;
@@ -25,6 +26,7 @@ public class UserSearchQueryEquipment {
 		this.thief = thief;
 		this.archer = archer;
 		this.pirate = pirate;
+		this.beginner = beginner;
 		this.common = common;
 	}
 
