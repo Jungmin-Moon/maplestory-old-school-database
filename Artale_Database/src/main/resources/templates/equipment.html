@@ -28,35 +28,35 @@
 			<div id = "equipment">
 				Equipment Type: <select name = "equipmentType" multiple>
 					                 <option value = ""></option>
-									 <option value = "">One Handed Sword</option>
-									 <option value = "">Two Handed Sword</option>
-									 <option value = "">One Handed Axe</option>
-									 <option value = "">Two Handed Axe</option>
-									 <option value = "">One Handed Blunt Weapon</option>
-									 <option value = "">Two Handed Blunt Weapon</option>
-									 <option value = "">Bow</option>
-									 <option value = "">Crossbow</option>
-									 <option value = "">Dagger</option>
-									 <option value = "">Claw</option>
-									 <option value = "">Spear</option>
-									 <option value = "">Polearm</option>
-									 <option value = "">Wand</option>
-									 <option value = "">Staff</option>
-									 <option value = "">Knuckle</option>
-									 <option value = "">Gun</option>
-									 <option value = "">Hat</option>
-									 <option value = "">Top</option>
-									 <option value = "">Overall</option>
-									 <option value = "">Bottom</option>
-									 <option value = "">Shoes</option>
-									 <option value = "">Gloves</option>
-									 <option value = "">Cape</option>
-									 <option value = "">Shield</option>
-									 <option value = "">Earring</option>
-									 <option value = "">Eye Accessory</option>
-									 <option value = "">Face Accessory</option>
-									 <option value = "">Pendant</option>
-									 <option value = "">Belt</option>
+									 <option value = "oneHandedSword">One Handed Sword</option>
+									 <option value = "twoHandedSword">Two Handed Sword</option>
+									 <option value = "oneHandedAxe">One Handed Axe</option>
+									 <option value = "twoHandedAxe">Two Handed Axe</option>
+									 <option value = "oneHandedBluntWeapon">One Handed Blunt Weapon</option>
+									 <option value = "twoHandedBluntWeapon">Two Handed Blunt Weapon</option>
+									 <option value = "bow">Bow</option>
+									 <option value = "crossbow">Crossbow</option>
+									 <option value = "dagger">Dagger</option>
+									 <option value = "claw">Claw</option>
+									 <option value = "spear">Spear</option>
+									 <option value = "polearm">Polearm</option>
+									 <option value = "wand">Wand</option>
+									 <option value = "staff">Staff</option>
+									 <option value = "knuckle">Knuckle</option>
+									 <option value = "gun">Gun</option>
+									 <option value = "hat">Hat</option>
+									 <option value = "top">Top</option>
+									 <option value = "overall">Overall</option>
+									 <option value = "bottom">Bottom</option>
+									 <option value = "shoes">Shoes</option>
+									 <option value = "gloves">Gloves</option>
+									 <option value = "cape">Cape</option>
+									 <option value = "shield">Shield</option>
+									 <option value = "earring">Earring</option>
+									 <option value = "eyeAccessory">Eye Accessory</option>
+									 <option value = "faceAccessory">Face Accessory</option>
+									 <option value = "pendant">Pendant</option>
+									 <option value = "belt">Belt</option>
 								</select>
 			</div>		
 			
@@ -96,6 +96,8 @@
 		<!--<div th:if = "${#lists.isEmpty(allEquipment)}">There is currently no equipment in the database.</div>-->
 		
 		<!--<div th:if = "${#lists.size(allEquipment) > 0}">-->
+			
+		<!-- to send as a list i need to set it as equipmentType= , , , as a comma delimited list-->
 		<div>
 			<table>
 				<thead>

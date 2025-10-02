@@ -1,9 +1,11 @@
 package com.artaleDB.dto;
 
+import java.util.List;
+
 public class UserSearchQueryEquipment {
 	
 	String equipmentName;
-	String equipmentType;
+	List<String> equipmentType;
 	int minimumLevel;
 	int warrior;
 	int magician;
@@ -14,7 +16,7 @@ public class UserSearchQueryEquipment {
 	int common;
 	
 	
-	public UserSearchQueryEquipment(String equipmentName, String equipmentType,
+	public UserSearchQueryEquipment(String equipmentName, List<String> equipmentType,
 			int minimumLevel, int warrior, int magician, int thief, int archer,
 			int pirate, int beginner, int common) {
 		super();
@@ -41,16 +43,14 @@ public class UserSearchQueryEquipment {
 	}
 
 
-	public String getEquipmentType() {
+	public List<String> getEquipmentType() {
 		return equipmentType;
 	}
 
 
-	public void setEquipmentType(String equipmentType) {
+	public void setEquipmentType(List<String> equipmentType) {
 		this.equipmentType = equipmentType;
 	}
-
-
 
 
 	public int getMinimumLevel() {
