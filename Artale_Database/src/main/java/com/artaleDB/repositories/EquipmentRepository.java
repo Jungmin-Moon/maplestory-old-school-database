@@ -60,4 +60,8 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	/* Query to find a collection of equipment that can be equipped by only beginners*/
 	Iterable<Equipment> findAllByBeginner(int beginner);
 	
+	
+	
+	//Web queries
+	List<Equipment> findAllByOrderByMinimumLevelAsc();
 }

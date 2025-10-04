@@ -3,6 +3,10 @@ package com.artaleDB.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.artaleDB.entities.Equipment;
@@ -16,10 +20,12 @@ public class EquipmentService {
 	
 	EquipmentRepository equipmentRepository;
 	CalculationService calculationService;
+	ListChecker listChecker;
 	
-	public EquipmentService(EquipmentRepository equipmentRepository, CalculationService calculationService) {
+	public EquipmentService(EquipmentRepository equipmentRepository, CalculationService calculationService, ListChecker listChecker) {
 		this.equipmentRepository = equipmentRepository;
 		this.calculationService = calculationService;
+		this.listChecker = listChecker;
 	}
 	
 	/*
@@ -297,8 +303,19 @@ public class EquipmentService {
 		}
 	}
 	
-	public List<Equipment> findAllWeb() {
-		return equipmentRepository.findAll();
+	public Page<Equipment> findAllWeb(Pageable pageable) {
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
+		
+		List<Equipment> allEquipPage;
+		var allEquip = equipmentRepository.findAllByOrderByMinimumLevelAsc();
+		
+		allEquipPage = listChecker.checkIfEmptyElseCreateSubList(allEquip, start, pageSize, allEquip.size());
+		
+		Page<Equipment> equipPage = new PageImpl<Equipment>(allEquipPage, PageRequest.of(currentPage, pageSize), allEquip.size());
+		
+		return equipPage;
 	}
 	
 	

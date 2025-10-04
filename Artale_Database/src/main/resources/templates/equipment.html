@@ -99,28 +99,45 @@
 			
 		<!-- to send as a list i need to set it as equipmentType= , , , as a comma delimited list-->
 		
-		<!--
-		<div>
+		<div th:if = "${equipPage.totalPages > 0}">
 			<table>
 				<thead>
 					<tr>
 						<td>Equipment Name</td>
+						<td>Equipment Level</td>
 						<td>Equipment Type</td>
-						<td>Weapon Type</td>
-						<td>Armor Type</td>
+						<td>Required Strength</td>
+						<td>Required Dex</td>
+						<td>Required Int</td>
+						<td>Required Luk</td>
 					</tr>
 				</thead>
+				
 				<tbody>
-					<tr th:each = "equipment: ${allEquipment}">
-						<td th:text = "${equipment.equipmentName}"></td>
-						<td th:text = "${equipment.equipmentType}"></td>
-						<td th:text = "${equipment.weaponType}"></td>
-						<td th:text = "${equipment.armorType}"></td>
+					<tr th:each = "equip: ${equipPage.content}">
+						<td th:text = "${equip.equipmentName}"></td>
+						<td th:text = "${equip.minimumLevel}"></td>
+						<td th:text = "${equip.equipmentType}"></td>
+						<td th:text = "${equip.requiredStr}"></td>
+						<td th:text = "${equip.requiredDex}"></td>
+						<td th:text = "${equip.requiredInt}"></td>
+						<td th:text = "${equip.requiredLuk}"></td>
 					</tr>
 				</tbody>
 			</table>
+			
+			<!-- When submitting it sets it up as equipmentType=&equipmentType=&equipmentType=&-->
+			
+			<!-- So far so good-->
+			<div>
+				<span th:if = "${equipPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipType = ${equipmentTypeQuery})}"
+					     th:text = ${pageNumber}></a>
+						 &nbsp;&nbsp
+			</div>			 
+			
 		</div>
-		-->
+		
 	</body>
 	
 </html>
