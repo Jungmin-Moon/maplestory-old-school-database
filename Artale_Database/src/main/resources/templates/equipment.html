@@ -126,12 +126,9 @@
 				</tbody>
 			</table>
 			
-			<!-- When submitting it sets it up as equipmentType=&equipmentType=&equipmentType=&-->
-			
-			<!-- So far so good-->
 			<div>
 				<span th:if = "${equipPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipType = ${equipmentTypeQuery})}"
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentType = ${equipmentTypeQuery})}"
 					     th:text = ${pageNumber}></a>
 						 &nbsp;&nbsp
 			</div>			 

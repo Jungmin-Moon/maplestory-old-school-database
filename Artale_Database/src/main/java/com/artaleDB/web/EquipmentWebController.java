@@ -34,7 +34,7 @@ public class EquipmentWebController {
 							@RequestParam (required = false) List<String> equipmentType, @RequestParam(required = false) Integer minimumLevel, @RequestParam(required = false) Integer warrior,
 							@RequestParam(required = false) Integer magician, @RequestParam(required = false) Integer thief, @RequestParam(required = false) Integer archer, 
 							@RequestParam(required = false) Integer pirate, @RequestParam(required = false) Integer beginner, @RequestParam(required = false) Integer common,
-							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size, @RequestParam("equipType") Optional<String> equipType) {
+							@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size, @RequestParam("equipmentType") Optional<List<String>> equipType) {
 		
 		if (home != null) {
 			return "redirect:/home";
@@ -58,6 +58,7 @@ public class EquipmentWebController {
 		
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(30);
+		List<String> eType = equipType.orElse(equipmentType);
 		
 		Page<Equipment> equipPage;
 		
@@ -69,6 +70,7 @@ public class EquipmentWebController {
 		} else {
 			equipPage = equipmentService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
 			
+			/*
 			StringBuilder s = new StringBuilder();
 			
 			for (String str: equipmentType) {
@@ -77,13 +79,14 @@ public class EquipmentWebController {
 				s.append("&");
 			}
 			
-			String equipTypeQuery = s.toString();
+			String equipTypeQuery = s.toString(); */
 			
-			model.addAttribute("equipmentTypeQuery", equipTypeQuery);
+			System.out.println(equipmentType.toString());
 		}
 		
 		int totalPages = equipPage.getTotalPages();
 		model.addAttribute("equipPage", equipPage);
+		model.addAttribute("equipmentTypeQuery", eType);
 		
 		if (totalPages > 0) {
 			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
