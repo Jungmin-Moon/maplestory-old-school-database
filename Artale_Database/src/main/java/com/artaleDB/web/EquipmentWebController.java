@@ -70,16 +70,6 @@ public class EquipmentWebController {
 		} else {
 			equipPage = equipmentService.findAllWeb(PageRequest.of(currentPage - 1, pageSize));
 			
-			/*
-			StringBuilder s = new StringBuilder();
-			
-			for (String str: equipmentType) {
-				s.append("equipmentType=");
-				s.append(str);
-				s.append("&");
-			}
-			
-			String equipTypeQuery = s.toString(); */
 			
 			System.out.println(equipmentType.toString());
 		}
@@ -95,12 +85,6 @@ public class EquipmentWebController {
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
 		
-		//model.addAttribute("equipmentTypeQuery", equipmentType);
-		/*
-		System.out.println("Chosen equipment are: ");
-		for(String s: equipmentType) {
-			System.out.println(s);
-		} */
 		
 		return "equipment";
 	}

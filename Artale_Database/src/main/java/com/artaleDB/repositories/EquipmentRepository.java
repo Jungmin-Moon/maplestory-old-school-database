@@ -64,4 +64,8 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	
 	//Web queries
 	List<Equipment> findAllByOrderByMinimumLevelAsc();
+	
+	@Query("SELECT e FROM Equipment e WHERE e.equipmentName LIKE %:equipName% AND e.equipmentType IN :equipType AND e.minimumLevel >= minLevel "
+			+ "AND (e.warrior = :warrior OR e.magician = :magician OR e.thief = :thief OR e.pirate = :pirate OR e.archer = :archer OR e.beginner = :beginner OR e.common = :common)")
+	List<Equipment> findByQueryParameters(String equipName, List<String> equipType, int minLevel, int warrior, int magician, int thief, int archer, int pirate, int beginner, int common);
 }
