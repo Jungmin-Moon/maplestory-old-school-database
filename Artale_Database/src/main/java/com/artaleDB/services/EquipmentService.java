@@ -1,5 +1,7 @@
 package com.artaleDB.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.artaleDB.dto.UserSearchQueryEquipment;
 import com.artaleDB.entities.Equipment;
 import com.artaleDB.entities.NoneFoundException;
 import com.artaleDB.repositories.EquipmentRepository;
@@ -318,5 +321,41 @@ public class EquipmentService {
 		return equipPage;
 	}
 	
+	public Page<Equipment> findAllByQuery(Pageable pageable, UserSearchQueryEquipment uSearchEquip) {
+		int pageSize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int start = currentPage * pageSize;
+		
+		List<Equipment> queryEquipPage;
+		List<Equipment> queryEquipList = new ArrayList<>();
+		
+		if (checkForClass(uSearchEquip)) {
+			//use the AND version of the query
+			queryEquipList = equipmentRepository.findByQueryparametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+		} else {
+			//use the OR version of the query
+			queryEquipList = equipmentRepository.findByQueryParameters(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+		}
+		
+		queryEquipPage = listChecker.checkIfEmptyElseCreateSubList(queryEquipList, start, pageSize, queryEquipList.size());
+		
+		return new PageImpl<Equipment>(queryEquipList, PageRequest.of(currentPage, pageSize), queryEquipList.size());
+		
+	}
 	
+	public boolean checkForClass(UserSearchQueryEquipment uSearchEquip) {
+		List<Integer> classOnesOrZeros = Arrays.asList(uSearchEquip.isWarrior(), uSearchEquip.isArcher(), uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isPirate(), uSearchEquip.isCommon(), uSearchEquip.isBeginner());
+		
+		long count = classOnesOrZeros.stream().filter(i -> i == 1).count();
+		
+		//True if there are one or more 1s among the classes
+		//False if there are no 1s among the classes
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

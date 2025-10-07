@@ -112,7 +112,14 @@ public class UserSearchQueryEquipment {
 		this.pirate = pirate;
 	}
 
-
+	public int isBeginner() {
+		return beginner;
+	} 
+	
+	public void setBeginner(int beginner) {
+		this.beginner = beginner;
+	}
+	
 	public int isCommon() {
 		return common;
 	}
