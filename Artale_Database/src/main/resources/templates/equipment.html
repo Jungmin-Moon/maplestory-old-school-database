@@ -27,12 +27,12 @@
 				
 			<div id = "equipment">
 				Equipment Type: <select name = "equipmentType" multiple>
-									 <option value = "oneHandedSword">One Handed Sword</option>
-									 <option value = "twoHandedSword">Two Handed Sword</option>
-									 <option value = "oneHandedAxe">One Handed Axe</option>
-									 <option value = "twoHandedAxe">Two Handed Axe</option>
-									 <option value = "oneHandedBluntWeapon">One Handed Blunt Weapon</option>
-									 <option value = "twoHandedBluntWeapon">Two Handed Blunt Weapon</option>
+									 <option value = "one-Handed Sword">One Handed Sword</option>
+									 <option value = "two-Handed Sword">Two Handed Sword</option>
+									 <option value = "one-Handed Axe">One Handed Axe</option>
+									 <option value = "two-Handed Axe">Two Handed Axe</option>
+									 <option value = "one-Handed Blunt Weapon">One Handed Blunt Weapon</option>
+									 <option value = "two-Handed Blunt Weapon">Two Handed Blunt Weapon</option>
 									 <option value = "bow">Bow</option>
 									 <option value = "crossbow">Crossbow</option>
 									 <option value = "dagger">Dagger</option>
@@ -127,7 +127,8 @@
 			
 			<div>
 				<span th:if = "${equipPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentType = ${equipmentTypeQuery})}"
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
+													magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}"
 					     th:text = ${pageNumber}></a>
 						 &nbsp;&nbsp
 			</div>			 

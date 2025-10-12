@@ -327,25 +327,25 @@ public class EquipmentService {
 		int start = currentPage * pageSize;
 		
 		List<Equipment> queryEquipPage;
-		List<Equipment> queryEquipList = new ArrayList<>();
+		List<Equipment> queryEquipResult = new ArrayList<>();
 		
 		if (checkForClass(uSearchEquip)) {
 			//use the AND version of the query
-			queryEquipList = equipmentRepository.findByQueryparametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+			queryEquipResult = equipmentRepository.findByQueryparametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
 								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
 		} else {
 			//use the OR version of the query
-			queryEquipList = equipmentRepository.findByQueryParameters(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+			queryEquipResult = equipmentRepository.findByQueryParameters(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
 								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
 		}
 		
-		queryEquipPage = listChecker.checkIfEmptyElseCreateSubList(queryEquipList, start, pageSize, queryEquipList.size());
+		queryEquipPage = listChecker.checkIfEmptyElseCreateSubList(queryEquipResult, start, pageSize, queryEquipResult.size());
 		
-		return new PageImpl<Equipment>(queryEquipList, PageRequest.of(currentPage, pageSize), queryEquipList.size());
+		return new PageImpl<Equipment>(queryEquipPage, PageRequest.of(currentPage, pageSize), queryEquipResult.size());
 		
 	}
 	
-	public boolean checkForClass(UserSearchQueryEquipment uSearchEquip) {
+	private boolean checkForClass(UserSearchQueryEquipment uSearchEquip) {
 		List<Integer> classOnesOrZeros = Arrays.asList(uSearchEquip.isWarrior(), uSearchEquip.isArcher(), uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isPirate(), uSearchEquip.isCommon(), uSearchEquip.isBeginner());
 		
 		long count = classOnesOrZeros.stream().filter(i -> i == 1).count();

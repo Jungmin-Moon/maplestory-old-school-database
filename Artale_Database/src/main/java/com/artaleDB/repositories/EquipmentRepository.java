@@ -66,10 +66,10 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	List<Equipment> findAllByOrderByMinimumLevelAsc();
 	
 	@Query("SELECT e FROM Equipment e WHERE e.equipmentName LIKE %:equipName% AND e.equipmentType IN :equipType AND e.minimumLevel >= :minLevel "
-			+ "AND (e.warrior = :warrior OR e.magician = :magician OR e.thief = :thief OR e.pirate = :pirate OR e.archer = :archer OR e.beginner = :beginner OR e.common = :common)")
+			+ "AND (e.warrior = :warrior OR e.magician = :magician OR e.thief = :thief OR e.pirate = :pirate OR e.archer = :archer OR e.beginner = :beginner OR e.common = :common) ORDER BY e.minimumLevel ASC")
 	List<Equipment> findByQueryParameters(String equipName, List<String> equipType, int minLevel, int warrior, int magician, int thief, int archer, int pirate, int beginner, int common);
 	
 	@Query("SELECT e FROM Equipment e WHERE e.equipmentName LIKE %:equipName% AND e.equipmentType IN :equipType AND e.minimumLevel >= :minLevel "
-			+ "AND (e.warrior = :warrior AND e.magician = :magician AND e.thief = :thief AND e.pirate = :pirate AND e.archer = :archer AND e.beginner = :beginner AND e.common = :common)")
+			+ "AND (e.warrior = :warrior AND e.magician = :magician AND e.thief = :thief AND e.pirate = :pirate AND e.archer = :archer AND e.beginner = :beginner AND e.common = :common) ORDER BY e.minimumLevel ASC")
 	List<Equipment> findByQueryparametersAND(String equipName, List<String> equipType, int minLevel, int warrior, int magician, int thief, int archer, int pirate, int beginner, int common);
 }
