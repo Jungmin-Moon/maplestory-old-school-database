@@ -92,11 +92,7 @@
 		
 		<br />
 		<br />
-		<!--<div th:if = "${#lists.isEmpty(allEquipment)}">There is currently no equipment in the database.</div>-->
-		
-		<!--<div th:if = "${#lists.size(allEquipment) > 0}">-->
-			
-		<!-- to send as a list i need to set it as equipmentType= , , , as a comma delimited list-->
+
 		
 		<div th:if = "${equipPage.totalPages > 0}">
 			<table>
@@ -126,21 +122,18 @@
 			</table>
 			
 			<div>
-				<!-- Page button to go to the first page if the number of pages is greater than 1-->
 				<span th:if = "${equipPage.totalPages > 1}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
 									               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">First</a>
 						 &nbsp;&nbsp		
 				</span>
 				
-				<!-- Page button to go to the previous page if the current page isn't the first one-->
 				<span th:if = "${currentPage != 1}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${curentPage} - 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
 					                               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Previous</a>
 						 &nbsp;&nbsp
 				</span>
 				
-				<!-- Normal Page buttons that will always be there-->
 				<span th:if = "${equipPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
 												   magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}"
@@ -148,13 +141,11 @@
 						 &nbsp;&nbsp
 				</span>
 				
-				<!-- Page button to go to the next page if the current page isn't the last one-->
 				<span th:if = "${currentPage != equipPage.totalPages}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} + 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
 					                               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Next</a>
 		                 &nbsp;&nbsp
 				
-				<!-- Page button to go to the last page if the current page isn't the last one and there are more than 1 pages-->
 				<span th:if = "${equipPage.totalPages > 1}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${equipPage.totalPages}, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
 												   magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Last</a>
