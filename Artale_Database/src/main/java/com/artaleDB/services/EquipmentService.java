@@ -306,6 +306,12 @@ public class EquipmentService {
 		}
 	}
 	
+	
+	/*
+	 * Service method that returns X number of pages of all equipment in the database
+	 * 
+	 * @return Page<Equipment> a Page of all equipment
+	 */
 	public Page<Equipment> findAllWeb(Pageable pageable) {
 		int pageSize = pageable.getPageSize();
 		int currentPage = pageable.getPageNumber();
@@ -321,6 +327,12 @@ public class EquipmentService {
 		return equipPage;
 	}
 	
+	
+	/*
+	 * Service method that returns X number of pages of all equipment that satisfies the user query
+	 * 
+	 * @return Page<Equipment> a Page of all equipment that satisfies the user query
+	 */
 	public Page<Equipment> findAllByQuery(Pageable pageable, UserSearchQueryEquipment uSearchEquip) {
 		int pageSize = pageable.getPageSize();
 		int currentPage = pageable.getPageNumber();
@@ -345,6 +357,12 @@ public class EquipmentService {
 		
 	}
 	
+	
+	/*
+	 * Private helper method for the equipment service to determine which version of the query to use (AND version or OR version)
+	 * 
+	 * @return boolean returns true if there are more than one class that was checked, false if none were selected
+	 */
 	private boolean checkForClass(UserSearchQueryEquipment uSearchEquip) {
 		List<Integer> classOnesOrZeros = Arrays.asList(uSearchEquip.isWarrior(), uSearchEquip.isArcher(), uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isPirate(), uSearchEquip.isCommon(), uSearchEquip.isBeginner());
 		
