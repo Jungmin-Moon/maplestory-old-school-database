@@ -110,6 +110,7 @@ public class EquipmentWebController {
 		
 		
 		model.addAttribute("equipPage", equipPage);
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("equipName", eName);
 		model.addAttribute("equipmentTypeQuery", eType);
 		model.addAttribute("level", minLevel);

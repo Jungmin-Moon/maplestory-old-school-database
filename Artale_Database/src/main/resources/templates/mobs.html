@@ -8,7 +8,7 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Mobs</title>
-		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/mobSheet.css}" />
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/mob.css}" />
 	</head>
 	
 	<body>
@@ -25,19 +25,24 @@
 		
 		<div>
 			<form action = "/web/mob" method = "GET" id = "mobForm">
-				Mob name: <input type = "text" id = "mobName" name = "mobName" placeholder = "" />
-				Mob Level: <input type = "number" id = "mobLevel" min = "0" max = "200" name = "mobLevel" value = 0 />
-				Mob EXP: <input type = "number" id = "mobEXP" min = "0" name = "mobEXP" value = 0 />
-				Mob Location One: <input type = "text" id = "mobLocationOne" name = "mobLocationOne" placeholder = "" />
-				Mob Location Two: <input type = "text" id = "mobLocationTwo" name = "mobLocationTwo" placeholder = "" />				
+				Mob name: <input type = "text" id = "mobName" name = "mobName" placeholder = "" /><br /><br />
+				Mob Level: <input type = "number" id = "mobLevel" min = "0" max = "200" name = "mobLevel" value = 0 /><br /><br />
+				Mob EXP: <input type = "number" id = "mobEXP" min = "0" name = "mobEXP" value = 0 /><br /><br />
+				Mob Location One: <input type = "text" id = "mobLocationOne" name = "mobLocationOne" placeholder = "" /><br /><br />
+				Mob Location Two: <input type = "text" id = "mobLocationTwo" name = "mobLocationTwo" placeholder = "" /><br />		
 				<button type = "submit">Submit</button>
 			</form>
 		</div>
 		
 		<br />
 		<br />
+		
+		<div th:if = "${mobPage.totalPages == 0}">
+					<span id = "noContent">There are no results currently for that query.</span>
+		</div>
+		
 		<div th:if = "${mobPage.totalPages > 0}">
-			<table>
+			<table id = "mobsInfo">
 				<thead>
 					<tr>
 						<td>Mob Name</td>
@@ -58,8 +63,9 @@
 				</tbody>
 			</table>
 			
+			<br />
 			
-			<div>
+			<div id = "pages">
 				<span th:if = "${mobPage.totalPages > 1}">			
 					<a th:href = "@{/web/mob(size = ${mobPage.size}, page = 1, mobName = ${mobNameFilter}, mobLevel = ${mobLevelFilter}, mobEXP = ${mobExpFilter},
 									mobLocationOne = ${mobLocationOneFilter}, mobLocationTwo = ${mobLocationTwoFilter})}">First</a>

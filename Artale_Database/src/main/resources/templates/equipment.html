@@ -7,11 +7,11 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Equipment</title>
-		<link rel = "stylesheet" type = "text/cass" th:href = "@{/css/equipmentStyle.css}" />
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/equipment.css}" />
 	</head>
 	
 	<body>
-		<div>
+		<div class = "topnav">
 			<a href = "/web/equipment?home">Home</a>
 			<a href = "/web/equipment?mob">Mob Search</a>
 			<a href = "/web/equipment?boss">Boss Search</a>
@@ -23,10 +23,10 @@
 		<br />
 		
 		<form action = "/web/equipment" method = "GET">
-			Equipment Name: <input type = "text" name = "equipmentName" />
+			Equipment Name: <input type = "text" name = "equipmentName" /><br /><br />
 				
-			<div id = "equipment">
-				Equipment Type: <select name = "equipmentType" multiple>
+			<div>
+				Equipment Type: <select name = "equipmentType" multiple> 
 									 <option value = "one-Handed Sword">One Handed Sword</option>
 									 <option value = "two-Handed Sword">Two Handed Sword</option>
 									 <option value = "one-Handed Axe">One Handed Axe</option>
@@ -57,11 +57,11 @@
 									 <option value = "pendant">Pendant</option>
 									 <option value = "belt">Belt</option>
 								</select>
-			</div>		
+			</div><br /><br />		
 			
 			<div>		
 				Minimum Level: <input type = "number" name = "minimumLevel" value = "0" />
-			</div>
+			</div><br /><br />
 			
 			<div id = "classes">
 				Warrior: <input type = "checkbox" name = "warrior" value = "1" />
@@ -93,9 +93,12 @@
 		<br />
 		<br />
 
+		<div th:if = "${equipPage.totalPages == 0}">
+							<span id = "noContent">There are no results currently for that query.</span>
+		</div>
 		
 		<div th:if = "${equipPage.totalPages > 0}">
-			<table>
+			<table id = "equipmentInfo">
 				<thead>
 					<tr>
 						<td>Equipment Name</td>
@@ -121,7 +124,7 @@
 				</tbody>
 			</table>
 			
-			<div>
+			<div id = "pages">
 				<span th:if = "${equipPage.totalPages > 1}">
 					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
 									               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">First</a>
@@ -129,7 +132,7 @@
 				</span>
 				
 				<span th:if = "${currentPage != 1}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${curentPage} - 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} - 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
 					                               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Previous</a>
 						 &nbsp;&nbsp
 				</span>

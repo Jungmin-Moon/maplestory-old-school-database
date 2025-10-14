@@ -14,7 +14,7 @@
 	
 	
 	<body>
-		<div>
+		<div class = "topnav">
 			<a href = "/web/boss?home">Home</a>
 			<a href = "/web/boss?mob">Mob Search</a>
 			<a href = "/web/boss?equipment">Equipment Search</a>
@@ -27,11 +27,11 @@
 		
 		<div>
 			<form action = "/web/boss" method = "GET">
-				Boss Name: <input type = "text" name = "bossName" value = ""/>
-				Boss Level: <input type = "number" min = "0" max = "200"name = "bossLevel" value = 0 />
-				Boss Min Respawn Time(Minutes): <input type = "number" min = "0" max = "999999" name = "bossMinRespawn" value = 0 />
-				Boss Max Respawn Time(Minutes): <input type = "number" min = "0" max = "999999" name = "bossMaxRespawn" value = 0 />
-				Boss Location One(Continent): <input type = "text" name = "bossLocation" value = ""/>
+				Boss Name: <input type = "text" name = "bossName" value = ""/> <br /><br />
+				Boss Level: <input type = "number" min = "0" max = "200"name = "bossLevel" value = 0 /> <br /><br />
+				Boss Min Respawn Time(Minutes): <input type = "number" min = "0" max = "999999" name = "bossMinRespawn" value = 0 /> <br /><br />
+				Boss Max Respawn Time(Minutes): <input type = "number" min = "0" max = "999999" name = "bossMaxRespawn" value = 0 /> <br /><br />
+				Boss Location One(Continent): <input type = "text" name = "bossLocation" value = ""/> <br />
 				<button type = "submit">Submit</button>
 			</form>
 		</div>
@@ -39,8 +39,12 @@
 		<br />
 		<br />
 		
-		<div>
-			<table>
+		<div th:if = "${bossPage.totalPages == 0}">
+			<span id = "noContent">There are no results currently for that query.</span>
+		</div>
+		
+		<div th:if = "${bossPage.totalPages > 0}">
+			<table id = "bossesInfo">
 				<thead>
 					<tr>
 						<td>Boss Name</td>
@@ -64,8 +68,9 @@
 				</tbody>
 			</table>
 			
+			<br />
 			
-			<div>
+			<div id = "pages">
 				<span th:if = "${bossPage.totalPages > 1}">
 					<a th:href = "@{/web/boss(size = ${bossPage.size}, page = 1, bossName = ${bossNameFilter}, bossLevel = ${bossLevelFilter}, bossMinRespawn = ${bossMinRespawnFilter}, 
 								bossMaxRespawn = ${bossMaxRespawnFilter}, bossLocation = ${bossLocationFilter})}">First</a>
