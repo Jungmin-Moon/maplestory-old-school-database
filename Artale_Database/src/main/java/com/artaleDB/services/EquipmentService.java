@@ -343,11 +343,11 @@ public class EquipmentService {
 		
 		if (checkForClass(uSearchEquip)) {
 			//use the AND version of the query
-			queryEquipResult = equipmentRepository.findByQueryparametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+			queryEquipResult = equipmentRepository.findByQueryParametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
 								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
 		} else {
 			//use the OR version of the query
-			queryEquipResult = equipmentRepository.findByQueryParameters(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+			queryEquipResult = equipmentRepository.findByQueryParametersOR(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
 								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
 		}
 		
