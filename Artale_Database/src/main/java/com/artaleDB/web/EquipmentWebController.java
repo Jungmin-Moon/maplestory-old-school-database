@@ -73,7 +73,7 @@ public class EquipmentWebController {
 		}
 		
 		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(30);
+		int pageSize = size.orElse(20);
 		
 		//Used for URL creation and to make sure queries are kept intact
 		String eName = equipName.orElse("");
@@ -89,7 +89,9 @@ public class EquipmentWebController {
 		
 		Page<Equipment> equipPage;
 		
-		if (equipmentType == null ||minimumLevel == null || warrior == null || magician == null || thief == null || archer == null || pirate == null || beginner == null || common == null) {
+		
+		if (equipmentName == null || equipmentType == null ||minimumLevel == null || warrior == null || magician == null || thief == null || archer == null || pirate == null || beginner == null || common == null) {
+			equipmentName = "";
 			minimumLevel = warrior = magician = thief = archer = pirate = beginner = common = 0;
 			equipmentType = new ArrayList<>();
 			
@@ -103,7 +105,6 @@ public class EquipmentWebController {
 			
 			equipPage = equipmentService.findAllByQuery(PageRequest.of(currentPage - 1, pageSize), uSearchEquip);	
 			
-			System.out.println(equipmentType.toString());
 		}
 		
 		int totalPages = equipPage.getTotalPages();

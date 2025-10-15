@@ -49,5 +49,13 @@ td {
 
 #pages {
 	text-align: center;
-	font-size: 25px;
+	font-size: 20px;
+}
+
+#selectMenu {
+	text-align: right;
+}
+
+#minLevelInput {
+	
 }

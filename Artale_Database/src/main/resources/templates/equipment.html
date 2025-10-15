@@ -23,10 +23,10 @@
 		<br />
 		
 		<form action = "/web/equipment" method = "GET">
-			Equipment Name: <input type = "text" name = "equipmentName" /><br /><br />
+			Equipment Name: <input type = "text" name = "equipmentName" />
 				
-			<div>
-				Equipment Type: <select name = "equipmentType" multiple> 
+			<span id = "selectMenu">
+				Equipment Type: <select name = "equipmentType" multiple size = 6> 
 									 <option value = "one-Handed Sword">One Handed Sword</option>
 									 <option value = "two-Handed Sword">Two Handed Sword</option>
 									 <option value = "one-Handed Axe">One Handed Axe</option>
@@ -57,13 +57,13 @@
 									 <option value = "pendant">Pendant</option>
 									 <option value = "belt">Belt</option>
 								</select>
-			</div><br /><br />		
+			</span>
 			
-			<div>		
+			<span id = "minLevelInput">		
 				Minimum Level: <input type = "number" name = "minimumLevel" value = "0" />
-			</div><br /><br />
+			</span>
 			
-			<div id = "classes">
+			<span id = "classes">
 				Warrior: <input type = "checkbox" name = "warrior" value = "1" />
 				         <input type = "hidden" name = "warrior" value = "0" />
 				
@@ -84,7 +84,7 @@
 						
 				Beginner: <input type = "checkbox" name = "beginner" value = "1" />
 						  <input type = "hidden" name = "beginner" value = "0" />
-			</div>
+			</span>
 			
 			<button type = "submit">Submit</button>
 		</form>

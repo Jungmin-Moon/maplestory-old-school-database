@@ -33,7 +33,7 @@ public class EquipmentRepositoryIntegrationTests {
 		
 		equipType.add("Hat");
 		
-		List<Equipment> allHats = equipmentRepository.findByQueryParameters("", equipType, 0, 0, 0, 0, 0, 0, 0, 0);
+		List<Equipment> allHats = equipmentRepository.findByQueryParametersOR("", equipType, 0, 0, 0, 0, 0, 0, 0, 0);
 		
 		assertEquals(279L, allHats.size());
 	}
@@ -47,7 +47,7 @@ public class EquipmentRepositoryIntegrationTests {
 		equipType.add("Overall");
 		equipType.add("Bow");
 		
-		List<Equipment> allHatOverallBow = equipmentRepository.findByQueryParameters("", equipType, 0, 0, 0, 0, 0, 0, 0, 0);
+		List<Equipment> allHatOverallBow = equipmentRepository.findByQueryParametersOR("", equipType, 0, 0, 0, 0, 0, 0, 0, 0);
 		
 		assertEquals(464L, allHatOverallBow.size());
 	}

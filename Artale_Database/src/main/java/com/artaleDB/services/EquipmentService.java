@@ -342,13 +342,28 @@ public class EquipmentService {
 		List<Equipment> queryEquipResult = new ArrayList<>();
 		
 		if (checkForClass(uSearchEquip)) {
-			//use the AND version of the query
-			queryEquipResult = equipmentRepository.findByQueryParametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
-								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+			
+			if (uSearchEquip.getEquipmentType().size() == 0) {
+				
+				queryEquipResult = equipmentRepository.findByQueryParametersNoEquipmentTypeAND(uSearchEquip.getEquipmentName(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+									uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+				
+			} else {
+				
+				queryEquipResult = equipmentRepository.findByQueryParametersAND(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+									uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+			}
 		} else {
-			//use the OR version of the query
-			queryEquipResult = equipmentRepository.findByQueryParametersOR(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+			
+			if (uSearchEquip.getEquipmentType().size() == 0) {
+				
+				queryEquipResult = equipmentRepository.findByQueryParametersNoEquipmentTypeOR(uSearchEquip.getEquipmentName(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
+						uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+			} else {
+				
+				queryEquipResult = equipmentRepository.findByQueryParametersOR(uSearchEquip.getEquipmentName(), uSearchEquip.getEquipmentType(), uSearchEquip.getMinimumLevel(), uSearchEquip.isWarrior(),
 								uSearchEquip.isMagician(), uSearchEquip.isThief(), uSearchEquip.isArcher(), uSearchEquip.isPirate(), uSearchEquip.isBeginner(), uSearchEquip.isCommon());
+			}
 		}
 		
 		queryEquipPage = listChecker.checkIfEmptyElseCreateSubList(queryEquipResult, start, pageSize, queryEquipResult.size());
