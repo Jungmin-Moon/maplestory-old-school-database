@@ -23,7 +23,7 @@
 		<br />
 		
 		<form action = "/web/equipment" method = "GET">
-			Equipment Name: <input type = "text" name = "equipmentName" />
+			Equipment Name: <input type = "text" name = "equipmentName" placeholder = ""/>
 				
 			<span id = "selectMenu">
 				Equipment Type: <select name = "equipmentType" multiple size = 6> 
@@ -126,32 +126,32 @@
 			
 			<div id = "pages">
 				<span th:if = "${equipPage.totalPages > 1}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
-									               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">First</a>
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = 1, equipmentName = ${equipNameFilter}, equipmentType = ${equipmentTypeFilter}, minimumLevel = ${levelFilter}, warrior = ${warriorFilter}, 
+									               magician = ${magicianFilter}, thief = ${thiefFilter}, archer = ${archerFilter}, pirate = ${pirateFilter}, common = ${commonFilter}, beginner = ${beginnerFilter})}">First</a>
 						 &nbsp;&nbsp		
 				</span>
 				
 				<span th:if = "${currentPage != 1}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} - 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
-					                               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Previous</a>
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} - 1, equipmentName = ${equipNameFilter}, equipmentType = ${equipmentTypeFilter}, minimumLevel = ${levelFilter}, warrior = ${warriorFilter},
+					                               magician = ${magicianFilter}, thief = ${thiefFilter}, archer = ${archerFilter}, pirate = ${pirateFilter}, common = ${commonFilter}, beginner = ${beginnerFilter})}">Previous</a>
 						 &nbsp;&nbsp
 				</span>
 				
 				<span th:if = "${equipPage.totalPages > 0}" th:each = "pageNumber : ${pageNumbers}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
-												   magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}"
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${pageNumber}, equipmentName = ${equipNameFilter}, equipmentType = ${equipmentTypeFilter}, minimumLevel = ${levelFilter}, warrior = ${warriorFilter}, 
+												   magician = ${magicianFilter}, thief = ${thiefFilter}, archer = ${archerFilter}, pirate = ${pirateFilter}, common = ${commonFilter}, beginner = ${beginnerFilter})}"
 					     th:text = ${pageNumber}></a>
 						 &nbsp;&nbsp
 				</span>
 				
 				<span th:if = "${currentPage != equipPage.totalPages}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} + 1, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior},
-					                               magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Next</a>
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${currentPage} + 1, equipmentName = ${equipNameFilter}, equipmentType = ${equipmentTypeFilter}, minimumLevel = ${levelFilter}, warrior = ${warriorFilter},
+					                               magician = ${magicianFilter}, thief = ${thiefFilter}, archer = ${archerFilter}, pirate = ${pirateFilter}, common = ${commonFilter}, beginner = ${beginnerFilter})}">Next</a>
 		                 &nbsp;&nbsp
 				
 				<span th:if = "${equipPage.totalPages > 1}">
-					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${equipPage.totalPages}, equipmentName = ${equipName}, equipmentType = ${equipmentTypeQuery}, minimumLevel = ${level}, warrior = ${warrior}, 
-												   magician = ${magician}, thief = ${thief}, archer = ${archer}, pirate = ${pirate}, common = ${common}, beginner = ${beginner})}">Last</a>
+					<a th:href = "@{/web/equipment(size = ${equipPage.size}, page = ${equipPage.totalPages}, equipmentName = ${equipNameFilter}, equipmentType = ${equipmentTypeFilter}, minimumLevel = ${levelFilter}, warrior = ${warriorFilter}, 
+												   magician = ${magicianFilter}, thief = ${thiefFilter}, archer = ${archerFilter}, pirate = ${pirateFilter}, common = ${commonFilter}, beginner = ${beginnerFilter})}">Last</a>
 						&nbsp;&nbsp
 				</span>
 				
