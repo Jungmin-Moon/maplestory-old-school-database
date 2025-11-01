@@ -20,13 +20,16 @@ instead of having to refer to a google document or spreadsheet.
 | :------: | :-----:|
 | Victoria Island | Complete |
 | Orbis | Complete |
-| El Nath/Dead Mine | In Progress |
-| Ludibrium | Not Started |
-| Clocktower Bottom | Not Started |
-| Aqua Road | Not Started |
-| Nihal Desert | Not Started |
-| Mu Lung Garden | Not Started |
-| World Tour | Not Started |
+| El Nath/Dead Mine | Complete |
+| Ludibrium | Complete |
+| Clocktower Bottom | Complete |
+| Aqua Road | Complete |
+| Nihal Desert | Complete |
+| Mu Lung Garden | Complete |
+| World Tour | Complete |
+
+# Progress on drops from Mobs and Bosses:
+- In progress
 
 # Features
 Let users see the list of mobs implemented in the game, even if they are not fully implemented yet. <br />
