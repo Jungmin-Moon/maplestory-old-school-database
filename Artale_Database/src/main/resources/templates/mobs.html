@@ -23,7 +23,12 @@
 		<br />
 		<br />
 		
-		<div>
+		<button type = "button" onclick = "showHideSearchBar()">Click to hide/show search options</button>
+		
+		<br />
+		<br />
+		
+		<div id = "searchBar">
 			<form action = "/web/mob" method = "GET" id = "mobForm">
 				Mob name: <input type = "text" id = "mobName" name = "mobName" placeholder = "" /><br /><br />
 				Mob Level: <input type = "number" id = "mobLevel" min = "0" max = "200" name = "mobLevel" value = 0 /><br /><br />
@@ -98,5 +103,7 @@
 			</div>
 		</div>
 	</body>
+	
+	<script type = "text/javascript" th:src = "@{/js/show_hide.js}"></script>
 	
 </html>

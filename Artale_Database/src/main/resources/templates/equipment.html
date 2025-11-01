@@ -22,7 +22,12 @@
 		<br />
 		<br />
 		
-		<form action = "/web/equipment" method = "GET">
+		<button type = "button" onclick = "showHideSearchBar()">Click to hide/show search options</button>
+		
+		<br />
+		<br />
+		
+		<form action = "/web/equipment" method = "GET" id = "searchBar">
 			Equipment Name: <input type = "text" name = "equipmentName" placeholder = ""/>
 				
 			<span id = "selectMenu">
@@ -160,5 +165,7 @@
 		</div>
 		
 	</body>
+	
+	<script type = "text/javascript" th:src = "@{/js/show_hide.js}"></script>
 	
 </html>

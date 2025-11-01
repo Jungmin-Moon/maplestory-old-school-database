@@ -25,7 +25,12 @@
 		<br />
 		<br />
 		
-		<div>
+		<button type = "button" onclick = "showHideSearchBar()">Click to hide/show search options</button>
+		
+		<br />
+		<br />
+		
+		<div id = "searchBar">
 			<form action = "/web/boss" method = "GET">
 				Boss Name: <input type = "text" name = "bossName" value = ""/> <br /><br />
 				Boss Level: <input type = "number" min = "0" max = "200"name = "bossLevel" value = 0 /> <br /><br />
@@ -108,7 +113,7 @@
 		
 	</body>	
 
-
+	<script type = "text/javascript" th:src = "@{/js/show_hide.js}"></script>
 
 
 </html>
