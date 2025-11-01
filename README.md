@@ -11,9 +11,8 @@ instead of having to refer to a google document or spreadsheet.
 . Docker <br />
 
 # Sheet currently being worked on:
-. https://docs.google.com/spreadsheets/d/1ndLiWvfTMYpI4vnQwAka_TaziJPYQYj4JgvU9dE-eYU/edit?usp=sharing <br />
-. This sheet is being used to compile what each mob can drop Edited: 3:07 AM Eastern 3/2/2025<br />
-. Will be using the above to create an equipment table for all equips and then a drop table. <br />
+. Sheet being worked on is for compiling what each mob and boss drops
+. Started: 11/1/2025
 
 # Table of progress for database:
 | Location | Status |
