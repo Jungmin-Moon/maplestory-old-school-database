@@ -44,7 +44,7 @@ public class MobController {
 	 * @return Optional<Mob> the mob if one with the exact name exists in the database
 	 * @throws NoneFoundException if no mobs is found with the exact name in the database
 	 */
-	@GetMapping("/{name:[a-zA-Z &.]*}")
+	@GetMapping("/{name:[a-zA-Z\s&.]*}")
 	public Optional<Mob> findByName(@PathVariable String name) {
 		return mobService.findByName(name);
 	}
@@ -56,7 +56,7 @@ public class MobController {
 	 * @return Iterable<Mob> a collection of mobs that contain the substring.
 	 * @throws NoneFoundException if no mobs with that contain the substring are in the database
 	 */
-	@GetMapping("/list/{name:[a-zA-Z &.]*}") 
+	@GetMapping("/list/{name:[a-zA-Z\s&.]*}") 
 	public Iterable<Mob> findByPartialMatch(@PathVariable String name) {
 		return mobService.findByPartialMatch(name);
 	}
@@ -69,7 +69,7 @@ public class MobController {
 	 * @return Iterable<Mob> a collection of mobs from the location if either their main location or secondary location is the given string
 	 * @throws NoMatchingLocationException if no mobs have their location one or location two equal to the one provided
 	 */
-	@GetMapping("/location/{location:[a-zA-Z ]*}")
+	@GetMapping("/location/{location:[a-zA-Z\s]*}")
 	public Iterable<Mob> findByLocation(@PathVariable String location) {
 		return mobService.findByLocation(location);
 	}
