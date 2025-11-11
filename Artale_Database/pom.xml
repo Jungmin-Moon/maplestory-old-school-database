@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.artaleDB</groupId>
 	<artifactId>Artale_Database</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>Artale_Database</name>
 	<description>An unaffiliated DB for Artale on Maplestory Worlds</description>
 	<url/>
