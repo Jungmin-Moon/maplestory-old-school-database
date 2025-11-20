@@ -30,7 +30,7 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long>{
 	Iterable<Equipment> findByAccessoryType(String accessoryType);
 	
 	/* Query to find equipment whose name is equal to the passed in String*/
-	Optional<Equipment> findAllByEquipmentName(String equipmentName);
+	Optional<Equipment> findByEquipmentName(String equipmentName);
 	
 	/* Query to find a collection of equipment whose name contains the passed in substring*/
 	@Query("SELECT e FROM Equipment e WHERE e.equipmentName LIKE %:subString%")

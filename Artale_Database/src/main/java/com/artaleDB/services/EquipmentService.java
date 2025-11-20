@@ -57,7 +57,7 @@ public class EquipmentService {
 	 */
 	public Optional<Equipment> getEquipmentByName(String name) {
 		
-		var equipment = equipmentRepository.findAllByEquipmentName(name);
+		var equipment = equipmentRepository.findByEquipmentName(name);
 		
 		if (equipment == null) {
 			throw new NoneFoundException("There is no equipment in the database with that name.");
