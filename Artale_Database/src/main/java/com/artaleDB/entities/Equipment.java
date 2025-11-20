@@ -133,35 +133,35 @@ public class Equipment {
 	
 	
 	//Methods to get and set for Jobs
-	public int isWarrior() {
+	public int getWarrior() {
 		return warrior;
 	}
 	public void setWarrior(int warrior) {
 		this.warrior = warrior;
 	}
 	
-	public int isMagician() {
+	public int getMagician() {
 		return magician;
 	}
 	public void setMagician(int magician) {
 		this.magician = magician;
 	}
 	
-	public int isThief() {
+	public int getThief() {
 		return thief;
 	}
 	public void setThief(int thief) {
 		this.thief = thief;
 	}
 	
-	public int isPirate() {
+	public int getPirate() {
 		return pirate;
 	}
 	public void setPirate(int pirate) {
 		this.pirate = pirate;
 	}
 	
-	public int isArcher() {
+	public int getArcher() {
 		return archer;
 	}
 	public void setArcher(int archer) {
@@ -175,7 +175,7 @@ public class Equipment {
 		this.beginner = beginner;
 	}
 	
-	public int isCommon() {
+	public int getCommon() {
 		return common;
 	}
 	public void setCommon(int common) {
