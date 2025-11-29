@@ -34,9 +34,9 @@ public class EquipmentService {
 	/*
 	 * Service method that returns all the equipment in the database
 	 * 
-	 * @return Iterable<Equipment> a collection of all equipment in the database.
+	 * @return List<Equipment> a collection of all equipment in the database.
 	 */
-	public Iterable<Equipment> getAllEquipment() {
+	public List<Equipment> getAllEquipment() {
 		var equipmentAll = equipmentRepository.findAll();
 		
 		long count = calculationService.getCount(equipmentAll);
@@ -70,10 +70,10 @@ public class EquipmentService {
 	 * Service method that returns all equipment whose name contains the substring
 	 * 
 	 * @param substring used to search equipment name to see if they contain the substring
-	 * @return Iterable<Equipment> a collection of equipment who contain the parameter in their name
+	 * @return List<Equipment> a collection of equipment who contain the parameter in their name
 	 * @throws NoneFoundException if no equipment in the database contains the parameter in their name
 	 */
-	public Iterable<Equipment> getEquipmentByNamePartialMatch(String subString) {
+	public List<Equipment> getEquipmentByNamePartialMatch(String subString) {
 		var equipmentList = equipmentRepository.findAllByNamePartialmatch(subString);
 		
 		long count = calculationService.getCount(equipmentList);
@@ -85,33 +85,14 @@ public class EquipmentService {
 		}
 	}
 	
-	/* To be removed
-	 * Service method that returns a collection of equipment whose type is equal to the passed in string [Armor, Weapon or Accessory]
-	 * 
-	 * @param equipmentType the string representing what equipment type the user is searching for
-	 * @return Iterable<Equipment> a collection of equipment who type is equal to the passed in parameter
-	 * @throws NoneFoundException if no equipment in the database has their type equal to the string parameter
-	 
-	public Iterable<Equipment> getEquipmentByType(String equipmentType) {
-		var equipmentListByType = equipmentRepository.findByEquipmentType(equipmentType);
-		
-		long count = calculationService.getCount(equipmentListByType);
-		
-		if (count <= 0) {
-			throw new NoneFoundException("There is no equipment that are " + equipmentType + " in the database.");
-		} else {
-			return equipmentListByType;
-		}
-	} */
-	
 	/*
 	 * Service method that returns a collection of equipment whose weapon type is equal to the passed in string
 	 * 
 	 * @param weaponType the string representing what kind of weapon the user is searching for
-	 * @return Iterable<Equipment> a collection of equipment who have their weapon type equal to the parameter
+	 * @return List<Equipment> a collection of equipment who have their weapon type equal to the parameter
 	 * @throws NoneFoundException if no equipment in the database has a weapon type that is equal to the parameter
 	 */
-	public Iterable<Equipment> getAllByWeaponType(String weaponType) {
+	public List<Equipment> getAllByWeaponType(String weaponType) {
 		var equipmentListByWeaponType = equipmentRepository.findByWeaponType(weaponType);
 		
 		long count = calculationService.getCount(equipmentListByWeaponType);
@@ -127,10 +108,10 @@ public class EquipmentService {
 	 * Service method that returns a collection of equipment whose armor type is equal to the passed in string
 	 * 
 	 * @param armorType the string representing what kind of armor the user is searching for
-	 * @return Iterable<Equipment> a collection of equipment who have their armor type equal to the parameter
+	 * @return List<Equipment> a collection of equipment who have their armor type equal to the parameter
 	 * @throws NoneFoundException if no equipment in the database has a armor type that is equal to the parameter
 	 */
-	public Iterable<Equipment> getAllByArmorType(String armorType) {
+	public List<Equipment> getAllByArmorType(String armorType) {
 		var equipmentListByArmorType = equipmentRepository.findByArmorType(armorType);
 		
 		long count = calculationService.getCount(equipmentListByArmorType);
@@ -146,10 +127,10 @@ public class EquipmentService {
 	 * Service method that returns a collection of equipment whose accessory type is equal to the passed in string
 	 * 
 	 * @param accessoryType the string representing what kind of accessory the user is searching for
-	 * @return Iterable<Equipment> a collection of equipment who have their accessory type equal to the parameter
+	 * @return List<Equipment> a collection of equipment who have their accessory type equal to the parameter
 	 * @throws NoneFoundException if no equipment in the database has an accessory type that is equal to the parameter
 	 */
-	public Iterable<Equipment> getAllByAccessoryType(String accessoryType) {
+	public List<Equipment> getAllByAccessoryType(String accessoryType) {
 		var equipmentListByAccessoryType = equipmentRepository.findByAccessoryType(accessoryType);
 		
 		long count = calculationService.getCount(equipmentListByAccessoryType);
@@ -165,10 +146,10 @@ public class EquipmentService {
 	 * Service method that returns a collection of equipment whose minimum level is greater than or equal to the paramater
 	 * 
 	 * @param level int representing the minimum level of equipment the user is searching for
-	 * @return Iterable<Equipment> a collection of equipment whose minimum level is greater than or equal to the parameter
+	 * @return List<Equipment> a collection of equipment whose minimum level is greater than or equal to the parameter
 	 * @throws NoneFoundException if no equipment in the database has a minimum level that is greater than or equal to the parameter
 	 */
-	public Iterable<Equipment> getAllByMinLevelGreaterThanEqual(int level) {
+	public List<Equipment> getAllByMinLevelGreaterThanEqual(int level) {
 		var equipmentListByMinLevel = equipmentRepository.findAllByMinimumLevelGreaterThanEqual(level);
 		
 		long count = calculationService.getCount(equipmentListByMinLevel);
@@ -183,10 +164,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by warriors
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by warriors
+	 * @return List<Equipment> a collection of equipment that can be worn by warriors
 	 * @throws NoneFoundException if no equipment in the database can be worn by warriors
 	 */
-	public Iterable<Equipment> getAllEquipableWarrior() {
+	public List<Equipment> getAllEquipableWarrior() {
 		var equipmentListEquippableWarrior = equipmentRepository.findAllByWarrior(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableWarrior);
@@ -201,10 +182,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by magicians
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by magicians
+	 * @return List<Equipment> a collection of equipment that can be worn by magicians
 	 * @throws NoneFoundException if no equipment in the database can be worn by magicians
 	 */
-	public Iterable<Equipment> getAllEquipableMagician() {
+	public List<Equipment> getAllEquipableMagician() {
 		var equipmentListEquippableMagician = equipmentRepository.findAllByMagician(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableMagician);
@@ -219,10 +200,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by archers
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by archers
+	 * @return List<Equipment> a collection of equipment that can be worn by archers
 	 * @throws NoneFoundException if no equipment in the database can be worn by archers
 	 */
-	public Iterable<Equipment> getAllEquipableArcher() {
+	public List<Equipment> getAllEquipableArcher() {
 		var equipmentListEquippableArcher = equipmentRepository.findAllByArcher(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableArcher);
@@ -237,10 +218,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by thieves
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by thieves
+	 * @return List<Equipment> a collection of equipment that can be worn by thieves
 	 * @throws NoneFoundException if no equipment in the database can be worn by thieves
 	 */
-	public Iterable<Equipment> getAllEquipableThief() {
+	public List<Equipment> getAllEquipableThief() {
 		var equipmentListEquippableThief = equipmentRepository.findAllByThief(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableThief);
@@ -255,10 +236,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by pirates
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by pirates
+	 * @return List<Equipment> a collection of equipment that can be worn by pirates
 	 * @throws NoneFoundException if no equipment in the database can be worn by pirates
 	 */
-	public Iterable<Equipment> getAllEquipablePirate() {
+	public List<Equipment> getAllEquipablePirate() {
 		var equipmentListEquippablePirate = equipmentRepository.findAllByPirate(1);
 		
 		long count = calculationService.getCount(equipmentListEquippablePirate);
@@ -273,10 +254,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can be worn by all jobs
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by all jobs
+	 * @return List<Equipment> a collection of equipment that can be worn by all jobs
 	 * @throws NoneFoundException if no equipment in the database can be worn by all jobs
 	 */
-	public Iterable<Equipment> getAllEquipableCommon() {
+	public List<Equipment> getAllEquipableCommon() {
 		var equipmentListEquippableAll = equipmentRepository.findAllByCommon(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableAll);
@@ -291,10 +272,10 @@ public class EquipmentService {
 	/*
 	 * Service method that returns a collection of equipment that can only be worn by beginners
 	 * 
-	 * @return Iterable<Equipment> a collection of equipment that can be worn by beginners
+	 * @return List<Equipment> a collection of equipment that can be worn by beginners
 	 * @throws NoneFoundException if no equipment in the database can be worn by beginners
 	 */
-	public Iterable<Equipment> getAllEquipableBeginner() {
+	public List<Equipment> getAllEquipableBeginner() {
 		var equipmentListEquippableBeginner = equipmentRepository.findAllByBeginner(1);
 		
 		long count = calculationService.getCount(equipmentListEquippableBeginner);
