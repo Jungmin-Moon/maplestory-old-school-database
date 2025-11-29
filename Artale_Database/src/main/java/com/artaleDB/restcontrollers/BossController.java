@@ -28,10 +28,10 @@ public class BossController {
 	/*
 	 * Method that returns the list of all bosses in the database
 	 * 
-	 * @return Iterable<Boss> list of all bosses in the database
+	 * @return List<Boss> list of all bosses in the database
 	 */
 	@GetMapping
-	public Iterable<Boss> getAll() {
+	public List<Boss> getAll() {
 		return bossService.viewBossList();
 	}
 	
@@ -51,11 +51,11 @@ public class BossController {
 	 * Method that returns a collection of bosses whose name contains the given substring
 	 * 
 	 * @param name the substring to search for
-	 * @return Iterable<Boss> a collection of Bosses whose name contains the substring
+	 * @return List<Boss> a collection of Bosses whose name contains the substring
 	 * @throws NoneFoundException if no bosses are found that contain the substring in the database
 	 */
 	@GetMapping("/list/{name:[a-zA-Z &.]*}")
-	public Iterable<Boss> findByPartialMatch(@PathVariable String name) {
+	public List<Boss> findByPartialMatch(@PathVariable String name) {
 		return bossService.findByPartialMatch(name);
 	}
 	
@@ -63,11 +63,11 @@ public class BossController {
 	 * Method that searches for bosses based on location given
 	 * 
 	 * @param location String location that the user wants to search in
-	 * @return Iterable<Boss> a collection of Bosses who are located in the given location
+	 * @return List<Boss> a collection of Bosses who are located in the given location
 	 * @throws NoneFoundException if no bosses are found that are in the location
 	 */
 	@GetMapping("/location/{location:[a-zA-Z ]*}")
-	public Iterable<Boss> findByLocation(@PathVariable String location) {
+	public List<Boss> findByLocation(@PathVariable String location) {
 		return bossService.findByLocation(location);
 	}
 	
@@ -75,11 +75,11 @@ public class BossController {
 	 * Method that searches for bosses whose level is equal to the one given
 	 * 
 	 * @param level int value representing the level to search for
-	 * @return Iterable<Boss> a collection of bosses whose level is equal to the one given
+	 * @return List<Boss> a collection of bosses whose level is equal to the one given
 	 * @throws NoneFoundException if no bosses are found whose level is equal to the one provided
 	 */
 	@GetMapping("/level/{level}") 
-	public Iterable<Boss> findByLevel(@PathVariable int level) {
+	public List<Boss> findByLevel(@PathVariable int level) {
 		return bossService.findByBossLevel(level);
 	}
 	
@@ -88,11 +88,11 @@ public class BossController {
 	 * Method that searches for bosses based on their minimum respawn timer. Respawn timer is represented in minutes; Two hours is 120 
 	 * 
 	 * @param timer int value representing the minimum respawn timer for a boss that a user wants to search for
-	 * @return Iterable<Boss> a collection of bosses who minimum respawn time is greater than or equal to the one provided
+	 * @return List<Boss> a collection of bosses who minimum respawn time is greater than or equal to the one provided
 	 * @throws NoneFoundException if no bosses are found whose minimum respawn time is greater than or equal to the one given
 	 */
 	@GetMapping("/respawn/min/{timer}")
-	public Iterable<Boss> getAllMinRespawnGreater(@PathVariable int timer) {
+	public List<Boss> getAllMinRespawnGreater(@PathVariable int timer) {
 		return bossService.findAllBossMinRespawnGreater(timer);
 	}
 	
@@ -100,11 +100,11 @@ public class BossController {
 	 * Method that searches for bosses based on their maximum respawn timer. Respawn timer is represented in minutes; Two hours is 120
 	 * 
 	 * @param timer int value representing the maximum respawn timer for a boss that a user wants to search for
-	 * @return Iterable<Boss> a collection of bosses who maximum respawn time is greater than or equal to the one provided
+	 * @return List<Boss> a collection of bosses who maximum respawn time is greater than or equal to the one provided
 	 * @throws NoneFoundException if no bosses are found whose maximum respawn time is greater than or equal to the one given
 	 */
 	@GetMapping("/respawn/max/{timer}")
-	public Iterable<Boss> getAllMaxRespawnGreater(@PathVariable int timer) {
+	public List<Boss> getAllMaxRespawnGreater(@PathVariable int timer) {
 		return bossService.findAllBossMaxRespawnGreater(timer);
 	}
 }

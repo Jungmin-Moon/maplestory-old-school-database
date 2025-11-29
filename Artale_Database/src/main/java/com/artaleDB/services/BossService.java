@@ -34,7 +34,7 @@ public class BossService {
 	 * 
 	 * @return list of all Bosses
 	 */
-	public Iterable<Boss> viewBossList() {
+	public List<Boss> viewBossList() {
 		var bossAll = bossRepo.findAll();
 		
 		long count = calculationService.getCount(bossAll);
@@ -67,11 +67,11 @@ public class BossService {
 	 * Service method that can return a collection of Bosses with the provided substring
 	 * 
 	 * @param name String value of the substring to search for in the database.
-	 * @return Iterable<Boss> if Bosses can be found with the substring in their name
+	 * @return List<Boss> if Bosses can be found with the substring in their name
 	 * @throws NoneFoundException if no Bosses are found containing the substring
 	 */
-	public Iterable<Boss> findByPartialMatch(String substring) {
-		Iterable<Boss> bossListByPartialMatch = bossRepo.findByPartialMatch(substring);
+	public List<Boss> findByPartialMatch(String substring) {
+		List<Boss> bossListByPartialMatch = bossRepo.findByPartialMatch(substring);
 		
 		long count = calculationService.getCount(bossListByPartialMatch);
 		
@@ -86,11 +86,11 @@ public class BossService {
 	 * Service method that can return a collection of Bosses who are in the provided location
 	 * 
 	 * @param location String value of the location to search for in the database
-	 * @return Iterable<Boss> if Bosses who are in the provided location are in the database
+	 * @return List<Boss> if Bosses who are in the provided location are in the database
 	 * @throws NoMatchingLocationException if no Bosses are found who reside in the location provided
 	 */
-	public Iterable<Boss> findByLocation(String location) {
-		Iterable<Boss> bossListByLocation = bossRepo.findByBossLocation(location);
+	public List<Boss> findByLocation(String location) {
+		List<Boss> bossListByLocation = bossRepo.findByBossLocation(location);
 		
 		long count = calculationService.getCount(bossListByLocation);
 		
@@ -105,11 +105,11 @@ public class BossService {
 	 * Service method that returns a collection of Bosses whose level are equal to the one provided
 	 * 
 	 * @param level int value of the level to search for in the database
-	 * @return Iterable<Boss> if Bosses who are the same level as the one provided exist in the database.
+	 * @return List<Boss> if Bosses who are the same level as the one provided exist in the database.
 	 * @throws NoneFoundException if no bosses are found who have the same level
 	 */
-	public Iterable<Boss> findByBossLevel(int level) {
-		Iterable<Boss> bossListByLevelEqual = bossRepo.findByBossLevelEquals(level);
+	public List<Boss> findByBossLevel(int level) {
+		List<Boss> bossListByLevelEqual = bossRepo.findByBossLevelEquals(level);
 		
 		long count = calculationService.getCount(bossListByLevelEqual);
 		
@@ -124,11 +124,11 @@ public class BossService {
 	 * Service method that returns a collection of Bosses whose minimum respawn timer is greater than or equal to the one provided
 	 * 
 	 * @param respawnTime an int value for the minimum time or greater to find, represented in minutes.
-	 * @return Iterable<Boss> if Bosses exist in the database whose minimum respawn time is greater than or equal to the one provided
+	 * @return List<Boss> if Bosses exist in the database whose minimum respawn time is greater than or equal to the one provided
 	 * @throws NoneFoundException if no Bosses are found whose minimum respawn time is at least equal to the one provided
 	 */
-	public Iterable<Boss> findAllBossMinRespawnGreater(int respawnTime) {
-		Iterable<Boss> bossListMinRepsawnGreaterEqual = bossRepo.findAllByBossMinRespawnGreaterThanEqual(respawnTime);
+	public List<Boss> findAllBossMinRespawnGreater(int respawnTime) {
+		List<Boss> bossListMinRepsawnGreaterEqual = bossRepo.findAllByBossMinRespawnGreaterThanEqual(respawnTime);
 		
 		long count = calculationService.getCount(bossListMinRepsawnGreaterEqual);
 		
@@ -143,11 +143,11 @@ public class BossService {
 	 * Service method that returns a collection of Bosses whose maximum respawn timer is greater than or equal to the one provided
 	 * 
 	 * @param respawnTime an int value for the maximum time for greater to find, represented in minutes.
-	 * @return Iterable<Boss> if Bosses exist in the database whose maximum respawn time is greater than or equal to the one provided
+	 * @return List<Boss> if Bosses exist in the database whose maximum respawn time is greater than or equal to the one provided
 	 * @throws NoneFoundException if no Bosses are found whose maximum respawn time is at least equal to the one provided
 	 */
-	public Iterable<Boss> findAllBossMaxRespawnGreater(int respawnTime) {
-		Iterable<Boss> bossListMaxRespawnGreaterEqual = bossRepo.findAllByBossMaxRespawnGreaterThanEqual(respawnTime);
+	public List<Boss> findAllBossMaxRespawnGreater(int respawnTime) {
+		List<Boss> bossListMaxRespawnGreaterEqual = bossRepo.findAllByBossMaxRespawnGreaterThanEqual(respawnTime);
 		
 		long count = calculationService.getCount(bossListMaxRespawnGreaterEqual);
 		

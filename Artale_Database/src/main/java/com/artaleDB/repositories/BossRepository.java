@@ -22,37 +22,37 @@ public interface BossRepository extends JpaRepository<Boss, Long>{
 	
 	/*Query to find a list of bosses that have the substring provided*/
 	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:name%")
-	Iterable<Boss> findByPartialMatch(String name);
+	List<Boss> findByPartialMatch(String name);
 	
 	/*Query to find bosses who are in the location provided. */
-	Iterable<Boss> findByBossLocation(String location);
+	List<Boss> findByBossLocation(String location);
 	
 	/*Query to find bosses who have the same level as the one provided */
-	Iterable<Boss> findByBossLevelEquals(int level);
+	List<Boss> findByBossLevelEquals(int level);
 	
 	/*Finds bosses who minimum or maximum respawn time is greater than or equal to the one provided. These are in minutes.*/
-	Iterable<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
+	List<Boss> findAllByBossMinRespawnGreaterThanEqual(int respawnTime);
 	
-	Iterable<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
+	List<Boss> findAllByBossMaxRespawnGreaterThanEqual(int respawnTime);
 	
 	
 	@Query("SELECT b FROM Boss b WHERE b.bossName LIKE %:bossName% AND b.bossLevel >= :bossLevel AND b.bossMinRespawn >= :bossMinRespawn AND b.bossMaxRespawn >= :bossMaxRespawn AND b.bossLocation LIKE %:bossLocation% ORDER BY b.bossLevel ASC")
 	List<Boss> findByUsingUserQuery(String bossName, int bossLevel, int bossMinRespawn, int bossMaxRespawn, String bossLocation);
 	
 	//Non REST endpoints queries
-	Iterable<Boss> findAllByOrderByBossLevelAsc();
+	List<Boss> findAllByOrderByBossLevelAsc();
 	
-	Iterable<Boss> findAllByOrderByBossLevelDesc();
+	List<Boss> findAllByOrderByBossLevelDesc();
 	
-	Iterable<Boss> findAllByOrderByBossHPAsc();
+	List<Boss> findAllByOrderByBossHPAsc();
 	
-	Iterable<Boss> findAllByOrderByBossHPDesc();
+	List<Boss> findAllByOrderByBossHPDesc();
 	
-	Iterable<Boss> findAllByOrderByBossMinRespawnAsc();
+	List<Boss> findAllByOrderByBossMinRespawnAsc();
 	
-	Iterable<Boss> findAllByOrderByBossMinRespawnDesc();
+	List<Boss> findAllByOrderByBossMinRespawnDesc();
 	
-	Iterable<Boss> findAllByOrderByBossMaxRespawnAsc();
+	List<Boss> findAllByOrderByBossMaxRespawnAsc();
 	
-	Iterable<Boss> findAllByOrderByBossMaxRespawnDesc();
+	List<Boss> findAllByOrderByBossMaxRespawnDesc();
 }
