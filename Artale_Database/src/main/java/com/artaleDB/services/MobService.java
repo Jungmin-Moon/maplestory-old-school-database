@@ -36,7 +36,7 @@ public class MobService {
 	 * 
 	 * @return list of mobs in the database
 	 */
-	public Iterable<Mob> viewMobList() {
+	public List<Mob> viewMobList() {
 		var mobAll = mobRepo.findAll();
 		
 		long count = calculationService.getCount(mobAll);
@@ -69,11 +69,11 @@ public class MobService {
 	 * Service method that searches the repository for mobs that contains the provided substring
 	 * 
 	 * @param name a substring to search for provided by the controller
-	 * @return Iterable<Mob> a collection of mobs that contain that substring.
+	 * @return List<Mob> a collection of mobs that contain that substring.
 	 * @throws NoneFoundException if no mobs are found that contain the provided substring.
 	 */
-	public Iterable<Mob> findByPartialMatch(String substring) {
-		Iterable<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(substring);
+	public List<Mob> findByPartialMatch(String substring) {
+		List<Mob> mobListPartialNameMatch = mobRepo.findByPartialMatch(substring);
 		
 		long count = calculationService.getCount(mobListPartialNameMatch);
 		
@@ -88,11 +88,11 @@ public class MobService {
 	 * Service method that searches the repository for mobs that are in the location provided
 	 * 
 	 * @param location a string to search for provided by the controller
-	 * @return Iterable<Mob> a collection of mobs whose location one or location two matches the provided location String
+	 * @return List<Mob> a collection of mobs whose location one or location two matches the provided location String
 	 * @throws NoMatchingLocationException if no mobs are found in the location provided.
 	 */
-	public Iterable<Mob> findByLocation(String location) {
-		Iterable<Mob> mobListByLocations = mobRepo.findByMobLocationOrMobLocationTwo(location, location);
+	public List<Mob> findByLocation(String location) {
+		List<Mob> mobListByLocations = mobRepo.findByMobLocationOrMobLocationTwo(location, location);
 		
 		long count = calculationService.getCount(mobListByLocations);
 		
@@ -107,11 +107,11 @@ public class MobService {
 	 * Service method that searches the repository for mobs that are equal to the level provided
 	 * 
 	 * @param level a int to search for provided by the controller
-	 * @return Iterable<Mob> a collection of mobs whose level is exactly equal to the one provided by the controller
+	 * @return List<Mob> a collection of mobs whose level is exactly equal to the one provided by the controller
 	 * @throws NoneFoundException if no mobs are found whose level is exactly equal to the one provided.
 	 */
-	public Iterable<Mob> findByLevel(int level) {
-		Iterable<Mob> mobListByLevel = mobRepo.findByMobLevelEquals(level);
+	public List<Mob> findByLevel(int level) {
+		List<Mob> mobListByLevel = mobRepo.findByMobLevelEquals(level);
 		
 		long count = calculationService.getCount(mobListByLevel);
 		
@@ -126,11 +126,11 @@ public class MobService {
 	 * Service method that searches the repository for mobs that give exp greater than or equal to the one provided
 	 * 
 	 * @param exp an int to search for provided by the controller
-	 * @return Iterable<Mob> a collection of mobs whose exp is greater than or equal to the one provided by the controller
+	 * @return List<Mob> a collection of mobs whose exp is greater than or equal to the one provided by the controller
 	 * @throws NoneFoundException if no mobs are found whose exp is equal or greater than the one provided
 	 */
-	public Iterable<Mob> findByMobExpGreater(int exp) {
-		Iterable<Mob> mobListExpGreaterThanEqual = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
+	public List<Mob> findByMobExpGreater(int exp) {
+		List<Mob> mobListExpGreaterThanEqual = mobRepo.findAllByMobEXPGreaterThanEqual(exp);
 		
 		long count = calculationService.getCount(mobListExpGreaterThanEqual);
 		
@@ -145,11 +145,11 @@ public class MobService {
 	 * Service method that searches the repository for mobs who give exactly the same amount of exp provided
 	 * 
 	 * @param exp an int representing the exact exp provided by the controller
-	 * @return Iterable<Mob> a collection of mobs whose exp given is exactly equal to the one provided by the controller
+	 * @return List<Mob> a collection of mobs whose exp given is exactly equal to the one provided by the controller
 	 * @throws NoneFoundException if no mobs are found that give exactly the exp provided
 	 */
-	public Iterable<Mob> findByMobExp(int exp) {
-		Iterable<Mob> mobListExpEqual = mobRepo.findAllByMobEXP(exp);
+	public List<Mob> findByMobExp(int exp) {
+		List<Mob> mobListExpEqual = mobRepo.findAllByMobEXP(exp);
 		
 		long count = calculationService.getCount(mobListExpEqual);
 		
@@ -163,11 +163,11 @@ public class MobService {
 	/*
 	 * Service method that searches the repository to find mobs whose minimum meso drop is greater than or equal to the one provided
 	 * 
-	 * @return Iterable<Mob> a collection of mobs whose minimum meso dropped is greater than or equal to the one provided by the controller
+	 * @return List<Mob> a collection of mobs whose minimum meso dropped is greater than or equal to the one provided by the controller
 	 * @throws NoneFoundException if no mobs are found that drop greater than or equal to the minimum meso provided
 	 */
-	public Iterable<Mob> findMinMesoGreater(int minMeso) {
-		Iterable<Mob> mobListMinMesoGreaterEqual = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
+	public List<Mob> findMinMesoGreater(int minMeso) {
+		List<Mob> mobListMinMesoGreaterEqual = mobRepo.findAllByMobMinMesoGreaterThanEqual(minMeso);
 		
 		long count = calculationService.getCount(mobListMinMesoGreaterEqual);
 		
@@ -181,11 +181,11 @@ public class MobService {
 	/*
 	 * Service method that searches the repository to find mobs whose maximum meso drop is greater than or equal to the one provided
 	 * 
-	 * @return Iterable<Mob> a collection of mobs whose maximum meso dropped is greater than or equal to the one provided by the controller
+	 * @return List<Mob> a collection of mobs whose maximum meso dropped is greater than or equal to the one provided by the controller
 	 * @throws NoneFoundException if no mobs are found that drop greater than or equal to the maximum meso provided
 	 */
-	public Iterable<Mob> findMaxMesoGreater(int maxMeso) {
-		Iterable<Mob> mobListMaxMesoGreaterEqual = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
+	public List<Mob> findMaxMesoGreater(int maxMeso) {
+		List<Mob> mobListMaxMesoGreaterEqual = mobRepo.findAllByMobMaxMesoGreaterThanEqual(maxMeso);
 		
 		long count = calculationService.getCount(mobListMaxMesoGreaterEqual);
 		

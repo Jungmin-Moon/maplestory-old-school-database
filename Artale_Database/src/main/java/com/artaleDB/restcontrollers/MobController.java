@@ -1,5 +1,6 @@
 package com.artaleDB.restcontrollers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class MobController {
 	 * @return a collection of all mobs in the database
 	 */
 	@GetMapping
-	public Iterable<Mob> get() {
+	public List<Mob> get() {
 		return mobService.viewMobList();
 	}
 	
@@ -53,11 +54,11 @@ public class MobController {
 	 * Method that returns a collection of Mobs that contain the provided substring
 	 * 
 	 * @param name a substring to check the database for mobs that contain it
-	 * @return Iterable<Mob> a collection of mobs that contain the substring.
+	 * @return List<Mob> a collection of mobs that contain the substring.
 	 * @throws NoneFoundException if no mobs with that contain the substring are in the database
 	 */
 	@GetMapping("/list/{name:[a-zA-Z\s&.]*}") 
-	public Iterable<Mob> findByPartialMatch(@PathVariable String name) {
+	public List<Mob> findByPartialMatch(@PathVariable String name) {
 		return mobService.findByPartialMatch(name);
 	}
 	
@@ -66,11 +67,11 @@ public class MobController {
 	 * 
 	 * @param location a String location that can only be [Victoria Island, El Nath, Orbis, Ludibrium, Ellin Forest, Omega Sector, Korean Folk Town, Mu Lung, Herb Town,
 	 *                 Zipangu, China, Aqua Road, Magatia, Ariant, Leafre, Deep Sea]
-	 * @return Iterable<Mob> a collection of mobs from the location if either their main location or secondary location is the given string
+	 * @return List<Mob> a collection of mobs from the location if either their main location or secondary location is the given string
 	 * @throws NoMatchingLocationException if no mobs have their location one or location two equal to the one provided
 	 */
 	@GetMapping("/location/{location:[a-zA-Z\s]*}")
-	public Iterable<Mob> findByLocation(@PathVariable String location) {
+	public List<Mob> findByLocation(@PathVariable String location) {
 		return mobService.findByLocation(location);
 	}
 	
@@ -78,11 +79,11 @@ public class MobController {
 	 * Method to return a list of mobs that are equal to a given level
 	 * 
 	 * @param level an int representing the level of mob users are searching for up to a maximum of 200 
-	 * @return Iterable<Mob> a collection of mobs whose level is equal to the parameter
+	 * @return List<Mob> a collection of mobs whose level is equal to the parameter
 	 * @throws NoneFoundException if no mobs exist in the database whose level is equal to the one provided
 	 */
 	@GetMapping("/level/{level}")
-	public Iterable<Mob> findBylevel(@PathVariable int level) {
+	public List<Mob> findBylevel(@PathVariable int level) {
 		return mobService.findByLevel(level);
 	}
 	
@@ -90,11 +91,11 @@ public class MobController {
 	 * Method to return a list of mobs that give equal to the exp amount provided by the user
 	 * 
 	 * @param exp an int reprsenting the exact exp users are looking for and nothing higher or lower
-	 * @return Iterable<Mob> a collection of mobs that provide the exact amount of exp the user provided
+	 * @return List<Mob> a collection of mobs that provide the exact amount of exp the user provided
 	 * @throws NoneFoundException if no mobs give the exp equal to the provided value
 	 */
 	@GetMapping("/exp/{exp}") 
-	public Iterable<Mob> findByEXP(@PathVariable int exp) {
+	public List<Mob> findByEXP(@PathVariable int exp) {
 		return mobService.findByMobExp(exp);
 	}
 	
@@ -102,11 +103,11 @@ public class MobController {
 	 * Method to return a list of mobs that give equal or greater to the exp amount provided by the user
 	 * 
 	 * @param exp an int reprsenting the lowest amount of exp a mob gives that a user is looking for
-	 * @return Iterable<Mob> a collection of mobs that give that much exp or greater
+	 * @return List<Mob> a collection of mobs that give that much exp or greater
 	 * @throws NoneFoundException if no mobs give exp greater than or equal to provided value
 	 */
 	@GetMapping("/min/exp/{exp}")
-	public Iterable<Mob> findByGreaterExp(@PathVariable int exp) {
+	public List<Mob> findByGreaterExp(@PathVariable int exp) {
 		return mobService.findByMobExpGreater(exp);
 	}
 	
@@ -114,11 +115,11 @@ public class MobController {
 	 * Method to return a list of mobs that give equal or greater minimum meso than the number provided by the user
 	 * 
 	 * @param meso an int representing the minimum amount of meso a mob drop
-	 * @return Iterable<Mob> a collection of mobs that drop the minimum amount of meso or higher given
+	 * @return List<Mob> a collection of mobs that drop the minimum amount of meso or higher given
 	 * @throws NoneFoundException if no mobs whose minimum meso drop is greater than or equal to the provided value
 	 */
 	@GetMapping("/min/meso/{meso}") 
-	public Iterable<Mob> findMinMesoHigher(@PathVariable int meso) {
+	public List<Mob> findMinMesoHigher(@PathVariable int meso) {
 		return mobService.findMinMesoGreater(meso);
 	}
 	
@@ -130,7 +131,7 @@ public class MobController {
 	 * @throws NoneFoundException if no mobs whose maximum meso drop is greater than or equal to the provided value
 	 */
 	@GetMapping("/max/meso/{meso}")
-	public Iterable<Mob> findMaxMesoHigher(@PathVariable int meso) {
+	public List<Mob> findMaxMesoHigher(@PathVariable int meso) {
 		return mobService.findMaxMesoGreater(meso);
 	}
 }

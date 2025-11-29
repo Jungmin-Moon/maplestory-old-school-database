@@ -27,40 +27,40 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	 * Query that searchs for mobs that contain the substring provided
 	 */
 	@Query("SELECT m FROM Mob m WHERE m.mobName LIKE %:name%")
-	Iterable<Mob> findByPartialMatch(String name);
+	List<Mob> findByPartialMatch(String name);
 	
 	//combine the location queries
 	/*
 	 * Query that searches in both location columns for mobs to return mobs that are in the location provided either as Location one or Location two
 	 */
-	Iterable<Mob> findByMobLocationOrMobLocationTwo(String location, String locationTwo);
+	List<Mob> findByMobLocationOrMobLocationTwo(String location, String locationTwo);
 	
 	//Iterable<Mob> findByMobLocationTwo(String location);
 	
 	/*
 	 * Query that returns mobs with level exactly equal to the one provided
 	 */
-	Iterable<Mob> findByMobLevelEquals(int level);
+	List<Mob> findByMobLevelEquals(int level);
 	
 	/*
 	 * Query that returns mobs that give exp greater than or equal to the one provided
 	 */
-	Iterable<Mob> findAllByMobEXPGreaterThanEqual(int expMin);
+	List<Mob> findAllByMobEXPGreaterThanEqual(int expMin);
 	
 	/*
 	 * Query that returns mobs that give exactly the same exp amount provided
 	 */
-	Iterable<Mob> findAllByMobEXP(int exp);
+	List<Mob> findAllByMobEXP(int exp);
 	
 	/*
 	 * Query that returns mobs with a minimum meso drop greater than or equal to the one provided
 	 */
-	Iterable<Mob> findAllByMobMinMesoGreaterThanEqual(int meso);
+	List<Mob> findAllByMobMinMesoGreaterThanEqual(int meso);
 	
 	/*
 	 * Query that returns mobs with a maximum meso drop greater than or equal to the one provided
 	 */
-	Iterable<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
+	List<Mob> findAllByMobMaxMesoGreaterThanEqual(int meso);
 	
 	//Web Query
 	List<Mob> findAllByOrderByMobLevelAsc();
@@ -74,7 +74,7 @@ public interface MobRepository extends JpaRepository<Mob, Long>{
 	
 	//Iterable<Mob> findAllByOrderByMobLevelDesc();
 	
-	Iterable<Mob> findAllByOrderByMobEXPAsc();
+	List<Mob> findAllByOrderByMobEXPAsc();
 	
-	Iterable<Mob> findAllByOrderByMobEXPDesc();
+	List<Mob> findAllByOrderByMobEXPDesc();
 }
